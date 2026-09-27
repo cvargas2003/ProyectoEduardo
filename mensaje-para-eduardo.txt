@@ -1,0 +1,38 @@
+Hola Eduardo, buen día. Le cuento que ya tenemos la primera versión de la página del apartamento de Santa Marta: galería de fotos, video, un itinerario con sus recomendaciones, las reseñas y reservas directas por WhatsApp. Para dejarla lista para publicar y arrancar con La Casona, necesito lo siguiente. Lo más urgente son los puntos 1, 2 y 3.
+
+*1. Santa Marta: confirmar datos*
+• Capacidad máxima: la carta de tips dice 6 personas, el video del recorrido dice 5 y Airbnb dice 2. ¿Cuál es la correcta?
+• La cama principal, ¿es Queen o King? En Airbnb aparecen las dos.
+• Tarifa por noche en temporada alta y en temporada baja, y las fechas de temporada alta.
+• En el video dice estadía mínima de 3 noches. ¿Aplica todo el año?
+• ¿Qué anticipo pide para confirmar una reserva?
+• El costo adicional por mascota.
+
+*2. Santa Marta: calendario de Airbnb*
+Para que la página muestre las fechas ocupadas y no se crucen reservas con Airbnb, necesito el enlace para exportar el calendario. Desde el computador: Calendario → escoger el apartamento → Disponibilidad → Conectar calendarios → Conectar con otro sitio web, y copiar el enlace del calendario de Airbnb (termina en .ics).
+
+*3. Santa Marta: fotos y video originales*
+• Las fotos en la mejor calidad que tenga (las de la cámara o el celular, no descargadas de Airbnb).
+• El video del recorrido original, sin pasar por WhatsApp, porque WhatsApp le baja mucho la calidad. Si tiene una versión sin los textos encima, mucho mejor.
+Por favor envíelos por Google Drive o Google Fotos en calidad original.
+
+*4. La Casona (Bogotá)*
+• Dirección y universidades cercanas.
+• Tipos de habitación y el valor mensual de cada uno.
+• Qué incluye el pago mensual y qué se paga aparte.
+• Requisitos de ingreso: documentos, codeudor, referencias.
+• Depósito y forma de pago.
+• Duración mínima del contrato y cómo es la renovación.
+• Disponibilidad o cupos por semestre.
+• Horarios para visitas.
+• Normas de convivencia y de visitantes.
+• Fotos de cada tipo de habitación, baños, cocina, zonas de estudio, patio, fachada y alrededores, y un video recorrido grabado en vertical.
+Si ya tiene algún documento o anuncio de La Casona, como la carta de tips de Santa Marta, con eso avanzo mucho más rápido.
+
+*5. Para publicar*
+• ¿Ya tiene dominio para alguna de las dos propiedades? Si no, ¿qué nombres le gustarían?
+• ¿El chatbot usaría este mismo número de WhatsApp o uno aparte?
+• ¿Las propiedades ya tienen ficha en Google Maps?
+• ¿A qué número de WhatsApp y a qué correo deben llegar las solicitudes de reserva? En el video aparecen el 316 251 1432, el 300 529 5434 y el correo veloza40@gmail.com.
+
+Mil gracias. Cualquier duda me escribe.

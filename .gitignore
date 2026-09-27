@@ -1,0 +1,11 @@
+# Skills de Claude Code: código de terceros, se reinstalan desde
+# https://github.com/nextlevelbuilder/ui-ux-pro-max-skill (carpeta .claude/skills del repo)
+.claude/skills/
+
+# Configuración local de Claude Code de cada máquina
+.claude/settings.local.json
+
+# Archivos del sistema
+Thumbs.db
+desktop.ini
+.DS_Store
