@@ -10,6 +10,13 @@ window.NAUTILUS = {
 
   anuncioAirbnb: 'https://www.airbnb.mx/rooms/32046242',
 
+  // PENDIENTE: los perfiles reales. Por ahora llevan a la página de inicio de cada red.
+  redes: {
+    instagram: 'https://www.instagram.com/',
+    facebook: 'https://www.facebook.com/',
+    tiktok: 'https://www.tiktok.com/'
+  },
+
   // Videos que abre el reproductor con sonido. El primero es también el que corre en bucle
   // en la sección "En video" (ver index.html).
   // tipo: 'mp4' (ruta del archivo) | 'drive' (id del archivo de Google Drive) | 'youtube' (id).

@@ -5,17 +5,23 @@ Sitios web de reserva directa para dos propiedades de alquiler. Propuesta comerc
 
 - `santa-marta/` — **Suite Dúplex Nautilus**, Edificio Nautilus, Playa Salguero (Rodadero Sur).
   Primera versión construida.
-- `bogota/` — **La Casona**, residencia universitaria. Pendiente.
+- `bogota/` — **La Casona**, residencia universitaria. Primera versión visual, con
+  contenido provisional y sin fotos (ver abajo).
 
 Cada sitio es independiente (la propuesta contempla un dominio por propiedad).
 
 ## Levantar
 
 ```
-python -m http.server 5500 --bind 127.0.0.1 --directory santa-marta
+python servidor.py 5500 santa-marta
+python servidor.py 5501 bogota
 ```
 
-http://127.0.0.1:5500. No hay build: HTML, CSS y JS planos; fuentes y GSAP por CDN.
+http://127.0.0.1:5500 y http://127.0.0.1:5501. `servidor.py` es `http.server` con
+`Cache-Control: no-cache`: sin eso Chrome guarda los .js y .css por su cuenta y, tras un
+cambio, sigue mostrando la versión vieja aunque se recargue. También están en `.claude/launch.json`
+(`santa-marta` y `bogota`): la vista previa solo los encuentra si la sesión de Claude Code
+arranca en `C:\ProyectoEduardo`. No hay build: HTML, CSS y JS planos; fuentes y GSAP por CDN.
 Todo el código, los nombres y los comentarios van **en español**.
 
 ## Por qué estático y no C#
@@ -40,6 +46,20 @@ van tal cual a su `wwwroot`: no se pierde nada.
   tramos del original **sin ningún texto** (5,7–8,7 s piscina, 22,7–25,2 s fachada,
   34,1–38,3 s sala y cocina) unidos con fundidos. `video/recorrido-poster.jpg` es su
   primer cuadro. Al rehacerlo con un video nuevo, revisar cuadro a cuadro que no entre texto.
+
+- **Fondo del inicio**: la foto del propietario de la pasarela al atardecer
+  (`img/atardecer-pasarela-playa-*.webp`, 800 y 1080 px: el original no da para más). Antes
+  fue un video en bucle del atardecer, sacado de `videos-originales/promo-atardecer-2026-09-27.mp4`
+  (32,9–42,1 s, solo las filas 0–480 porque abajo tiene letreros; `delogo` deja rayas). El
+  cliente prefirió la foto y los archivos derivados se borraron; si se vuelve al video, esa
+  es la receta.
+- **Video del arco de la bienvenida** (`video/edificio-recorrido.mp4`): recorrido por el
+  pasillo del edificio hasta la vista al mar, sin letreros
+  (`videos-originales/recorrido-edificio-2026-09-27.mp4`). Va **al doble de velocidad**
+  (así lo pidió el cliente), recortado en vertical al centro (384×478) y con CRF 30: 2 MB.
+  Con CRF 25 pesaba 4,3 MB sin diferencia visible (SSIM 0,947).
+- **Foto del marco cuadrado**: `img/atardecer-pasarela-playa-*.webp`, del propietario
+  (original en `fotos-propietario/`). Solo hay 480 y 800 px: el original mide 1080.
 
 ## ffmpeg
 
@@ -67,25 +87,60 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
    `aggregateRating`: Google no admite calificaciones copiadas de otra plataforma.
 7. **Animaciones**: reglas y errores ya resueltos en `design-system/suite-nautilus/MASTER.md`.
    Leerlo antes de tocar GSAP.
-8. **El video de la sección "En video" corre solo, como un GIF**: sin sonido, en bucle, y
-   solo mientras se ve (se pide al acercarse, se pausa al salir). Con "reducir movimiento"
-   o ahorro de datos no arranca solo. Todo pasa por `sincronizarBucle()` en `principal.js`:
-   no tocar `play()`/`pause()` por fuera de ahí o se desincroniza con el reproductor modal.
+8. **Hay dos videos que corren solos, como un GIF**: el recorrido del edificio en el arco
+   de la bienvenida y el de la sección "En video". Sin sonido, en bucle,
+   solo mientras se ven (se piden al acercarse, se pausan al salir), quietos con "reducir
+   movimiento" o ahorro de datos, y cada uno con botón de pausa. Todos se registran con
+   `crearBucle(video, botón, nombre)` en `principal.js` y solo `sincronizarBucles()` llama a
+   `play()`/`pause()`: no hacerlo por fuera o corren mientras suena el reproductor modal.
+   Para agregar otro: `<video data-src=… data-poster=…>` (y `data-src-movil`/`data-poster-movil`
+   si hay versión de celular), su botón, y una línea `crearBucle`.
 9. **`python -m http.server` no admite peticiones por rangos**, y Safari no reproduce video
    sin ellas: en local el video solo se prueba en Chrome/Edge/Firefox. Cualquier hosting
    real sí las admite.
 
+## Decisiones del cliente en Santa Marta (no deshacer)
+
+- **Airbnb, solo como alternativa discreta**: una línea en letra pequeña bajo el formulario de
+  Reservar y el enlace del pie. Se quitaron el "4,6 · 183 reseñas" del inicio y el enlace de
+  la sección de reseñas.
+- **Sin carpas**: no mencionar las carpas del edificio en ninguna parte.
+- **Reservar va tercera**, justo después de La suite. Las secciones se numeran en el orden en
+  que aparecen: al mover una, renumerar todas.
+- Dos textos que dio el cliente van **tuteados** ("Desde que llegas…" en En video y "Un plan
+  de 3 días…" en Experiencias); el resto de la página trata de usted.
+
+## La Casona (`bogota/`)
+
+- **Diseño**: versión nocturna de la misma familia, en `design-system/suite-nautilus/pages/bogota.md`.
+  El hero no usa foto: son los cerros orientales (Monserrate y Guadalupe) dibujados en SVG.
+- **Todavía no hay fotos ni video.** Cada espacio es un `<figure class="hueco">` con su
+  nombre ("Fachada", "Zona de estudio"…). Cuando lleguen, se reemplaza cada hueco por su
+  foto en WebP de 480, 800, 1200 y 1600 px, igual que en Santa Marta.
+- **Contenido provisional**: los tipos de habitación, servicios, requisitos, normas y
+  horarios salen del prototipo de Nicole y de la propuesta, no de La Casona. Todo lo que
+  falta confirmar lleva la píldora `.pendiente` ("Por confirmar"). No hay precios, dirección
+  ni distancias inventadas; no inventarlos.
+- **Se tutea** (público estudiante); Santa Marta trata de usted.
+- **`js/principal.js` es una copia adaptada del de Santa Marta**, a propósito: cada sitio se
+  publica solo. Si se corrige un error en uno, revisar el otro.
+- WhatsApp y horarios de visita viven en `bogota/js/datos.js`. El número es el mismo de
+  Santa Marta hasta que Eduardo confirme el de La Casona.
+
 ## Pendientes con el propietario
 
-- **Capacidad**: tres fuentes, tres cifras. Carta de tips: 6; video: 5; Airbnb: 2. La
-  página dice 6.
+- Capacidad: resuelta, **máximo 5 huéspedes** (lo confirmó el cliente; coincide con el video).
 - **Estadía mínima**: el video dice 3 noches. El formulario todavía no lo exige.
 - **Número de WhatsApp**: la página usa 320 319 3258, pero el video del propietario da
   316 251 1432 y 300 529 5434. Confirmar cuál recibe las reservas.
 - Cama principal: Queen (carta de tips y Airbnb) o King (descripción de Airbnb). Dice Queen.
 - Nombre: resuelto, "Nautilus" sin tilde (carta de tips y video: "Nautilus Suite").
-- Fotos originales en alta resolución y, si hay, más videos.
-- **Video en calidad original**: el actual pasó por WhatsApp (960×544). Pedir el archivo
-  directo del celular por Drive o Google Fotos en "calidad original", idealmente una versión
-  sin los textos promocionales incrustados.
+- Fotos originales en alta resolución y, si hay, más videos. La del inicio (pasarela al
+  atardecer) mide 1080 px y en pantallas grandes se ve algo suave: si hay una más grande, cambiarla.
+- **Redes sociales**: los enlaces del pie van a la página de inicio de cada red; poner los
+  perfiles reales en `js/datos.js` (`redes`).
+- **Videos en calidad original y sin textos**: los dos que hay pasaron por WhatsApp y traen
+  letreros encima. Pedir los archivos directo del celular (Drive o Google Fotos, "calidad
+  original"). Con la toma del atardecer sin letreros, el fondo del inicio puede ocupar la
+  pantalla completa en vez de la franja de arriba.
 - Tiempos a las escapadas (Tayrona, Minca, Palomino…): son aproximados, confirmarlos.

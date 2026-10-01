@@ -220,7 +220,7 @@ button { font: inherit; color: inherit; }
   color: var(--marfil); overflow: hidden; background: var(--oceano-profundo);
 }
 .hero__media { position: absolute; inset: 0; }
-.hero__img { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; transform-origin: 50% 60%; }
+.hero__img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; transform-origin: 50% 45%; }
 .hero__media::after {
   content: ""; position: absolute; inset: 0;
   /* Tres velos: arriba para el menú, abajo para el texto y a la izquierda, donde va el título,
@@ -243,13 +243,6 @@ button { font: inherit; color: inherit; }
 .linea > span { display: inline-block; }
 .hero__lede { margin-top: 28px; max-width: 46ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--sobre-oscuro); }
 .hero__acciones { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
-.hero__calificacion {
-  display: inline-flex; align-items: center; gap: 8px; margin-top: 36px;
-  font-size: 15px; color: var(--sobre-oscuro); text-decoration: none;
-  padding-bottom: 4px; border-bottom: 1px solid var(--linea-clara);
-}
-.hero__calificacion .icono { width: 16px; height: 16px; color: #D9B872; }
-.hero__calificacion strong { font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--marfil); }
 
 .hero__bajar {
   position: absolute; right: var(--margen); bottom: 120px;
@@ -278,6 +271,22 @@ button { font: inherit; color: inherit; }
 
 /* ---------- 01 · Intro ---------- */
 .intro__rejilla { display: grid; gap: 64px; align-items: center; }
+/* Sello del premio: el dato que más distingue al edificio, a la vista antes del párrafo */
+.premio {
+  display: flex; align-items: center; gap: 18px; width: fit-content; max-width: 100%;
+  margin-top: 30px; padding: 14px 26px 14px 14px;
+  border: 1px solid var(--oro);
+  background: linear-gradient(90deg, rgba(176, 138, 62, .14), rgba(176, 138, 62, 0) 85%);
+}
+.premio__sello {
+  display: grid; place-items: center; flex: none; width: 58px; height: 58px; border-radius: 50%;
+  border: 1px solid var(--oro); background: var(--marfil); color: var(--oro-texto);
+  box-shadow: 0 0 0 5px rgba(176, 138, 62, .12);
+}
+.premio__sello .icono { width: 26px; height: 26px; }
+.premio strong { display: block; font-family: var(--serif); font-weight: 500; font-size: clamp(19px, 2vw, 24px); line-height: 1.2; }
+.premio span { display: block; margin-top: 4px; font-family: var(--versalitas); font-size: 13px; letter-spacing: .18em; text-transform: lowercase; color: var(--oro-texto); }
+.parrafo strong { font-weight: 600; color: var(--tinta); }
 .cita {
   margin-top: 40px; padding-left: 26px; border-left: 1px solid var(--oro);
   font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.35; color: var(--tinta);
@@ -286,7 +295,16 @@ button { font: inherit; color: inherit; }
 .intro__imagenes { position: relative; padding-bottom: 12%; }
 .arco { position: relative; width: 78%; aspect-ratio: 4 / 5; border-radius: 999px 999px 0 0; overflow: hidden; margin-left: auto; background: var(--marfil-2); }
 .parallax { position: absolute; inset: -8% 0; }
-.parallax img, .arco img { width: 100%; height: 100%; object-fit: cover; }
+.parallax img, .parallax video, .arco img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.arco__pausa {
+  position: absolute; z-index: 2; right: 14px; bottom: 14px;
+  display: grid; place-items: center; width: 44px; height: 44px; cursor: pointer;
+  border-radius: 50%; border: 1px solid rgba(247, 242, 234, .7); color: var(--marfil);
+  background: rgba(10, 30, 42, .4); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  transition: background-color .3s var(--suave);
+}
+.arco__pausa:hover { background: rgba(10, 30, 42, .7); }
+.arco__pausa .icono { width: 18px; height: 18px; }
 .intro__secundaria {
   position: absolute; left: 0; bottom: 0; width: 44%; aspect-ratio: 1;
   overflow: hidden; border: 10px solid var(--marfil); background: var(--marfil-2);
@@ -298,6 +316,7 @@ button { font: inherit; color: inherit; }
   margin-top: clamp(64px, 9vw, 112px); border-top: 1px solid var(--linea);
 }
 .cifras li { padding: 28px 8px 0; display: flex; flex-direction: column; gap: 4px; }
+.cifras__icono { width: 28px; height: 28px; margin-bottom: 14px; color: var(--oro-texto); }
 .cifras strong { font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 5vw, 64px); line-height: 1; }
 .cifras span:not([data-contar]) { font-family: var(--versalitas); font-size: 14px; letter-spacing: .18em; text-transform: lowercase; color: var(--tinta-suave); }
 @media (min-width: 760px) {
@@ -606,6 +625,13 @@ button { font: inherit; color: inherit; }
 .formulario__noches { font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--oro); }
 .formulario__noches:empty { display: none; }
 .formulario__nota { font-size: 14px; color: var(--sobre-oscuro-suave); text-align: center; }
+/* Airbnb como alternativa: visible pero en segundo plano, bajo el formulario */
+.formulario__airbnb {
+  padding-top: 16px; border-top: 1px solid var(--linea-clara);
+  font-size: 13px; color: var(--sobre-oscuro-suave); text-align: center;
+}
+.formulario__airbnb a { color: var(--oro); text-underline-offset: 3px; }
+.formulario__airbnb a:hover { color: var(--marfil); }
 @media (min-width: 560px) { .campos-fila { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 960px) { .reservar__rejilla { grid-template-columns: .9fr 1.1fr; gap: 88px; } }
 
@@ -614,6 +640,14 @@ button { font: inherit; color: inherit; }
 .pie__rejilla { display: grid; gap: 40px; padding-bottom: 56px; }
 .marca__nombre--pie { color: var(--marfil); font-size: 40px; }
 .pie__texto { margin-top: 14px; max-width: 36ch; font-size: 15px; }
+.redes { display: flex; gap: 10px; margin-top: 24px; }
+.redes a {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--linea-clara); color: var(--sobre-oscuro);
+  transition: color .3s var(--suave), border-color .3s var(--suave);
+}
+.redes a:hover { color: var(--oro); border-color: var(--oro); }
+.redes .icono { width: 19px; height: 19px; }
 .pie__titulo { font-family: var(--versalitas); font-size: 14px; letter-spacing: .2em; text-transform: lowercase; color: var(--oro); margin-bottom: 16px; }
 .pie__enlace { display: block; width: fit-content; padding-block: 6px; font-size: 15px; text-decoration: none; color: var(--sobre-oscuro); }
 .pie__enlace:hover { color: var(--marfil); }

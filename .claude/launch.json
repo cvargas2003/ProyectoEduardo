@@ -4,8 +4,14 @@
     {
       "name": "santa-marta",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "5500", "--bind", "127.0.0.1", "--directory", "santa-marta"],
+      "runtimeArgs": ["servidor.py", "5500", "santa-marta"],
       "port": 5500
+    },
+    {
+      "name": "bogota",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["servidor.py", "5501", "bogota"],
+      "port": 5501
     }
   ]
 }

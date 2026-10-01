@@ -26,6 +26,10 @@
     a.rel = 'noopener';
   });
   $$('[data-airbnb]').forEach(function (a) { if (D.anuncioAirbnb) a.href = D.anuncioAirbnb; });
+  $$('[data-red]').forEach(function (a) {
+    var perfil = D.redes && D.redes[a.dataset.red];
+    if (perfil) a.href = perfil;
+  });
 
   var anio = $('#anio');
   if (anio) anio.textContent = new Date().getFullYear();
@@ -203,7 +207,7 @@
     // El video solo se carga al abrir, y se destruye al cerrar para que deje de sonar.
     marco.replaceChildren(el);
     reproductor.showModal();
-    sincronizarBucle();
+    sincronizarBucles();
   }
   $$('[data-abrir-video]').forEach(function (b) {
     b.addEventListener('click', function () { abrirVideo(Number(b.dataset.abrirVideo)); });
@@ -213,55 +217,70 @@
   function cerrarVideo() {
     marco.replaceChildren();
     if (reproductor.open) reproductor.close();
-    sincronizarBucle();
+    sincronizarBucles();
   }
   reproductor.querySelector('[data-cerrar]').addEventListener('click', cerrarVideo);
   reproductor.addEventListener('click', function (e) { if (e.target === reproductor) cerrarVideo(); });
   reproductor.addEventListener('cancel', function () { marco.replaceChildren(); });
   reproductor.addEventListener('close', function () {
     marco.replaceChildren();
-    sincronizarBucle();
+    sincronizarBucles();
     if (disparadorVideo) disparadorVideo.focus();
   });
 
-  /* ---------- Video en bucle, como un GIF ----------
-   * Corre sin sonido y solo mientras se ve: el archivo no se pide hasta que la sección se
-   * acerca, y se pausa al salir de pantalla. Con "reducir movimiento" o
-   * ahorro de datos no arranca solo, y el botón de pausa sirve también para arrancarlo. */
-  var bucle = $('.video__bucle');
-  var botonPausa = $('.video__pausa');
-  var iconoPausa = botonPausa.querySelector('use');
-  var bucleVisible = false;
+  /* ---------- Videos en bucle, como un GIF ----------
+   * Son dos: el recorrido del edificio (en el arco de la bienvenida) y el de la sección
+   * "En video". Todos siguen las mismas reglas: sin sonido, solo mientras se ven
+   * (el archivo no se pide hasta que se acercan, y se pausan al salir), quietos con "reducir
+   * movimiento" o ahorro de datos, y cada uno con su botón de pausa, que también sirve para
+   * arrancarlos (WCAG 2.2.2). En celular se usan la versión y el póster recortados si existen
+   * (data-src-movil, data-poster-movil), que pesan menos. */
   var ahorroDatos = !!(navigator.connection && navigator.connection.saveData);
-  var quiereReproducir = movimiento.matches && !ahorroDatos;
+  var pantallaMovil = window.matchMedia('(max-width: 759.98px)').matches;
+  var bucles = [];
 
-  // Única fuente de verdad: corre si se ve, si el usuario no lo pausó y si no está abierto
-  // el reproductor con sonido (nunca dos videos a la vez).
-  function sincronizarBucle() {
-    if (bucleVisible && quiereReproducir && !reproductor.open) {
-      if (!bucle.getAttribute('src')) bucle.src = bucle.dataset.src;
-      var intento = bucle.play();
-      if (intento) intento.catch(function () {}); // si el navegador se niega, queda el póster
-    } else {
-      bucle.pause();
+  function crearBucle(video, boton, nombre) {
+    var bucle = { visible: false, quiere: movimiento.matches && !ahorroDatos };
+    var poster = (pantallaMovil && video.dataset.posterMovil) || video.dataset.poster;
+    if (poster) video.poster = poster;
+
+    function pintarBoton() {
+      var corriendo = !video.paused;
+      boton.setAttribute('aria-label', (corriendo ? 'Pausar ' : 'Reproducir ') + nombre);
+      boton.querySelector('use').setAttribute('href', corriendo ? '#i-pausa' : '#i-play');
     }
+    bucle.sincronizar = function () {
+      if (bucle.visible && bucle.quiere && !reproductor.open) {
+        if (!video.getAttribute('src')) video.src = (pantallaMovil && video.dataset.srcMovil) || video.dataset.src;
+        var intento = video.play();
+        if (intento) intento.catch(function () {}); // si el navegador se niega, queda el póster
+      } else {
+        video.pause();
+      }
+    };
+
+    new IntersectionObserver(function (entradas) {
+      bucle.visible = entradas[0].isIntersecting;
+      bucle.sincronizar();
+    }, { rootMargin: '200px 0px' }).observe(video);
+    boton.addEventListener('click', function () {
+      bucle.quiere = video.paused;
+      bucle.sincronizar();
+    });
+    video.addEventListener('play', pintarBoton);
+    video.addEventListener('pause', pintarBoton);
+    pintarBoton();
+    bucles.push(bucle);
   }
-  function pintarBotonPausa() {
-    var corriendo = !bucle.paused;
-    botonPausa.setAttribute('aria-label', corriendo ? 'Pausar video' : 'Reproducir video');
-    iconoPausa.setAttribute('href', corriendo ? '#i-pausa' : '#i-play');
+
+  // Única vía para play()/pause() de los bucles: así ninguno corre mientras suena el
+  // reproductor con sonido.
+  function sincronizarBucles() {
+    bucles.forEach(function (bucle) { bucle.sincronizar(); });
   }
-  new IntersectionObserver(function (entradas) {
-    bucleVisible = entradas[0].isIntersecting;
-    sincronizarBucle();
-  }, { rootMargin: '200px 0px' }).observe(bucle);
-  botonPausa.addEventListener('click', function () {
-    quiereReproducir = bucle.paused;
-    sincronizarBucle();
-  });
-  bucle.addEventListener('play', pintarBotonPausa);
-  bucle.addEventListener('pause', pintarBotonPausa);
-  pintarBotonPausa();
+
+  crearBucle($('.arco__video'), $('.arco__pausa'), 'el video del edificio');
+  crearBucle($('.video__bucle'), $('.video__pausa'), 'el video del recorrido');
 
   /* ---------- Tira de destinos ----------
    * Corre sola con una animación CSS en bucle. Se detiene al pasar el cursor y con su botón:
