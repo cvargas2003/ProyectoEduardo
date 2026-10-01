@@ -5,8 +5,9 @@ Sitios web de reserva directa para dos propiedades de alquiler. Propuesta comerc
 
 - `santa-marta/` — **Suite Dúplex Nautilus**, Edificio Nautilus, Playa Salguero (Rodadero Sur).
   Primera versión construida.
-- `bogota/` — **La Casona**, residencia universitaria. Primera versión visual, con
-  contenido provisional y sin fotos (ver abajo).
+- `bogota/` — **Casa Universitaria**, hospedaje universitario con dos sedes (Quinta Mutis y
+  Galerías). Primera versión con el logo y las fotos del Instagram (ver abajo). **No se llama
+  "La Casona"**: ese era el nombre viejo y todavía aparece en marcas de agua y letreros.
 
 Cada sitio es independiente (la propuesta contempla un dominio por propiedad).
 
@@ -110,22 +111,34 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
 - Dos textos que dio el cliente van **tuteados** ("Desde que llegas…" en En video y "Un plan
   de 3 días…" en Experiencias); el resto de la página trata de usted.
 
-## La Casona (`bogota/`)
+## Casa Universitaria (`bogota/`)
 
-- **Diseño**: versión nocturna de la misma familia, en `design-system/suite-nautilus/pages/bogota.md`.
-  El hero no usa foto: son los cerros orientales (Monserrate y Guadalupe) dibujados en SVG.
-- **Todavía no hay fotos ni video.** Cada espacio es un `<figure class="hueco">` con su
-  nombre ("Fachada", "Zona de estudio"…). Cuando lleguen, se reemplaza cada hueco por su
-  foto en WebP de 480, 800, 1200 y 1600 px, igual que en Santa Marta.
-- **Contenido provisional**: los tipos de habitación, servicios, requisitos, normas y
-  horarios salen del prototipo de Nicole y de la propuesta, no de La Casona. Todo lo que
-  falta confirmar lleva la píldora `.pendiente` ("Por confirmar"). No hay precios, dirección
-  ni distancias inventadas; no inventarlos.
+- **Diseño**: juvenil y con los colores del logo, en `design-system/suite-nautilus/pages/bogota.md`
+  (no hereda la estética de Santa Marta, solo sus reglas de movimiento). Leerlo antes de tocarlo.
+- **El logo es el menú**: en el inicio, 8 cubos 3D que primero giran como un solo cubo y luego
+  forman el logo; cada cuadro lleva a la sección de su color, en orden de lectura del logo.
+  Viene del PDF vectorial del cliente (`los hector v. (1).pdf`, página 3); `img/logo.svg` es
+  el logo completo.
+- **Lo que pidió el cliente y debe verse**: cena incluida y **obligatoria** (hace parte del
+  plan), **baño privado en todas** las habitaciones, ingreso por **reconocimiento facial**
+  (seguro, tecnológico, confiable). Sedes: Quinta Mutis, Calle 63C Bis # 27-04, y Galerías,
+  Transversal 25 # 60-54 (del Instagram @hospedajeuniversitariobogota).
+- **Fotos**: las 6 reales del Instagram, en `img/` a 480 y 800 px (el original mide 900; no
+  hay más). Originales en `fotos-casa-universitaria/` (fuera del sitio). Todas traían la
+  marca de agua "La Casona" arriba a la derecha: se recortó la franja de arriba. El letrero
+  de la fachada (dice "La Casona Quinta Mutis") va difuminado. Las otras 5 del Instagram son
+  de banco o gráficos: no usarlas. Al llegar originales, regenerar con el mismo nombre.
+- **Contenido**: tipos de habitación, valores, horario y menú de la cena, aseo, lavandería,
+  requisitos, horarios de visita y universidades cercanas no se saben: llevan la píldora
+  `.pendiente` ("Por confirmar"). No inventar precios ni distancias. La sede Galerías no
+  tiene foto todavía.
+- El dominio casauniversitaria.com.co (del Instagram) no existe todavía.
 - **Se tutea** (público estudiante); Santa Marta trata de usted.
 - **`js/principal.js` es una copia adaptada del de Santa Marta**, a propósito: cada sitio se
   publica solo. Si se corrige un error en uno, revisar el otro.
-- WhatsApp y horarios de visita viven en `bogota/js/datos.js`. El número es el mismo de
-  Santa Marta hasta que Eduardo confirme el de La Casona.
+- WhatsApp, Instagram y horarios de visita viven en `bogota/js/datos.js` (`window.CASA_U`).
+  El número es el mismo de Santa Marta hasta que Eduardo confirme; el letrero de la fachada
+  dice 316 251 1432.
 
 ## Pendientes con el propietario
 
