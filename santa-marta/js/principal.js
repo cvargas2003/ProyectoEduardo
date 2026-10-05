@@ -21,7 +21,7 @@
     return 'https://wa.me/' + D.whatsapp + '?text=' + encodeURIComponent(texto);
   }
   $$('[data-whatsapp]').forEach(function (a) {
-    a.href = enlaceWhatsapp('Hola, quisiera información sobre la Suite Dúplex Nautilus en Playa Salguero.');
+    a.href = enlaceWhatsapp('Hola, quisiera información sobre la Suite El Ancla en Playa Salguero.');
     a.target = '_blank';
     a.rel = 'noopener';
   });
@@ -389,7 +389,7 @@
     var huespedes = $('#huespedes').value;
     var mensaje = $('#mensaje').value.trim();
     var texto =
-      'Hola, quisiera reservar la Suite Dúplex Nautilus.\n\n' +
+      'Hola, quisiera reservar la Suite El Ancla.\n\n' +
       '• Llegada: ' + formatoFecha.format(deIso(llegada.value)) + '\n' +
       '• Salida: ' + formatoFecha.format(deIso(salida.value)) + ' (' + n + (n === 1 ? ' noche' : ' noches') + ')\n' +
       '• Huéspedes: ' + huespedes + '\n' +

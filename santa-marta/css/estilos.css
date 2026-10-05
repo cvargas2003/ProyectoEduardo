@@ -1,5 +1,5 @@
 /* =========================================================
-   Suite Nautilus · Santa Marta
+   Suite El Ancla · Santa Marta (en el Edificio Nautilus)
    Sistema: design-system/suite-nautilus/MASTER.md
    ========================================================= */
 
@@ -279,11 +279,13 @@ button { font: inherit; color: inherit; }
   background: linear-gradient(90deg, rgba(176, 138, 62, .14), rgba(176, 138, 62, 0) 85%);
 }
 .premio__sello {
-  display: grid; place-items: center; flex: none; width: 58px; height: 58px; border-radius: 50%;
+  position: relative; flex: none; width: 60px; height: 60px; border-radius: 50%;
   border: 1px solid var(--oro); background: var(--marfil); color: var(--oro-texto);
   box-shadow: 0 0 0 5px rgba(176, 138, 62, .12);
 }
-.premio__sello .icono { width: 26px; height: 26px; }
+/* Centrado con position y no con grid: en el iPhone el ícono quedaba arriba a la izquierda,
+   por fuera del círculo. */
+.premio__sello .icono { position: absolute; inset: 0; margin: auto; width: 28px; height: 28px; }
 .premio strong { display: block; font-family: var(--serif); font-weight: 500; font-size: clamp(19px, 2vw, 24px); line-height: 1.2; }
 .premio span { display: block; margin-top: 4px; font-family: var(--versalitas); font-size: 13px; letter-spacing: .18em; text-transform: lowercase; color: var(--oro-texto); }
 .parrafo strong { font-weight: 600; color: var(--tinta); }
@@ -307,7 +309,8 @@ button { font: inherit; color: inherit; }
 .arco__pausa .icono { width: 18px; height: 18px; }
 .intro__secundaria {
   position: absolute; left: 0; bottom: 0; width: 44%; aspect-ratio: 1;
-  overflow: hidden; border: 10px solid var(--marfil); background: var(--marfil-2);
+  overflow: hidden; border: 4px solid var(--marfil); background: var(--marfil-2);
+  box-shadow: 0 24px 48px -24px rgba(15, 42, 58, .45);
 }
 .intro__secundaria img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -319,8 +322,14 @@ button { font: inherit; color: inherit; }
 .cifras__icono { width: 28px; height: 28px; margin-bottom: 14px; color: var(--oro-texto); }
 .cifras strong { font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 5vw, 64px); line-height: 1; }
 .cifras span:not([data-contar]) { font-family: var(--versalitas); font-size: 14px; letter-spacing: .18em; text-transform: lowercase; color: var(--tinta-suave); }
+.cifras strong small { margin-left: .2em; font-size: .4em; font-style: italic; letter-spacing: .01em; }
+/* Una palabra en lugar de un número: más chica y con el alto de línea ajustado para que su
+   etiqueta quede a la misma altura que las demás. */
+.cifras .cifras__palabra { font-style: italic; font-size: clamp(31px, 3.5vw, 45px); line-height: 1.42; }
+.cifras li:last-child:nth-child(odd) { grid-column: 1 / -1; }
 @media (min-width: 760px) {
-  .cifras { grid-template-columns: repeat(4, 1fr); }
+  .cifras { grid-template-columns: repeat(5, 1fr); }
+  .cifras li:last-child:nth-child(odd) { grid-column: auto; }
   .cifras li + li { border-left: 1px solid var(--linea); padding-left: 32px; }
 }
 @media (min-width: 960px) {
@@ -328,14 +337,45 @@ button { font: inherit; color: inherit; }
 }
 
 /* ---------- 02 · Suite ---------- */
-.niveles { display: grid; gap: 24px; }
-.nivel { background: var(--marfil); padding: clamp(28px, 4vw, 48px); border-top: 2px solid var(--oro); }
-.nivel__etiqueta { font-family: var(--versalitas); font-size: 13px; letter-spacing: .2em; text-transform: lowercase; color: var(--oro-texto); }
-.nivel h3 { font-family: var(--serif); font-size: clamp(26px, 2.6vw, 32px); margin-top: 8px; }
-.nivel ul { margin-top: 24px; display: grid; gap: 12px; }
-.nivel li { position: relative; padding-left: 22px; color: var(--tinta-suave); }
-.nivel li::before { content: ""; position: absolute; left: 0; top: .78em; width: 10px; height: 1px; background: var(--oro); }
-@media (min-width: 760px) { .niveles { grid-template-columns: 1fr 1fr; gap: 32px; } }
+/* Los dos niveles como dos experiencias: foto en arco y texto, alternando lados, unidos por
+   la escalera. El arco del nivel de arriba mira hacia arriba; el de abajo, hacia abajo. */
+.niveles { display: grid; }
+.nivel { display: grid; gap: clamp(32px, 5vw, 80px); align-items: center; }
+.nivel__foto {
+  position: relative; width: min(100%, 460px); aspect-ratio: 1; margin: 0; justify-self: center;
+  overflow: hidden; border-radius: 999px 999px 0 0; background: var(--marfil);
+}
+.nivel--abajo .nivel__foto { border-radius: 0 0 999px 999px; }
+.nivel__foto img { width: 100%; height: 100%; object-fit: cover; }
+.nivel__num {
+  display: flex; align-items: baseline; gap: 18px;
+  font-family: var(--versalitas); font-size: 13px; letter-spacing: .2em; text-transform: lowercase; color: var(--oro-texto);
+}
+.nivel__num span {
+  font-family: var(--serif); font-style: italic; font-size: clamp(60px, 7vw, 92px); line-height: .8;
+  letter-spacing: 0; text-transform: none; color: var(--oro);
+}
+.nivel h3 { margin-top: 20px; font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 3.8vw, 48px); line-height: 1.1; }
+.nivel__lista { margin-top: clamp(28px, 3vw, 40px); border-top: 1px solid var(--linea); }
+.nivel__lista li { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--linea); color: var(--tinta-suave); }
+.nivel__lista .icono { width: 22px; height: 22px; color: var(--oro-texto); }
+.niveles__escalera {
+  position: relative; justify-self: center; display: grid; place-items: center;
+  width: 58px; height: 58px; margin-block: clamp(56px, 8vw, 96px);
+  border: 1px solid var(--oro); border-radius: 50%; color: var(--oro-texto); background: var(--marfil-2);
+}
+.niveles__escalera .icono { width: 26px; height: 26px; }
+.niveles__escalera::before, .niveles__escalera::after {
+  content: ""; position: absolute; left: 50%; width: 1px; height: clamp(36px, 6vw, 72px); background: var(--oro); opacity: .6;
+}
+.niveles__escalera::before { bottom: 100%; }
+.niveles__escalera::after { top: 100%; }
+@media (min-width: 900px) {
+  .nivel { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+  .nivel__foto { aspect-ratio: 4 / 5; }
+  .nivel--abajo { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+  .nivel--abajo .nivel__foto { order: 2; }
+}
 
 .comodidades {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;

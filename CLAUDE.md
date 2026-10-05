@@ -3,8 +3,9 @@
 Sitios web de reserva directa para dos propiedades de alquiler. Propuesta comercial:
 "Plan de Trabajo Web y Redes" (Nicole Cantin, 19 sept 2026).
 
-- `santa-marta/` — **Suite Dúplex Nautilus**, Edificio Nautilus, Playa Salguero (Rodadero Sur).
-  Primera versión construida.
+- `santa-marta/` — **Suite El Ancla** ("Tu lugar frente al mar"), un dúplex en el Edificio
+  Nautilus, Playa Salguero (Rodadero Sur). Primera versión construida. **Nautilus es el
+  edificio, no el apartamento**: así lo pidió el cliente el 1 de octubre.
 - `bogota/` — **Casa Universitaria**, hospedaje universitario con dos sedes (Quinta Mutis y
   Galerías). Primera versión con el logo y las fotos del Instagram (ver abajo). **No se llama
   "La Casona"**: ese era el nombre viejo y todavía aparece en marcas de agua y letreros.
@@ -108,6 +109,12 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
 - **Sin carpas**: no mencionar las carpas del edificio en ninguna parte.
 - **Reservar va tercera**, justo después de La suite. Las secciones se numeran en el orden en
   que aparecen: al mover una, renumerar todas.
+- **Nombre: Suite El Ancla**, slogan "Tu lugar frente al mar". "Nautilus" solo para el edificio.
+  (La carpeta `design-system/suite-nautilus` conserva el nombre viejo; `window.NAUTILUS` en
+  `js/datos.js`, también.)
+- **La suite**: los dos niveles van como dos experiencias (foto en arco, número grande,
+  título y lista con íconos), con la escalera entre los dos. El del nivel social, "Para
+  vivir hacia el mar", lo dio el cliente; su texto llegó cortado (ver `PEDIDOS-SANTA-MARTA.md`).
 - Dos textos que dio el cliente van **tuteados** ("Desde que llegas…" en En video y "Un plan
   de 3 días…" en Experiencias); el resto de la página trata de usted.
 
@@ -151,7 +158,7 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
 - **Número de WhatsApp**: la página usa 320 319 3258, pero el video del propietario da
   316 251 1432 y 300 529 5434. Confirmar cuál recibe las reservas.
 - Cama principal: Queen (carta de tips y Airbnb) o King (descripción de Airbnb). Dice Queen.
-- Nombre: resuelto, "Nautilus" sin tilde (carta de tips y video: "Nautilus Suite").
+- Nombre: resuelto, **Suite El Ancla** (el edificio es Nautilus, sin tilde).
 - Fotos originales en alta resolución y, si hay, más videos. La del inicio (pasarela al
   atardecer) mide 1080 px y en pantallas grandes se ve algo suave: si hay una más grande, cambiarla.
 - **Redes sociales**: los enlaces del pie van a la página de inicio de cada red; poner los

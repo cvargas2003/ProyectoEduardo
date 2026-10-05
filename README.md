@@ -4,7 +4,7 @@ Sitios web de reserva directa para dos propiedades de alquiler en Colombia.
 
 | Sitio | Propiedad | Estado |
 |---|---|---|
-| [`santa-marta/`](santa-marta/) | Suite Dúplex Nautilus · Playa Salguero, Santa Marta | Primera versión |
+| [`santa-marta/`](santa-marta/) | Suite El Ancla · Edificio Nautilus, Playa Salguero, Santa Marta | Primera versión |
 | [`bogota/`](bogota/) | Casa Universitaria · hospedaje universitario en Bogotá | Primera versión, con datos por confirmar |
 
 HTML, CSS y JavaScript sin build: fuentes y animaciones (GSAP) llegan por CDN. La reserva
@@ -22,7 +22,7 @@ Y abrir http://127.0.0.1:5500 (Santa Marta) o http://127.0.0.1:5501 (Bogotá).
 ## Estructura
 
 ```
-santa-marta/          sitio de la Suite Nautilus (index.html, css/, js/, img/, video/)
+santa-marta/          sitio de la Suite El Ancla (index.html, css/, js/, img/, video/)
 bogota/               sitio de Casa Universitaria (index.html, css/, js/, img/)
 design-system/        sistema de diseño y reglas aprendidas (leer antes de tocar estilos)
 fotos-airbnb/         descargas completas de las fotos del anuncio (fuente de img/)

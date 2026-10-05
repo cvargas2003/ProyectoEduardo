@@ -1,10 +1,9 @@
 # Cambios pedidos para Santa Marta — 1 de octubre de 2026
 
 Llegaron con tres capturas tomadas en el iPhone, sobre la versión publicada
-(https://cvargas2003.github.io/ProyectoEduardo/santa-marta/). **Ninguno está hecho todavía.**
-Para retomar: "sigamos con los cambios de Santa Marta".
+(https://cvargas2003.github.io/ProyectoEduardo/santa-marta/). **Hechos el 5 de octubre** del 1 al 5. Falta el 0 (la foto) y el resto del texto del punto 5.
 
-## 0. Fondo del inicio con la foto nueva, y todo más vivo
+## 0. Fondo del inicio con la foto nueva, y todo más vivo — PENDIENTE
 
 > El fondo de la portada cámbialo por esta imagen, que tiene muy buena calidad, y haz todo
 > más vivo.
@@ -17,7 +16,7 @@ inicio puede ir a pantalla completa y con un velo más suave, para que se vean l
 Si la imagen es una versión mejorada con IA de la foto del propietario, revisar que no
 muestre nada que el lugar no tenga (ver la nota de honestidad en CLAUDE.md).
 
-## 1. Nombre nuevo: Suite El Ancla
+## 1. Nombre nuevo: Suite El Ancla — HECHO
 
 > El nombre que se le va a dar ya no será Nautilus, ya que ese es el nombre del edificio.
 > Pero el apartamento como tal se llamará **Suite El Ancla**.
@@ -35,7 +34,7 @@ muestre nada que el lugar no tenga (ver la nota de honestidad en CLAUDE.md).
 - Ojo: el título de la bienvenida ya habla de un edificio "anclado" frente al mar, así que
   el nombre nuevo encaja.
 
-## 2. Sello del premio (bienvenida)
+## 2. Sello del premio (bienvenida) — HECHO (trofeo centrado en el círculo)
 
 > Incorporar ícono de premio, y esa insignia quitarla o que quede dentro del círculo.
 
@@ -43,14 +42,14 @@ En el iPhone, la medalla sale arriba a la izquierda, por fuera del círculo dora
 círculo queda vacío. Poner un ícono de premio bien centrado **dentro** del círculo (o
 quitar la medalla). CSS en `.premio__sello` (`santa-marta/css/estilos.css`, ~línea 281).
 
-## 3. Foto cuadrada de la bienvenida
+## 3. Foto cuadrada de la bienvenida — HECHO (borde de 4 px y sombra suave)
 
 > Quitar el recuadro blanco o hacerlo más delgado, o distribuirlo diferente.
 
 Es `.intro__secundaria` (la foto de la pasarela al atardecer, sobre el arco del video):
 hoy tiene un borde marfil de 10 px. Quitarlo, adelgazarlo o recomponer las dos imágenes.
 
-## 4. Cifras bajo la bienvenida
+## 4. Cifras bajo la bienvenida — HECHO ("15 metros", ícono de dos pisos con escalera, "Piscina · acceso para huéspedes")
 
 > Aclarar que es 15 metros, no 15 m.
 > Mejorar el ícono de niveles, que sea más claro: puede ser un piso, una escalera, otro piso.
@@ -60,7 +59,7 @@ hoy tiene un borde marfil de 10 px. Quitarlo, adelgazarlo o recomponer las dos i
 - Ícono de "2 niveles": hoy son capas apiladas. Dibujar uno propio: piso, escalera, piso.
 - Agregar el acceso a la piscina (una cifra o línea más, con su ícono).
 
-## 5. Rediseño de la sección "La suite" (los dos niveles)
+## 5. Rediseño de la sección "La suite" (los dos niveles) — HECHO, con el título del nivel de descanso sin cambiar
 
 Texto del cliente, tal como llegó:
 

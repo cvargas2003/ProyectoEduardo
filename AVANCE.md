@@ -7,12 +7,12 @@ Para retomar: leer esto y `CLAUDE.md` (contexto técnico, decisiones y pendiente
 
 | | Estado |
 |---|---|
-| **Santa Marta** (`santa-marta/`) | Página completa, con la primera ronda de ajustes del cliente aplicada |
+| **Santa Marta** (`santa-marta/`) | Ahora se llama **Suite El Ancla**. Segunda ronda de ajustes del cliente aplicada, salvo la foto del inicio |
 | **Bogotá** (`bogota/`) | Rehecha como **Casa Universitaria**: logo interactivo en cubos, fotos del Instagram, datos faltantes marcados "Por confirmar" |
 | **GitHub** | https://github.com/cvargas2003/ProyectoEduardo — **público** (para GitHub Pages), rama `main`, todo subido |
 | **Copia de seguridad** | `C:\ProyectoEduardo-copia-2026-09-27` (foto del proyecto antes de empezar Bogotá) |
 | **Remote Control** | Activado, también para las sesiones nuevas de este equipo |
-| **Siguiente** | Cambios pedidos para Santa Marta: ver [`PEDIDOS-SANTA-MARTA.md`](PEDIDOS-SANTA-MARTA.md) (nombre nuevo **Suite El Ancla**, sello del premio, cifras, rediseño de los niveles) |
+| **Siguiente** | Santa Marta: falta la foto nueva del inicio y el resto del texto de los niveles (ver [`PEDIDOS-SANTA-MARTA.md`](PEDIDOS-SANTA-MARTA.md)) |
 | **Publicación** | Vista previa en GitHub Pages: [Santa Marta](https://cvargas2003.github.io/ProyectoEduardo/santa-marta/) · [Bogotá](https://cvargas2003.github.io/ProyectoEduardo/bogota/) (tarda 1 o 2 minutos en actualizarse tras cada push) |
 
 ## Cómo retomar
@@ -70,6 +70,15 @@ Para retomar: leer esto y `CLAUDE.md` (contexto técnico, decisiones y pendiente
 - Las casas no tienen zona de estudio: se quitó de Todo incluido, de La casa y su foto.
 - Sedes pasó a ser la sección 01 y Habitaciones la 02; el resto, igual.
 
+**5 de octubre — Santa Marta pasa a ser Suite El Ancla**
+- Nombre nuevo **Suite El Ancla**, slogan "Tu lugar frente al mar" (Nautilus es el edificio).
+  Favicon con un ancla. También en el pie de Bogotá.
+- Sello del premio con un trofeo centrado en el círculo (en el iPhone el ícono se salía).
+- Foto pequeña de la bienvenida con borde fino y sombra.
+- Cifras: "15 metros", ícono de dos pisos con escalera y "Piscina · acceso para huéspedes".
+- La suite: los dos niveles rediseñados como dos experiencias, con foto, número y la
+  escalera entre los dos. Nivel social: "Para vivir hacia el mar".
+
 ## Por decidir (con el usuario)
 
 1. **Publicación.** El repositorio se hizo público para tener GitHub Pages: sirve como vista
@@ -105,8 +114,8 @@ Todo está pedido en `mensaje-para-eduardo.txt` (confirmar si ya se envió):
 
 ## Próximos pasos sugeridos
 
-1. Hacer los cambios de Santa Marta de `PEDIDOS-SANTA-MARTA.md` (pedir el texto completo del
-   rediseño de los niveles: llegó cortado).
+1. Poner la foto nueva del inicio de Santa Marta y pedir el resto del texto de los niveles
+   (`PEDIDOS-SANTA-MARTA.md`).
 2. Resolver los puntos de "Por decidir".
 3. Cuando Eduardo responda: completar Casa Universitaria, agregar precios y el calendario de Airbnb.
 4. Definir el chatbot de WhatsApp (respuestas automáticas de WhatsApp Business o API de Meta).
