@@ -65,7 +65,6 @@
     <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.86a10 10 0 0 1 14 0"/><path d="M8.5 16.43a5 5 0 0 1 7 0"/></symbol>
     <symbol id="i-rayo" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
     <symbol id="i-sofa" viewBox="0 0 24 24"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M4 18v2M20 18v2M12 4v9"/></symbol>
-    <symbol id="i-libro" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
     <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
     <symbol id="i-llave" viewBox="0 0 24 24"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/></symbol>
     <symbol id="i-candado" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></symbol>
@@ -111,12 +110,12 @@
       <span class="marca__nombre">Casa <b>Universitaria</b></span>
     </a>
     <nav class="nav__enlaces" id="menu" aria-label="Secciones">
+      <a href="#sedes" style="--c: var(--cafe)">Sedes</a>
       <a href="#habitaciones" style="--c: var(--amarillo)">Habitaciones</a>
       <a href="#seguridad" style="--c: var(--morado)">Seguridad</a>
       <a href="#cena" style="--c: var(--rojo)">Cena</a>
       <a class="nav__solo-menu" href="#todo-incluido" style="--c: var(--verde)">Todo incluido</a>
       <a class="nav__solo-menu" href="#la-casa" style="--c: var(--naranja)">La casa</a>
-      <a href="#sedes" style="--c: var(--cafe)">Sedes</a>
       <a href="#vivir-aqui" style="--c: var(--magenta)">Preguntas</a>
       <a class="boton boton--amarillo nav__visita-movil" href="#visita">Agenda tu visita</a>
     </nav>
@@ -219,12 +218,12 @@
       </div>
       <p class="hero__pista hero-anim"><svg class="icono" aria-hidden="true"><use href="#i-puntero"/></svg>Toca un cuadro: cada color te lleva a una parte de la casa.</p>
       <ul class="leyenda hero-anim" aria-label="Lo que encuentras en cada color">
+        <li style="--c: var(--cafe)"><a href="#sedes">Sedes</a></li>
         <li style="--c: var(--amarillo)"><a href="#habitaciones">Habitaciones</a></li>
         <li style="--c: var(--morado)"><a href="#seguridad">Seguridad</a></li>
         <li style="--c: var(--rojo)"><a href="#cena">Cena</a></li>
         <li style="--c: var(--verde)"><a href="#todo-incluido">Todo incluido</a></li>
         <li style="--c: var(--naranja)"><a href="#la-casa">La casa</a></li>
-        <li style="--c: var(--cafe)"><a href="#sedes">Sedes</a></li>
         <li style="--c: var(--magenta)"><a href="#vivir-aqui">Vivir aquí</a></li>
         <li style="--c: var(--azul)"><a href="#visita">Visita</a></li>
       </ul>
@@ -232,11 +231,52 @@
   </div>
 </section>
 
-<!-- ============ 01 · HABITACIONES (amarillo) ============ -->
+<!-- ============ 01 · SEDES (café) ============ -->
+<section class="seccion sedes" id="sedes" data-cuadro="5" style="--acento: var(--cafe); --sobre: #fff" aria-labelledby="sedes-titulo">
+  <div class="contenedor">
+    <div class="encabezado">
+      <p class="seccion__chip" data-revelar><span class="seccion__num">01</span>Sedes</p>
+      <h2 class="titulo" id="sedes-titulo" data-revelar>Dos sedes, <em>la misma casa</em>.</h2>
+      <p class="parrafo" data-revelar>Las dos con el mismo plan: baño privado, cena incluida y entrada con reconocimiento facial. Ven a conocer la que te quede mejor.</p>
+    </div>
+    <div class="sedes__lista" data-revelar-grupo>
+      <article class="sede">
+        <figure class="sede__foto">
+          <img src="img/fachada-sede-quinta-mutis-800.webp" srcset="img/fachada-sede-quinta-mutis-480.webp 480w, img/fachada-sede-quinta-mutis-800.webp 800w" sizes="(min-width: 960px) 44vw, 92vw" width="800" height="437" loading="lazy" alt="Fachada naranja de la sede Quinta Mutis, de tres pisos y con reja blanca">
+        </figure>
+        <div class="sede__cuerpo">
+          <h3>Sede Quinta Mutis</h3>
+          <p class="sede__direccion"><svg class="icono" aria-hidden="true"><use href="#i-pin"/></svg>Calle 63C Bis # 27-04, Bogotá</p>
+          <div class="sede__acciones">
+            <a class="boton boton--linea boton--chico" href="https://www.google.com/maps/search/?api=1&amp;query=Calle%2063C%20Bis%20%2327-04%2C%20Bogot%C3%A1" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-ruta"/></svg>Cómo llegar</a>
+            <a class="boton boton--morado boton--chico" href="#visita" data-sede="Quinta Mutis">Visitar esta sede</a>
+          </div>
+        </div>
+      </article>
+      <article class="sede">
+        <figure class="sede__foto sede__foto--vacia">
+          <svg class="icono" aria-hidden="true"><use href="#i-camara"/></svg>
+          <span>Foto de la sede<br>muy pronto</span>
+        </figure>
+        <div class="sede__cuerpo">
+          <h3>Sede Galerías</h3>
+          <p class="sede__direccion"><svg class="icono" aria-hidden="true"><use href="#i-pin"/></svg>Transversal 25 # 60-54, Bogotá</p>
+          <div class="sede__acciones">
+            <a class="boton boton--linea boton--chico" href="https://www.google.com/maps/search/?api=1&amp;query=Transversal%2025%20%2360-54%2C%20Bogot%C3%A1" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-ruta"/></svg>Cómo llegar</a>
+            <a class="boton boton--morado boton--chico" href="#visita" data-sede="Galerías">Visitar esta sede</a>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p class="sedes__nota" data-revelar>Universidades y transporte cerca de cada sede <span class="pendiente">Por confirmar</span></p>
+  </div>
+</section>
+
+<!-- ============ 02 · HABITACIONES (amarillo) ============ -->
 <section class="seccion seccion--papel habitaciones" id="habitaciones" data-cuadro="0" style="--acento: var(--amarillo); --sobre: var(--tinta)" aria-labelledby="hab-titulo">
   <div class="contenedor habitaciones__rejilla">
     <div class="habitaciones__texto">
-      <p class="seccion__chip" data-revelar><span class="seccion__num">01</span>Habitaciones</p>
+      <p class="seccion__chip" data-revelar><span class="seccion__num">02</span>Habitaciones</p>
       <h2 class="titulo" id="hab-titulo" data-revelar>Tu cuarto, <em>tu baño</em>, tu espacio.</h2>
       <p class="parrafo" data-revelar>Todas las habitaciones vienen amobladas y <strong>todas tienen baño privado</strong>: no compartes ducha ni haces fila en la mañana antes de clase. Llegas con tu maleta y te instalas.</p>
       <ul class="lista-incluye" data-revelar-grupo>
@@ -262,11 +302,11 @@
   </div>
 </section>
 
-<!-- ============ 02 · SEGURIDAD (morado) ============ -->
+<!-- ============ 03 · SEGURIDAD (morado) ============ -->
 <section class="seccion seccion--oscura seguridad" id="seguridad" data-cuadro="1" style="--acento: var(--morado); --sobre: #fff" aria-labelledby="seg-titulo">
   <div class="contenedor seguridad__rejilla">
     <div class="seguridad__texto">
-      <p class="seccion__chip" data-revelar><span class="seccion__num">02</span>Seguridad</p>
+      <p class="seccion__chip" data-revelar><span class="seccion__num">03</span>Seguridad</p>
       <h2 class="titulo" id="seg-titulo" data-revelar>Tu cara es <em>la llave</em>.</h2>
       <p class="parrafo" data-revelar>El ingreso a la casa es por <strong>reconocimiento facial</strong>: la puerta solo se abre para quienes viven aquí. Sin llaves que se pierdan ni tarjetas que se presten. Un lugar seguro, tecnológico y confiable, para ti y para tu familia.</p>
       <ul class="seguridad__puntos" data-revelar-grupo>
@@ -311,7 +351,7 @@
   </div>
 </section>
 
-<!-- ============ 03 · CENA (rojo) ============ -->
+<!-- ============ 04 · CENA (rojo) ============ -->
 <section class="seccion seccion--color cena" id="cena" data-cuadro="2" style="--acento: var(--rojo); --sobre: #fff" aria-labelledby="cena-titulo">
   <div class="contenedor cena__rejilla">
     <figure class="cena__foto" data-mascara>
@@ -319,7 +359,7 @@
       <span class="sticker sticker--giro" aria-hidden="true">¡Cena<br>incluida!</span>
     </figure>
     <div class="cena__texto">
-      <p class="seccion__chip seccion__chip--claro" data-revelar><span class="seccion__num">03</span>Cena incluida</p>
+      <p class="seccion__chip seccion__chip--claro" data-revelar><span class="seccion__num">04</span>Cena incluida</p>
       <h2 class="titulo" id="cena-titulo" data-revelar>Llegas de clase y <em>la cena está lista</em>.</h2>
       <p class="parrafo" data-revelar>Todas las habitaciones incluyen la cena. Hace parte del plan de la casa —<strong>no es opcional</strong>—, así que no te toca cocinar, hacer mercado ni pensar qué comer al final del día.</p>
       <ul class="cena__lista" data-revelar-grupo>
@@ -331,11 +371,11 @@
   </div>
 </section>
 
-<!-- ============ 04 · TODO INCLUIDO (verde) ============ -->
+<!-- ============ 05 · TODO INCLUIDO (verde) ============ -->
 <section class="seccion incluido" id="todo-incluido" data-cuadro="3" style="--acento: var(--verde); --sobre: var(--tinta)" aria-labelledby="inc-titulo">
   <div class="contenedor">
     <div class="encabezado">
-      <p class="seccion__chip" data-revelar><span class="seccion__num">04</span>Todo incluido</p>
+      <p class="seccion__chip" data-revelar><span class="seccion__num">05</span>Todo incluido</p>
       <h2 class="titulo" id="inc-titulo" data-revelar>Lo de todos los días, <em>ya resuelto</em>.</h2>
       <p class="parrafo" data-revelar>Para que tu energía se vaya en la universidad y no en la casa.</p>
     </div>
@@ -346,7 +386,6 @@
       <li style="--c: var(--azul); --t: var(--tinta)"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-wifi"/></svg></span><h3>Wifi</h3><p>Para clases, entregas y series.</p></li>
       <li style="--c: var(--verde); --t: var(--tinta)"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-rayo"/></svg></span><h3>Servicios públicos</h3><p>Incluidos en el valor.</p></li>
       <li style="--c: var(--naranja); --t: var(--tinta)"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-cama"/></svg></span><h3>Habitación amoblada</h3><p>Llegas y te instalas.</p></li>
-      <li style="--c: var(--magenta); --t: #fff"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-libro"/></svg></span><h3>Zona de estudio</h3><p>Con escritorio y computador.</p></li>
       <li style="--c: var(--cafe); --t: #fff"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-sofa"/></svg></span><h3>Sala y comedor</h3><p>Para compartir con los demás.</p></li>
     </ul>
     <p class="incluido__nota" data-revelar><svg class="icono" aria-hidden="true"><use href="#i-lavadora"/></svg>Aseo, lavandería y otros servicios <span class="pendiente">Por confirmar</span></p>
@@ -366,24 +405,20 @@
   </div>
 </section>
 
-<!-- ============ 05 · LA CASA (naranja) ============ -->
-<section class="seccion seccion--papel la-casa" id="la-casa" data-cuadro="4" style="--acento: var(--naranja); --sobre: var(--tinta)" aria-labelledby="casa-titulo">
+<!-- ============ 06 · LA CASA (naranja) ============ -->
+<section class="seccion la-casa" id="la-casa" data-cuadro="4" style="--acento: var(--naranja); --sobre: var(--tinta)" aria-labelledby="casa-titulo">
   <div class="contenedor">
     <div class="encabezado encabezado--fila">
       <div>
-        <p class="seccion__chip" data-revelar><span class="seccion__num">05</span>La casa</p>
+        <p class="seccion__chip" data-revelar><span class="seccion__num">06</span>La casa</p>
         <h2 class="titulo" id="casa-titulo" data-revelar>Rincón por rincón, <em>antes de venir</em>.</h2>
       </div>
-      <p class="parrafo" data-revelar>Sala, comedor y zona de estudio para compartir o concentrarte, con luz natural y mucho color.</p>
+      <p class="parrafo" data-revelar>Sala y comedor para compartir con los demás, con luz natural y mucho color.</p>
     </div>
     <div class="mosaico">
       <figure class="mosaico__item mosaico__item--grande" data-mascara>
         <img src="img/sala-comedor-comun-800.webp" srcset="img/sala-comedor-comun-480.webp 480w, img/sala-comedor-comun-800.webp 800w" sizes="(min-width: 960px) 60vw, 92vw" width="800" height="437" loading="lazy" alt="Sala con sofá de cojines de colores y comedor común con sillas naranja">
         <figcaption>Sala y comedor</figcaption>
-      </figure>
-      <figure class="mosaico__item mosaico__ancho" data-mascara>
-        <img src="img/zona-estudio-computador-800.webp" srcset="img/zona-estudio-computador-480.webp 480w, img/zona-estudio-computador-800.webp 800w" sizes="(min-width: 960px) 40vw, 92vw" width="800" height="437" loading="lazy" alt="Zona de estudio con computador y un cuadro de palmas de cera">
-        <figcaption>Zona de estudio</figcaption>
       </figure>
       <a class="mosaico__item mosaico__instagram" data-instagram href="https://www.instagram.com/hospedajeuniversitariobogota" target="_blank" rel="noopener">
         <svg class="icono" aria-hidden="true"><use href="#i-instagram"/></svg>
@@ -391,47 +426,6 @@
         <b>@hospedajeuniversitariobogota</b>
       </a>
     </div>
-  </div>
-</section>
-
-<!-- ============ 06 · SEDES (café) ============ -->
-<section class="seccion sedes" id="sedes" data-cuadro="5" style="--acento: var(--cafe); --sobre: #fff" aria-labelledby="sedes-titulo">
-  <div class="contenedor">
-    <div class="encabezado">
-      <p class="seccion__chip" data-revelar><span class="seccion__num">06</span>Sedes</p>
-      <h2 class="titulo" id="sedes-titulo" data-revelar>Dos sedes, <em>la misma casa</em>.</h2>
-      <p class="parrafo" data-revelar>Las dos con el mismo plan: baño privado, cena incluida y entrada con reconocimiento facial. Ven a conocer la que te quede mejor.</p>
-    </div>
-    <div class="sedes__lista" data-revelar-grupo>
-      <article class="sede">
-        <figure class="sede__foto">
-          <img src="img/fachada-sede-quinta-mutis-800.webp" srcset="img/fachada-sede-quinta-mutis-480.webp 480w, img/fachada-sede-quinta-mutis-800.webp 800w" sizes="(min-width: 960px) 44vw, 92vw" width="800" height="437" loading="lazy" alt="Fachada naranja de la sede Quinta Mutis, de tres pisos y con reja blanca">
-        </figure>
-        <div class="sede__cuerpo">
-          <h3>Sede Quinta Mutis</h3>
-          <p class="sede__direccion"><svg class="icono" aria-hidden="true"><use href="#i-pin"/></svg>Calle 63C Bis # 27-04, Bogotá</p>
-          <div class="sede__acciones">
-            <a class="boton boton--linea boton--chico" href="https://www.google.com/maps/search/?api=1&amp;query=Calle%2063C%20Bis%20%2327-04%2C%20Bogot%C3%A1" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-ruta"/></svg>Cómo llegar</a>
-            <a class="boton boton--morado boton--chico" href="#visita" data-sede="Quinta Mutis">Visitar esta sede</a>
-          </div>
-        </div>
-      </article>
-      <article class="sede">
-        <figure class="sede__foto sede__foto--vacia">
-          <svg class="icono" aria-hidden="true"><use href="#i-camara"/></svg>
-          <span>Foto de la sede<br>muy pronto</span>
-        </figure>
-        <div class="sede__cuerpo">
-          <h3>Sede Galerías</h3>
-          <p class="sede__direccion"><svg class="icono" aria-hidden="true"><use href="#i-pin"/></svg>Transversal 25 # 60-54, Bogotá</p>
-          <div class="sede__acciones">
-            <a class="boton boton--linea boton--chico" href="https://www.google.com/maps/search/?api=1&amp;query=Transversal%2025%20%2360-54%2C%20Bogot%C3%A1" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-ruta"/></svg>Cómo llegar</a>
-            <a class="boton boton--morado boton--chico" href="#visita" data-sede="Galerías">Visitar esta sede</a>
-          </div>
-        </div>
-      </article>
-    </div>
-    <p class="sedes__nota" data-revelar>Universidades y transporte cerca de cada sede <span class="pendiente">Por confirmar</span></p>
   </div>
 </section>
 

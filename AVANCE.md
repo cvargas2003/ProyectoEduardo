@@ -66,6 +66,10 @@ Para retomar: leer esto y `CLAUDE.md` (contexto técnico, decisiones y pendiente
 - 6 fotos reales del Instagram, sin la marca de agua "La Casona"; el letrero viejo de la
   fachada va difuminado.
 
+**2 de octubre — Casa Universitaria, ajustes del cliente**
+- Las casas no tienen zona de estudio: se quitó de Todo incluido, de La casa y su foto.
+- Sedes pasó a ser la sección 01 y Habitaciones la 02; el resto, igual.
+
 ## Por decidir (con el usuario)
 
 1. **Publicación.** El repositorio se hizo público para tener GitHub Pages: sirve como vista

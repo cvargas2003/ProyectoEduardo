@@ -123,11 +123,15 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
   plan), **baño privado en todas** las habitaciones, ingreso por **reconocimiento facial**
   (seguro, tecnológico, confiable). Sedes: Quinta Mutis, Calle 63C Bis # 27-04, y Galerías,
   Transversal 25 # 60-54 (del Instagram @hospedajeuniversitariobogota).
-- **Fotos**: las 6 reales del Instagram, en `img/` a 480 y 800 px (el original mide 900; no
+- **Orden (lo pidió el cliente)**: 01 Sedes, 02 Habitaciones, y luego Seguridad, Cena, Todo
+  incluido, La casa, Vivir aquí y Agenda tu visita. Cada sección conserva el color de su cuadro.
+- **Las casas no tienen zona ni centro de estudio**: no mencionarla en ninguna parte. La foto
+  del escritorio con computador del Instagram (`ig-06`) no se usa.
+- **Fotos**: 5 reales del Instagram, en `img/` a 480 y 800 px (el original mide 900; no
   hay más). Originales en `fotos-casa-universitaria/` (fuera del sitio). Todas traían la
   marca de agua "La Casona" arriba a la derecha: se recortó la franja de arriba. El letrero
-  de la fachada (dice "La Casona Quinta Mutis") va difuminado. Las otras 5 del Instagram son
-  de banco o gráficos: no usarlas. Al llegar originales, regenerar con el mismo nombre.
+  de la fachada (dice "La Casona Quinta Mutis") va difuminado. Las demás del Instagram son de
+  banco o gráficos: no usarlas. Al llegar originales, regenerar con el mismo nombre.
 - **Contenido**: tipos de habitación, valores, horario y menú de la cena, aseo, lavandería,
   requisitos, horarios de visita y universidades cercanas no se saben: llevan la píldora
   `.pendiente` ("Por confirmar"). No inventar precios ni distancias. La sede Galerías no

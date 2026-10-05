@@ -492,9 +492,8 @@ button, input, select, textarea { font: inherit; }
   position: absolute; left: .8rem; bottom: .8rem; padding: .42rem .85rem; border-radius: 999px;
   background: #fff; border: 2px solid var(--tinta); font: 700 .85rem/1 var(--texto);
 }
-.mosaico__ancho { grid-column: span 2; }
 .mosaico__instagram {
-  grid-column: span 2; display: flex; flex-direction: column; justify-content: center; gap: .35rem;
+  grid-column: span 2; grid-row: span 2; display: flex; flex-direction: column; justify-content: center; gap: .35rem;
   padding: 1.5rem 1.75rem; color: #fff; text-decoration: none;
   background: linear-gradient(120deg, var(--morado), var(--magenta) 55%, var(--naranja));
   transition: filter .3s;
@@ -656,6 +655,7 @@ button, input, select, textarea { font: inherit; }
   .polaroid--2 { justify-self: end; margin-top: -2.5rem; }
   .mosaico { grid-template-columns: 1fr 1fr; grid-template-rows: none; grid-auto-rows: 12rem; }
   .mosaico__item--grande { grid-column: span 2; grid-row: span 2; }
+  .mosaico__instagram { grid-row: span 1; }
   .sedes__lista { grid-template-columns: 1fr; }
   .pasos { grid-template-columns: repeat(2, 1fr); }
   .pasos li::after { display: none; }
@@ -670,7 +670,7 @@ button, input, select, textarea { font: inherit; }
   .baldosas { gap: .75rem; }
   .baldosas li { padding: 1.1rem 1rem 1.2rem; }
   .mosaico { grid-template-columns: 1fr; grid-auto-rows: 13rem; }
-  .mosaico__item--grande, .mosaico__ancho, .mosaico__instagram { grid-column: auto; grid-row: span 1; }
+  .mosaico__item--grande, .mosaico__instagram { grid-column: auto; grid-row: span 1; }
   .sticker { width: 6rem; font-size: .9rem; }
   .polaroid--2 .sticker { right: -.6rem; }
   .cena__foto .sticker { right: -.4rem; }

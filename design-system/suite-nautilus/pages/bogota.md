@@ -32,17 +32,19 @@ blancas encima y "Casa Universitaria" en negro. Se convirtió con un script de p
 
 | Cuadro (orden de lectura) | Color | Sección |
 |---|---|---|
-| 0 | `--amarillo` `#F7E500` | 01 Habitaciones |
-| 1 | `--morado` `#6A00B7` | 02 Seguridad |
-| 2 | `--rojo` `#E80000` | 03 Cena incluida |
-| 3 | `--verde` `#21C93A` (el PDF dice `#21E500`; vibraba demasiado) | 04 Todo incluido |
-| 4 | `--naranja` `#ED5900` | 05 La casa |
-| 5 | `--cafe` `#67281D` | 06 Sedes |
+| 0 | `--amarillo` `#F7E500` | 02 Habitaciones |
+| 1 | `--morado` `#6A00B7` | 03 Seguridad |
+| 2 | `--rojo` `#E80000` | 04 Cena incluida |
+| 3 | `--verde` `#21C93A` (el PDF dice `#21E500`; vibraba demasiado) | 05 Todo incluido |
+| 4 | `--naranja` `#ED5900` | 06 La casa |
+| 5 | `--cafe` `#67281D` | 01 Sedes |
 | 6 | `--magenta` `#C221E3` | 07 Vivir aquí (pasos y preguntas) |
 | 7 | `--azul` `#33ABFF` | 08 Agenda tu visita |
 
-El orden de las secciones sigue el orden de lectura del logo: si se agrega o mueve una
-sección, revisar su cuadro, su color y su `data-cuadro`.
+Cada sección conserva el color de su cuadro (`data-cuadro`), aunque se mueva: el cliente
+pidió Sedes primero y Habitaciones segunda, y el resto en el orden de lectura del logo. Al
+mover una sección, renumerar todas y poner el menú y la leyenda del inicio en el mismo orden.
+Fondos: con Sedes arriba, La casa pasó a blanco para no quedar pegada a Vivir aquí (papel).
 
 ### Texto sobre cada color (contraste)
 
