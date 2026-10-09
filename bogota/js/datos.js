@@ -5,10 +5,12 @@
  */
 window.CASA_U = {
 
-  // PENDIENTE: confirmar con Eduardo a qué número llegan las visitas. Por ahora, el mismo de
-  // Santa Marta. Ojo: el letrero de la fachada de la sede Quinta Mutis dice 316 251 1432.
-  // Formato internacional sin "+" ni espacios.
-  whatsapp: '573203193258',
+  // WhatsApp del chatbot (lo dio el cliente el 9 de octubre). Formato internacional sin "+".
+  whatsapp: '573005296434',
+
+  // Teléfono de "Contáctanos" en el pie: en el celular, al tocarlo, llama. Por ahora el de
+  // César (320 319 3258), hasta que el cliente dé el definitivo.
+  telefono: '573203193258',
 
   instagram: 'https://www.instagram.com/hospedajeuniversitariobogota',
 

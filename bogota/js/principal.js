@@ -24,6 +24,7 @@
     a.rel = 'noopener';
   });
   if (D.instagram) $$('[data-instagram]').forEach(function (a) { a.href = D.instagram; });
+  if (D.telefono) $$('[data-telefono]').forEach(function (a) { a.href = 'tel:+' + D.telefono; });
 
   var anio = $('#anio');
   if (anio) anio.textContent = new Date().getFullYear();

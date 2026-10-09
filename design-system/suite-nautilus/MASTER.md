@@ -1,5 +1,9 @@
 # Sistema de diseño — Suite Nautilus (Santa Marta)
 
+> **9 de octubre:** la estética cambió a estilo playero (ver CLAUDE.md, "Estilo playero", y la
+> "Capa playera" al final de `santa-marta/css/estilos.css`). Los colores y fuentes de abajo son
+> los de la primera versión; las reglas de movimiento y accesibilidad siguen vigentes.
+
 Fuente de verdad visual del sitio de Santa Marta. La página de Bogotá hereda la
 estructura y las reglas de movimiento, pero lleva su propia paleta en
 `pages/bogota.md` cuando se construya.

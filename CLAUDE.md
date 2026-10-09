@@ -49,8 +49,10 @@ van tal cual a su `wwwroot`: no se pierde nada.
   34,1–38,3 s sala y cocina) unidos con fundidos. `video/recorrido-poster.jpg` es su
   primer cuadro. Al rehacerlo con un video nuevo, revisar cuadro a cuadro que no entre texto.
 
-- **Fondo del inicio**: la foto del propietario de la pasarela al atardecer
-  (`img/atardecer-pasarela-playa-*.webp`, 800 y 1080 px: el original no da para más). Antes
+- **Fondo del inicio**: la pasarela al atardecer entre palmeras, en alta (la mandó el cliente el
+  9 de octubre; original en `fotos-propietario/atardecer-pasarela-palmeras-alta.jpg`, 1745 px):
+  `img/atardecer-pasarela-palmeras-{800,1200,1745}.webp`. La foto vieja de la pasarela
+  (`atardecer-pasarela-playa-*`) sigue en el marco cuadrado de la bienvenida. Antes
   fue un video en bucle del atardecer, sacado de `videos-originales/promo-atardecer-2026-09-27.mp4`
   (32,9–42,1 s, solo las filas 0–480 porque abajo tiene letreros; `delogo` deja rayas). El
   cliente prefirió la foto y los archivos derivados se borraron; si se vuelve al video, esa
@@ -109,6 +111,14 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
 - **Sin carpas**: no mencionar las carpas del edificio en ninguna parte.
 - **Reservar va tercera**, justo después de La suite. Las secciones se numeran en el orden en
   que aparecen: al mover una, renumerar todas.
+- **Estilo playero (9 de octubre)**: lo "ejecutivo" se acabó. Paleta Caribe (arena, espuma,
+  turquesa, coral, sol), títulos en **Fraunces** con SOFT 100 (alternativa libre a PP Pangaia,
+  la letra de eaglesnest.sergesyutkin.com que pidió el cliente; esa es de pago), acentos a mano
+  en **Kaushan Script** (cejas y marca) y texto en **Outfit**. Fotos como polaroids con borde
+  blanco y un leve giro, **sin arcos**. De algunas fotos **cuelgan adornos** (sol, estrella de
+  mar, caracol, concha, ancla: `.colgante` + símbolos `#d-*`): **dibujo de línea en latón,
+  sobrio** (el cliente vio infantil la versión a color con carita), con un vaivén corto al aparecer. Olas entre secciones (`.ola ola--<color de la sección anterior>`) y hojas de palma
+  de fondo en las secciones de arena.
 - **Nombre: Suite El Ancla**, slogan "Tu lugar frente al mar". "Nautilus" solo para el edificio.
   (La carpeta `design-system/suite-nautilus` conserva el nombre viejo; `window.NAUTILUS` en
   `js/datos.js`, también.)
@@ -132,9 +142,20 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
   Transversal 25 # 60-54 (del Instagram @hospedajeuniversitariobogota).
 - **Orden (lo pidió el cliente)**: 01 Sedes, 02 Habitaciones, y luego Seguridad, Cena, Todo
   incluido, La casa, Vivir aquí y Agenda tu visita. Cada sección conserva el color de su cuadro.
+- **Ajustes del 9 de octubre (no deshacer)**: sin fondos morados ni oscuros (todo en claro,
+  tono miel: amarillo tirando a naranja como la fachada). **No hay cena**: hay *alimentación
+  completa* y **solo en la sede Quinta Mutis** (en la otra no). Baño **exclusivo y privado**
+  (en una sede queda afuera de la habitación: no insistir en eso). Ingreso con **rostro o
+  huella**, **sin restricción de horario**. Incluye agua caliente, dos redes de wifi,
+  lavandería y aseo diario de lunes a sábado ("Aplican restricciones", en chiquito).
+  **No decir que incluye seguridad** (no tiene); la sección se llama "Acceso". Nada de "cuarto"
+  (habitación o "tu espacio"), ni "tu cara" (tu rostro), ni sala y comedor (no hay). Énfasis en
+  que es para universitarios y primíparos; la Universidad del Rosario (sede de Ciencias de la
+  Salud) se menciona solo de pasada, en la sede Quinta Mutis. La sección naranja ahora es
+  "Para ti". WhatsApp = chatbot 300 529 6434; teléfono del pie = 320 319 3258 (de César, por ahora).
 - **Las casas no tienen zona ni centro de estudio**: no mencionarla en ninguna parte. La foto
   del escritorio con computador del Instagram (`ig-06`) no se usa.
-- **Fotos**: 5 reales del Instagram, en `img/` a 480 y 800 px (el original mide 900; no
+- **Fotos**: 4 reales del Instagram (la de sala y comedor se quitó), en `img/` a 480 y 800 px (el original mide 900; no
   hay más). Originales en `fotos-casa-universitaria/` (fuera del sitio). Todas traían la
   marca de agua "La Casona" arriba a la derecha: se recortó la franja de arriba. El letrero
   de la fachada (dice "La Casona Quinta Mutis") va difuminado. Las demás del Instagram son de
@@ -147,9 +168,7 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
 - **Se tutea** (público estudiante); Santa Marta trata de usted.
 - **`js/principal.js` es una copia adaptada del de Santa Marta**, a propósito: cada sitio se
   publica solo. Si se corrige un error en uno, revisar el otro.
-- WhatsApp, Instagram y horarios de visita viven en `bogota/js/datos.js` (`window.CASA_U`).
-  El número es el mismo de Santa Marta hasta que Eduardo confirme; el letrero de la fachada
-  dice 316 251 1432.
+- WhatsApp, teléfono, Instagram y horarios de visita viven en `bogota/js/datos.js` (`window.CASA_U`).
 
 ## Pendientes con el propietario
 
