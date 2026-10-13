@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Casa Universitaria · Hospedaje para universitarios en Bogotá</title>
-<meta name="description" content="Hospedaje para universitarios en Bogotá: habitaciones amobladas con baño exclusivo, agua caliente, todos los servicios incluidos y entrada con tu rostro o tu huella, sin restricción de horario. Sedes Quinta Mutis y Galerías.">
-<meta name="theme-color" content="#FFF2D6">
+<meta name="description" content="Hospedaje para estudiantes universitarios en Bogotá: habitación individual amoblada, baño privado exclusivo con agua caliente, servicios, aseo y lavandería incluidos e ingreso libre 24/7 con acceso biométrico. Sedes Quinta Mutis y Del Rosario (Galerías).">
+<meta name="theme-color" content="#F8CD6E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Casa Universitaria · Hospedaje para universitarios en Bogotá">
 <meta property="og:description" content="Para universitarios: todos los servicios incluidos, agua caliente y entrada con tu rostro o tu huella. Agenda tu visita.">
@@ -19,6 +19,8 @@
 <script>
   // Marca que hay JavaScript; el CSS solo esconde la entrada del inicio cuando esto existe.
   document.documentElement.classList.add('js');
+  // Propuestas de portada para comparar: ?portada=campus muestra la B (la A es la de siempre).
+  if (/[?&]portada=campus\b/.test(location.search)) document.documentElement.setAttribute('data-portada', 'campus');
   // Red de seguridad: si algo falla, el inicio se muestra igual a los 3 s.
   setTimeout(function () { document.documentElement.classList.add('listo'); }, 3000);
 </script>
@@ -29,7 +31,7 @@
   "@type": "LodgingBusiness",
   "name": "Casa Universitaria",
   "description": "Hospedaje para universitarios en Bogotá: habitaciones amobladas con baño exclusivo, agua caliente, todos los servicios incluidos y entrada con reconocimiento facial o huella.",
-  "telephone": "+57 320 319 3258",
+  "telephone": "+57 300 529 6434",
   "sameAs": ["https://www.instagram.com/hospedajeuniversitariobogota"],
   "amenityFeature": [
     { "@type": "LocationFeatureSpecification", "name": "Baño exclusivo", "value": true },
@@ -43,13 +45,12 @@
     {
       "@type": "LodgingBusiness",
       "name": "Casa Universitaria · Sede Quinta Mutis",
-      "address": { "@type": "PostalAddress", "streetAddress": "Calle 63C Bis # 27-04", "addressLocality": "Bogotá", "addressCountry": "CO" },
-      "amenityFeature": [{ "@type": "LocationFeatureSpecification", "name": "Alimentación completa", "value": true }]
+      "address": { "@type": "PostalAddress", "streetAddress": "Calle 63C Bis # 27-04", "addressLocality": "Bogotá", "addressCountry": "CO" }
     },
     {
       "@type": "LodgingBusiness",
-      "name": "Casa Universitaria · Sede Galerías",
-      "address": { "@type": "PostalAddress", "streetAddress": "Transversal 25 # 60-54", "addressLocality": "Bogotá", "addressCountry": "CO" }
+      "name": "Casa Universitaria del Rosario",
+      "address": { "@type": "PostalAddress", "streetAddress": "Transversal 25 # 60-54 (Galerías)", "addressLocality": "Bogotá", "addressCountry": "CO" }
     }
   ]
 }
@@ -86,6 +87,20 @@
     <symbol id="i-agua" viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></symbol>
     <symbol id="i-huella" viewBox="0 0 24 24"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4M14 13.12c0 2.38 0 6.38-1 8.88M17.29 21.02c.12-.6.43-2.3.5-3.02M2 12a10 10 0 0 1 18-6M2 16h.01M21.8 16c.2-2 .13-5.35 0-6M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2M8.65 22c.21-.66.45-1.32.57-2M9 6.8a6 6 0 0 1 9 5.2v2"/></symbol>
     <symbol id="i-telefono" viewBox="0 0 24 24"><path d="M13.83 16.57a1 1 0 0 0 1.21-.3l.36-.47A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.47.35a1 1 0 0 0-.29 1.23 14 14 0 0 0 6.39 6.39"/></symbol>
+    <symbol id="i-tv" viewBox="0 0 24 24"><rect width="20" height="15" x="2" y="7" rx="2"/><path d="m17 2-5 5-5-5"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M16 3c.4 2.4 2 4 4.5 4.3v3.4a8 8 0 0 1-4.5-1.4V15a6 6 0 1 1-6-6v3.4a2.6 2.6 0 1 0 2.6 2.6V3z"/></symbol>
+    <symbol id="i-birrete" viewBox="0 0 24 24"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+    <!-- El logo pequeño a color: va en el título de cada sección, para que todas tengan la misma plantilla. -->
+    <symbol id="logo-mini" viewBox="0 0 30 30"><rect width="9.4" height="9.4" rx="1.8" fill="#F7E500"/><rect x="10.3" width="9.4" height="9.4" rx="1.8" fill="#6A00B7"/><rect y="10.3" width="9.4" height="9.4" rx="1.8" fill="#E80000"/><rect x="10.3" y="10.3" width="9.4" height="9.4" rx="1.8" fill="#21C93A"/><rect x="20.6" y="10.3" width="9.4" height="9.4" rx="1.8" fill="#ED5900"/><rect y="20.6" width="9.4" height="9.4" rx="1.8" fill="#67281D"/><rect x="10.3" y="20.6" width="9.4" height="9.4" rx="1.8" fill="#C221E3"/><rect x="20.6" y="20.6" width="9.4" height="9.4" rx="1.8" fill="#33ABFF"/></symbol>
+    <!-- Garabatos de la portada B -->
+    <symbol id="i-lapiz" viewBox="0 0 24 24"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5zM15 5l4 4"/></symbol>
+    <symbol id="i-libro" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+    <symbol id="i-bombillo" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6M10 22h4"/></symbol>
+    <symbol id="i-cafe" viewBox="0 0 24 24"><path d="M10 2v2M14 2v2M6 2v2M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/></symbol>
+    <symbol id="i-morral" viewBox="0 0 24 24"><path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM8 10h8M8 18h8M8 22v-6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></symbol>
+    <symbol id="i-portatil" viewBox="0 0 24 24"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></symbol>
+    <symbol id="i-estrella-doodle" viewBox="0 0 24 24"><path d="M12 2.5 14.4 9l6.6.4-5.1 4.2 1.7 6.4L12 16.4 6.4 20l1.7-6.4L3 9.4 9.6 9Z"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
     <symbol id="i-mas" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
     <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
@@ -100,30 +115,20 @@
 </svg>
 
 <!-- ============ NAVEGACIÓN ============
-     El logo pequeño de la marca se ilumina según la sección en la que se está (principal.js). -->
+     Sin logo ni nombre (el cliente los quitó: el logo grande ya está en el inicio). A la
+     izquierda, el teléfono: en el celular llama al tocarlo. -->
 <header class="nav" id="nav">
   <div class="contenedor nav__fila">
-    <a class="marca" href="#inicio" aria-label="Casa Universitaria, volver al inicio">
-      <svg class="marca__logo" viewBox="0 0 30 30" aria-hidden="true">
-        <rect data-i="0" width="9.4" height="9.4" rx="1.8"/>
-        <rect data-i="1" x="10.3" width="9.4" height="9.4" rx="1.8"/>
-        <rect data-i="2" y="10.3" width="9.4" height="9.4" rx="1.8"/>
-        <rect data-i="3" x="10.3" y="10.3" width="9.4" height="9.4" rx="1.8"/>
-        <rect data-i="4" x="20.6" y="10.3" width="9.4" height="9.4" rx="1.8"/>
-        <rect data-i="5" y="20.6" width="9.4" height="9.4" rx="1.8"/>
-        <rect data-i="6" x="10.3" y="20.6" width="9.4" height="9.4" rx="1.8"/>
-        <rect data-i="7" x="20.6" y="20.6" width="9.4" height="9.4" rx="1.8"/>
-      </svg>
-      <span class="marca__nombre">Casa <b>Universitaria</b></span>
+    <a class="nav__llamar" data-telefono href="tel:+573005296434" aria-label="Llamar al 300 529 6434">
+      <svg class="icono" aria-hidden="true"><use href="#i-telefono"/></svg><span>300 529 6434</span>
     </a>
     <nav class="nav__enlaces" id="menu" aria-label="Secciones">
       <a href="#sedes" style="--c: var(--cafe)">Sedes</a>
       <a href="#habitaciones" style="--c: var(--amarillo)">Habitaciones</a>
       <a href="#acceso" style="--c: var(--morado)">Acceso</a>
-      <a href="#alimentacion" style="--c: var(--rojo)">Alimentación</a>
-      <a class="nav__solo-menu" href="#todo-incluido" style="--c: var(--verde)">Todo incluido</a>
-      <a class="nav__solo-menu" href="#para-ti" style="--c: var(--naranja)">Para ti</a>
-      <a href="#vivir-aqui" style="--c: var(--magenta)">Preguntas</a>
+      <a href="#para-ti" style="--c: var(--naranja)">Estudiantes</a>
+      <a href="#preguntas" style="--c: var(--magenta)">Preguntas</a>
+      <a class="nav__solo-menu" href="#contactanos" style="--c: var(--rojo)">Contáctanos</a>
       <a class="boton boton--amarillo nav__visita-movil" href="#visita">Agenda tu visita</a>
     </nav>
     <div class="nav__acciones">
@@ -141,6 +146,46 @@
 <section class="hero" id="inicio" aria-labelledby="hero-titulo">
   <div class="hero__fondo" aria-hidden="true"></div>
 
+  <!-- Propuesta A "Sol": formas suaves en amarillo y naranja en las esquinas. -->
+  <div class="hero__deco hero__deco--sol" aria-hidden="true">
+    <svg class="deco deco--esquina" viewBox="0 0 420 320" preserveAspectRatio="xMinYMin meet">
+      <defs><linearGradient id="g-sol" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFC233"/><stop offset="1" stop-color="#FB8C00"/></linearGradient></defs>
+      <path d="M0 0H370C340 72 278 112 205 142S72 214 0 306Z" fill="#FFD978" opacity=".6"/>
+      <path d="M0 0H258C232 58 186 88 128 108S40 154 0 214Z" fill="url(#g-sol)"/>
+    </svg>
+    <svg class="deco deco--hojas" viewBox="0 0 220 380">
+      <path d="M38 378C68 290 92 200 158 34" fill="none" stroke="#F2A516" stroke-width="5" stroke-linecap="round"/>
+      <g fill="#FFC23D">
+        <path transform="translate(50 334) rotate(-30)" d="M0 0C14-24 52-28 82-10C58 12 26 18 0 0Z"/>
+        <path transform="translate(74 262) rotate(-28)" d="M0 0C14-24 52-28 82-10C58 12 26 18 0 0Z"/>
+        <path transform="translate(100 190) rotate(-36)" d="M0 0C14-24 52-28 82-10C58 12 26 18 0 0Z"/>
+        <path transform="translate(128 118) rotate(-46)" d="M0 0C12-20 44-24 70-8C50 10 22 15 0 0Z"/>
+      </g>
+      <g fill="#FFAE1A">
+        <path transform="translate(62 300) rotate(-152)" d="M0 0C14-24 52-28 82-10C58 12 26 18 0 0Z"/>
+        <path transform="translate(88 226) rotate(-150)" d="M0 0C14-24 52-28 82-10C58 12 26 18 0 0Z"/>
+        <path transform="translate(114 154) rotate(-158)" d="M0 0C12-20 44-24 70-8C50 10 22 15 0 0Z"/>
+        <path transform="translate(150 50) rotate(-104)" d="M0 0C10-17 36-20 58-7C42 8 18 12 0 0Z"/>
+      </g>
+    </svg>
+    <svg class="deco deco--onda" viewBox="0 0 300 420" preserveAspectRatio="xMaxYMax meet">
+      <path d="M300 40C196 128 146 262 214 420H300Z" fill="#FFD978" opacity=".6"/>
+      <path d="M300 168C238 228 212 322 248 420H300Z" fill="url(#g-sol)"/>
+    </svg>
+  </div>
+
+  <!-- Propuesta B "Campus": hoja de cuaderno con garabatos de estudiante. -->
+  <div class="hero__deco hero__deco--campus" aria-hidden="true">
+    <svg class="garabato" style="--x: 6%; --y: 18%; --r: -12deg; --s: 3.2rem"><use href="#i-birrete"/></svg>
+    <svg class="garabato garabato--escritorio" style="--x: 44%; --y: 12%; --r: 18deg; --s: 2.4rem"><use href="#i-lapiz"/></svg>
+    <svg class="garabato" style="--x: 52%; --y: 30%; --r: 8deg; --s: 2.6rem"><use href="#i-libro"/></svg>
+    <svg class="garabato garabato--escritorio" style="--x: 47%; --y: 64%; --r: -10deg; --s: 2.6rem"><use href="#i-bombillo"/></svg>
+    <svg class="garabato" style="--x: 92%; --y: 78%; --r: 6deg; --s: 2.6rem"><use href="#i-cafe"/></svg>
+    <svg class="garabato garabato--escritorio" style="--x: 90%; --y: 14%; --r: 10deg; --s: 2.8rem"><use href="#i-morral"/></svg>
+    <svg class="garabato garabato--escritorio" style="--x: 40%; --y: 88%; --r: -6deg; --s: 2.8rem"><use href="#i-portatil"/></svg>
+    <svg class="garabato" style="--x: 96%; --y: 46%; --r: 0deg; --s: 1.8rem"><use href="#i-estrella-doodle"/></svg>
+  </div>
+
   <div class="contenedor hero__rejilla">
     <div class="hero__texto">
       <p class="chip-claro hero-anim"><span class="chip-claro__punto"></span>Hospedaje para universitarios · Bogotá</p>
@@ -148,16 +193,18 @@
         <span class="linea"><span>Tu casa en Bogotá</span></span>
         <span class="linea"><span>mientras <em>estudias</em>.</span></span>
       </h1>
-      <p class="hero__lede hero-anim">Habitaciones amobladas para estudiantes, con <strong>agua caliente</strong>, <strong>todos los servicios incluidos</strong> y entrada con tu <strong>rostro o tu huella</strong>, sin restricción de horario. Pensamos en ti para que solo te dediques al estudio.</p>
+      <p class="hero__lede hero-anim">Habitaciones individuales amobladas para estudiantes, con <strong>baño privado exclusivo</strong>, <strong>agua caliente</strong>, <strong>servicios incluidos</strong> e ingreso libre <strong>24/7</strong> con acceso biométrico y reconocimiento facial.</p>
       <div class="hero__acciones hero-anim">
         <a class="boton boton--amarillo" href="#visita">
           <svg class="icono" aria-hidden="true"><use href="#i-calendario"/></svg> Agenda tu visita
+        </a>
+        <a class="boton boton--linea" data-telefono href="tel:+573005296434">
+          <svg class="icono" aria-hidden="true"><use href="#i-telefono"/></svg> Llámanos
         </a>
         <a class="boton boton--linea" data-whatsapp href="#">
           <svg class="icono" aria-hidden="true"><use href="#i-whatsapp"/></svg> Escríbenos
         </a>
       </div>
-      <p class="hero__primiparo hero-anim"><b>¿Primíparo?</b> Empieza la U con tu espacio listo y todo resuelto.</p>
     </div>
 
     <!-- El logo es el menú: 8 cubos que primero giran juntos como un solo cubo y luego se
@@ -181,21 +228,21 @@
                   <span class="cara cara--atras" aria-hidden="true"></span><span class="cara cara--der" aria-hidden="true"></span><span class="cara cara--izq" aria-hidden="true"></span><span class="cara cara--arriba" aria-hidden="true"></span><span class="cara cara--abajo" aria-hidden="true"></span>
                 </span>
               </a>
-              <a class="cubo" href="#alimentacion" style="--c: var(--rojo); --t: #fff; left: 1.41%; top: 27.82%" data-esquina="-1,-1,-1">
+              <a class="cubo" href="#contactanos" style="--c: var(--rojo); --t: #fff; left: 1.41%; top: 27.82%" data-esquina="-1,-1,-1">
                 <span class="cubo__cuerpo">
-                  <span class="cara cara--frente"><svg class="icono" aria-hidden="true"><use href="#i-cena"/></svg><span class="cubo__nombre">Alimentación</span></span>
+                  <span class="cara cara--frente"><svg class="icono" aria-hidden="true"><use href="#i-telefono"/></svg><span class="cubo__nombre">Contáctanos</span></span>
                   <span class="cara cara--atras" aria-hidden="true"></span><span class="cara cara--der" aria-hidden="true"></span><span class="cara cara--izq" aria-hidden="true"></span><span class="cara cara--arriba" aria-hidden="true"></span><span class="cara cara--abajo" aria-hidden="true"></span>
                 </span>
               </a>
-              <a class="cubo" href="#todo-incluido" style="--c: var(--verde); --t: var(--tinta); left: 35%; top: 27.82%" data-esquina="1,1,1">
+              <a class="cubo" href="#siguenos" style="--c: var(--verde); --t: var(--tinta); left: 35%; top: 27.82%" data-esquina="1,1,1">
                 <span class="cubo__cuerpo">
-                  <span class="cara cara--frente"><svg class="icono" aria-hidden="true"><use href="#i-wifi"/></svg><span class="cubo__nombre">Todo incluido</span></span>
+                  <span class="cara cara--frente"><svg class="icono" aria-hidden="true"><use href="#i-instagram"/></svg><span class="cubo__nombre">Síguenos</span></span>
                   <span class="cara cara--atras" aria-hidden="true"></span><span class="cara cara--der" aria-hidden="true"></span><span class="cara cara--izq" aria-hidden="true"></span><span class="cara cara--arriba" aria-hidden="true"></span><span class="cara cara--abajo" aria-hidden="true"></span>
                 </span>
               </a>
               <a class="cubo" href="#para-ti" style="--c: var(--naranja); --t: var(--tinta); left: 68.21%; top: 27.82%" data-esquina="1,-1,-1">
                 <span class="cubo__cuerpo">
-                  <span class="cara cara--frente"><svg class="icono" aria-hidden="true"><use href="#i-corazon"/></svg><span class="cubo__nombre">Para ti</span></span>
+                  <span class="cara cara--frente"><svg class="icono" aria-hidden="true"><use href="#i-birrete"/></svg><span class="cubo__nombre">Estudiantes</span></span>
                   <span class="cara cara--atras" aria-hidden="true"></span><span class="cara cara--der" aria-hidden="true"></span><span class="cara cara--izq" aria-hidden="true"></span><span class="cara cara--arriba" aria-hidden="true"></span><span class="cara cara--abajo" aria-hidden="true"></span>
                 </span>
               </a>
@@ -205,9 +252,9 @@
                   <span class="cara cara--atras" aria-hidden="true"></span><span class="cara cara--der" aria-hidden="true"></span><span class="cara cara--izq" aria-hidden="true"></span><span class="cara cara--arriba" aria-hidden="true"></span><span class="cara cara--abajo" aria-hidden="true"></span>
                 </span>
               </a>
-              <a class="cubo" href="#vivir-aqui" style="--c: var(--magenta); --t: #fff; left: 35%; top: 56%" data-esquina="-1,1,-1">
+              <a class="cubo" href="#preguntas" style="--c: var(--magenta); --t: #fff; left: 35%; top: 56%" data-esquina="-1,1,-1">
                 <span class="cubo__cuerpo">
-                  <span class="cara cara--frente"><svg class="icono" aria-hidden="true"><use href="#i-preguntas"/></svg><span class="cubo__nombre">Vivir aquí</span></span>
+                  <span class="cara cara--frente"><svg class="icono" aria-hidden="true"><use href="#i-preguntas"/></svg><span class="cubo__nombre">Preguntas</span></span>
                   <span class="cara cara--atras" aria-hidden="true"></span><span class="cara cara--der" aria-hidden="true"></span><span class="cara cara--izq" aria-hidden="true"></span><span class="cara cara--arriba" aria-hidden="true"></span><span class="cara cara--abajo" aria-hidden="true"></span>
                 </span>
               </a>
@@ -229,12 +276,16 @@
         <li style="--c: var(--cafe)"><a href="#sedes">Sedes</a></li>
         <li style="--c: var(--amarillo)"><a href="#habitaciones">Habitaciones</a></li>
         <li style="--c: var(--morado)"><a href="#acceso">Acceso</a></li>
-        <li style="--c: var(--rojo)"><a href="#alimentacion">Alimentación</a></li>
-        <li style="--c: var(--verde)"><a href="#todo-incluido">Todo incluido</a></li>
-        <li style="--c: var(--naranja)"><a href="#para-ti">Para ti</a></li>
-        <li style="--c: var(--magenta)"><a href="#vivir-aqui">Vivir aquí</a></li>
+        <li style="--c: var(--naranja)"><a href="#para-ti">Estudiantes</a></li>
         <li style="--c: var(--azul)"><a href="#visita">Visita</a></li>
+        <li style="--c: var(--magenta)"><a href="#preguntas">Preguntas</a></li>
+        <li style="--c: var(--verde)"><a href="#siguenos">Síguenos</a></li>
+        <li style="--c: var(--rojo)"><a href="#contactanos">Contáctanos</a></li>
       </ul>
+      <!-- El logo se mece solo y despacio; con este botón se detiene (WCAG 2.2.2). -->
+      <button class="logo3d__pausa hero-anim" type="button" aria-label="Pausar el movimiento del logo" hidden>
+        <svg class="icono" aria-hidden="true"><use href="#i-pausa"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -243,10 +294,19 @@
 <section class="seccion sedes" id="sedes" data-cuadro="5" style="--acento: var(--cafe); --sobre: #fff" aria-labelledby="sedes-titulo">
   <div class="contenedor">
     <div class="encabezado">
-      <p class="seccion__chip" data-revelar><span class="seccion__num">01</span>Sedes</p>
-      <h2 class="titulo" id="sedes-titulo" data-revelar>Dos sedes, <em>pensadas para universitarios</em>.</h2>
-      <p class="parrafo" data-revelar>Las dos con todos los servicios incluidos, agua caliente, dos redes de wifi y entrada con tu rostro o tu huella, sin restricción de horario. Ven a conocer la que te quede mejor.</p>
+      <p class="seccion__chip" data-revelar><svg class="seccion__logo" aria-hidden="true"><use href="#logo-mini"/></svg><span class="seccion__num">01</span>Sedes</p>
+      <h2 class="titulo" id="sedes-titulo" data-revelar>Lugares pensados para el <em>bienestar del estudiante</em> universitario.</h2>
+      <p class="parrafo" data-revelar>Tu habitación individual, 100 % amoblada, con todo lo que necesitas para vivir cómodo y enfocado:</p>
     </div>
+    <ul class="beneficios" data-revelar-grupo>
+      <li style="--c: var(--amarillo); --t: var(--tinta)"><span class="beneficios__icono"><svg class="icono" aria-hidden="true"><use href="#i-cama"/></svg></span><div><h3>Tu habitación equipada</h3><p>Cama, mesa de noche, escritorio, silla, clóset y TV.</p></div></li>
+      <li style="--c: var(--azul); --t: var(--tinta)"><span class="beneficios__icono"><svg class="icono" aria-hidden="true"><use href="#i-bano"/></svg></span><div><h3>Baño privado exclusivo</h3><p>Con agua caliente, solo para ti.</p></div></li>
+      <li style="--c: var(--verde); --t: var(--tinta)"><span class="beneficios__icono"><svg class="icono" aria-hidden="true"><use href="#i-wifi"/></svg></span><div><h3>Conexión top</h3><p>Servicios públicos incluidos y dos líneas de wifi para que nunca te quedes sin señal.</p></div></li>
+      <li style="--c: var(--magenta); --t: #fff"><span class="beneficios__icono"><svg class="icono" aria-hidden="true"><use href="#i-brillo"/></svg></span><div><h3>Cero estrés con el aseo</h3><p>Limpieza diaria de tu habitación y baño, de lunes a sábado (no domingos ni festivos).</p></div></li>
+      <li style="--c: var(--naranja); --t: var(--tinta)"><span class="beneficios__icono"><svg class="icono" aria-hidden="true"><use href="#i-lavadora"/></svg></span><div><h3>Servicio de lavandería</h3><p><small>*Aplican restricciones.</small></p></div></li>
+      <li style="--c: var(--morado); --t: #fff"><span class="beneficios__icono"><svg class="icono" aria-hidden="true"><use href="#i-huella"/></svg></span><div><h3>Seguridad e independencia</h3><p>Ingreso libre 24/7 con acceso biométrico y reconocimiento facial.</p></div></li>
+    </ul>
+
     <div class="sedes__lista" data-revelar-grupo>
       <article class="sede">
         <figure class="sede__foto">
@@ -256,10 +316,6 @@
           <h3>Sede Quinta Mutis</h3>
           <p class="sede__direccion"><svg class="icono" aria-hidden="true"><use href="#i-pin"/></svg>Calle 63C Bis # 27-04, Bogotá</p>
           <p class="sede__cerca">Cerca de la sede de Ciencias de la Salud de la Universidad del Rosario.</p>
-          <ul class="sede__datos">
-            <li class="sede__dato--destacado"><svg class="icono" aria-hidden="true"><use href="#i-cena"/></svg>Alimentación completa</li>
-            <li><svg class="icono" aria-hidden="true"><use href="#i-check"/></svg>Todos los servicios</li>
-          </ul>
           <div class="sede__acciones">
             <a class="boton boton--linea boton--chico" href="https://www.google.com/maps/search/?api=1&amp;query=Calle%2063C%20Bis%20%2327-04%2C%20Bogot%C3%A1" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-ruta"/></svg>Cómo llegar</a>
             <a class="boton boton--morado boton--chico" href="#visita" data-sede="Quinta Mutis">Visitar esta sede</a>
@@ -272,15 +328,11 @@
           <span>Foto de la sede<br>muy pronto</span>
         </figure>
         <div class="sede__cuerpo">
-          <h3>Sede Galerías</h3>
-          <p class="sede__direccion"><svg class="icono" aria-hidden="true"><use href="#i-pin"/></svg>Transversal 25 # 60-54, Bogotá</p>
-          <ul class="sede__datos">
-            <li><svg class="icono" aria-hidden="true"><use href="#i-check"/></svg>Todos los servicios</li>
-            <li>Sin alimentación</li>
-          </ul>
+          <h3>Casa Universitaria del Rosario</h3>
+          <p class="sede__direccion"><svg class="icono" aria-hidden="true"><use href="#i-pin"/></svg>Transversal 25 # 60-54, Bogotá (Galerías)</p>
           <div class="sede__acciones">
             <a class="boton boton--linea boton--chico" href="https://www.google.com/maps/search/?api=1&amp;query=Transversal%2025%20%2360-54%2C%20Bogot%C3%A1" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-ruta"/></svg>Cómo llegar</a>
-            <a class="boton boton--morado boton--chico" href="#visita" data-sede="Galerías">Visitar esta sede</a>
+            <a class="boton boton--morado boton--chico" href="#visita" data-sede="Del Rosario (Galerías)">Visitar esta sede</a>
           </div>
         </div>
       </article>
@@ -289,29 +341,27 @@
 </section>
 
 <!-- ============ 02 · HABITACIONES (amarillo) ============ -->
-<section class="seccion seccion--papel habitaciones" id="habitaciones" data-cuadro="0" style="--acento: var(--amarillo); --sobre: var(--tinta)" aria-labelledby="hab-titulo">
+<section class="seccion habitaciones" id="habitaciones" data-cuadro="0" style="--acento: var(--amarillo); --sobre: var(--tinta)" aria-labelledby="hab-titulo">
   <div class="contenedor habitaciones__rejilla">
     <div class="habitaciones__texto">
-      <p class="seccion__chip" data-revelar><span class="seccion__num">02</span>Habitaciones</p>
+      <p class="seccion__chip" data-revelar><svg class="seccion__logo" aria-hidden="true"><use href="#logo-mini"/></svg><span class="seccion__num">02</span>Habitaciones</p>
       <h2 class="titulo" id="hab-titulo" data-revelar>Tu habitación, <em>tu espacio</em>.</h2>
-      <p class="parrafo" data-revelar>Habitaciones amobladas para estudiantes, con baño exclusivo y agua caliente. Llegas con tu maleta y te instalas: nosotros resolvemos tus días para que solo te dediques al estudio.</p>
+      <p class="parrafo" data-revelar>Habitaciones individuales amobladas para estudiantes, con baño privado exclusivo y agua caliente. Llegas con tu maleta y te instalas: nosotros nos encargamos del resto para que solo te enfoques en tus metas.</p>
       <ul class="lista-incluye" data-revelar-grupo>
-        <li><span class="lista-incluye__icono"><svg class="icono" aria-hidden="true"><use href="#i-agua"/></svg></span><div><b>Agua caliente</b><span>Para empezar bien el día.</span></div></li>
-        <li><span class="lista-incluye__icono"><svg class="icono" aria-hidden="true"><use href="#i-bano"/></svg></span><div><b>Baño exclusivo</b><span>Privado y solo para ti.</span></div></li>
-        <li><span class="lista-incluye__icono"><svg class="icono" aria-hidden="true"><use href="#i-cama"/></svg></span><div><b>Amoblada</b><span>Cama, escritorio y espacio para tus cosas.</span></div></li>
-        <li><span class="lista-incluye__icono"><svg class="icono" aria-hidden="true"><use href="#i-wifi"/></svg></span><div><b>Todo incluido</b><span>Dos redes de wifi, servicios, aseo y lavandería.</span></div></li>
+        <li><span class="lista-incluye__icono"><svg class="icono" aria-hidden="true"><use href="#i-agua"/></svg></span><div><b>Agua caliente</b><span>En tu baño privado.</span></div></li>
+        <li><span class="lista-incluye__icono"><svg class="icono" aria-hidden="true"><use href="#i-tv"/></svg></span><div><b>Con TV</b><span>Y clóset, escritorio y silla.</span></div></li>
+        <li><span class="lista-incluye__icono"><svg class="icono" aria-hidden="true"><use href="#i-brillo"/></svg></span><div><b>Aseo diario</b><span>De lunes a sábado.</span></div></li>
+        <li><span class="lista-incluye__icono"><svg class="icono" aria-hidden="true"><use href="#i-wifi"/></svg></span><div><b>Dos líneas de wifi</b><span>Y servicios públicos incluidos.</span></div></li>
       </ul>
-      <p class="valor" data-revelar>Valor mensual: según la habitación y la sede <span class="pendiente">Por confirmar</span></p>
     </div>
 
+    <!-- Sin pie de foto: no todas las habitaciones son iguales (lo pidió el cliente). -->
     <div class="polaroids" data-revelar-grupo>
       <figure class="polaroid polaroid--1">
         <img src="img/habitacion-cama-escritorio-800.webp" srcset="img/habitacion-cama-escritorio-480.webp 480w, img/habitacion-cama-escritorio-800.webp 800w" sizes="(min-width: 960px) 34vw, 86vw" width="800" height="437" loading="lazy" alt="Habitación con cama sencilla, escritorio con silla y cómoda de madera">
-        <figcaption>Cama y escritorio</figcaption>
       </figure>
       <figure class="polaroid polaroid--2">
-        <img src="img/habitacion-ventana-bano-privado-800.webp" srcset="img/habitacion-ventana-bano-privado-480.webp 480w, img/habitacion-ventana-bano-privado-800.webp 800w" sizes="(min-width: 960px) 34vw, 86vw" width="800" height="437" loading="lazy" alt="Habitación con ventana grande, cama de colores y la puerta del baño al fondo">
-        <figcaption>Con ventana y luz natural</figcaption>
+        <img src="img/habitacion-ventana-bano-privado-800.webp" srcset="img/habitacion-ventana-bano-privado-480.webp 480w, img/habitacion-ventana-bano-privado-800.webp 800w" sizes="(min-width: 960px) 34vw, 86vw" width="800" height="437" loading="lazy" alt="Habitación con cama de colores y la puerta del baño al fondo">
         <span class="sticker" aria-hidden="true">¡Agua<br>caliente!</span>
       </figure>
     </div>
@@ -324,7 +374,7 @@
 <section class="seccion seccion--miel acceso" id="acceso" data-cuadro="1" style="--acento: var(--morado); --sobre: #fff" aria-labelledby="acceso-titulo">
   <div class="contenedor acceso__rejilla">
     <div class="acceso__texto">
-      <p class="seccion__chip" data-revelar><span class="seccion__num">03</span>Acceso</p>
+      <p class="seccion__chip" data-revelar><svg class="seccion__logo" aria-hidden="true"><use href="#logo-mini"/></svg><span class="seccion__num">03</span>Acceso</p>
       <h2 class="titulo" id="acceso-titulo" data-revelar>Tu rostro es <em>la llave</em>.</h2>
       <p class="parrafo" data-revelar>Entras a la casa con <strong>reconocimiento facial</strong> o con tu <strong>huella</strong>. Sin llaves que se pierdan ni tarjetas que se presten, y <strong>sin restricción de horario</strong>: llegas a la hora que quieras.</p>
       <ul class="acceso__puntos" data-revelar-grupo>
@@ -369,158 +419,52 @@
   </div>
 </section>
 
-<!-- ============ 04 · ALIMENTACIÓN (rojo) ============
-     Solo en la sede Quinta Mutis; en Galerías no se incluye. -->
-<section class="seccion seccion--color alimentacion" id="alimentacion" data-cuadro="2" style="--acento: var(--rojo); --sobre: #fff" aria-labelledby="alim-titulo">
-  <div class="contenedor alimentacion__rejilla">
-    <figure class="alimentacion__foto" data-mascara>
-      <img src="img/comedor-flores-sillas-800.webp" srcset="img/comedor-flores-sillas-480.webp 480w, img/comedor-flores-sillas-800.webp 800w" sizes="(min-width: 960px) 46vw, 92vw" width="800" height="437" loading="lazy" alt="Flores naranja sobre una mesa de la casa">
-      <span class="sticker" aria-hidden="true">¡Comida<br>incluida!</span>
-    </figure>
-    <div class="alimentacion__texto">
-      <p class="seccion__chip seccion__chip--claro" data-revelar><span class="seccion__num">04</span>Alimentación</p>
-      <h2 class="titulo" id="alim-titulo" data-revelar>En Quinta Mutis, <em>la comida está resuelta</em>.</h2>
-      <p class="parrafo" data-revelar>En la sede Quinta Mutis el plan incluye <strong>alimentación completa</strong>: no te toca cocinar ni hacer mercado, y tu tiempo se va en lo que importa. En la sede Galerías la alimentación no está incluida.</p>
-      <ul class="alimentacion__lista" data-revelar-grupo>
-        <li><svg class="icono" aria-hidden="true"><use href="#i-check"/></svg><span>Alimentación completa en la sede Quinta Mutis</span></li>
-        <li><svg class="icono" aria-hidden="true"><use href="#i-check"/></svg><span>Para que solo te dediques al estudio</span></li>
-        <li><svg class="icono" aria-hidden="true"><use href="#i-reloj"/></svg><span>Horarios y menú <span class="pendiente pendiente--claro">Por confirmar</span></span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 05 · TODO INCLUIDO (verde) ============ -->
-<section class="seccion incluido" id="todo-incluido" data-cuadro="3" style="--acento: var(--verde); --sobre: var(--tinta)" aria-labelledby="inc-titulo">
-  <div class="contenedor">
-    <div class="encabezado">
-      <p class="seccion__chip" data-revelar><span class="seccion__num">05</span>Todo incluido</p>
-      <h2 class="titulo" id="inc-titulo" data-revelar>Todos los servicios, <em>incluidos</em>.</h2>
-      <p class="parrafo" data-revelar>Resolvemos tus días para que solo te dediques al estudio.</p>
-    </div>
-    <ul class="baldosas" data-revelar-grupo>
-      <li style="--c: var(--rojo); --t: #fff"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-agua"/></svg></span><h3>Agua caliente</h3><p>Para empezar bien el día.</p></li>
-      <li style="--c: var(--azul); --t: var(--tinta)"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-wifi"/></svg></span><h3>Dos redes de wifi</h3><p>Para clases, entregas y series.</p></li>
-      <li style="--c: var(--verde); --t: var(--tinta)"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-rayo"/></svg></span><h3>Servicios públicos</h3><p>Incluidos en el valor.</p></li>
-      <li style="--c: var(--naranja); --t: var(--tinta)"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-lavadora"/></svg></span><h3>Lavandería</h3><p>Tu ropa lista sin salir de la casa.</p></li>
-      <li style="--c: var(--magenta); --t: #fff"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-brillo"/></svg></span><h3>Aseo diario</h3><p>De lunes a sábado.</p><small>Aplican restricciones</small></li>
-      <li style="--c: var(--amarillo); --t: var(--tinta)"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-bano"/></svg></span><h3>Baño exclusivo</h3><p>Privado y solo para ti.</p></li>
-      <li style="--c: var(--morado); --t: #fff"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-huella"/></svg></span><h3>Rostro o huella</h3><p>Para entrar, sin llaves.</p></li>
-      <li style="--c: var(--cafe); --t: #fff"><span class="baldosas__icono"><svg class="icono" aria-hidden="true"><use href="#i-cama"/></svg></span><h3>Habitación amoblada</h3><p>Llegas y te instalas.</p></li>
-    </ul>
-  </div>
-
-  <!-- Dos copias idénticas: la pista avanza exactamente una y vuelve a empezar sin que se note. -->
-  <div class="marquesina-zona">
-    <div class="marquesina" aria-hidden="true">
-      <div class="marquesina__pista">
-        <p>Estudia <i style="--c: var(--morado)"></i> Descansa <i style="--c: var(--rojo)"></i> Sin horarios <i style="--c: var(--verde)"></i> Agua caliente <i style="--c: var(--naranja)"></i> Pensamos en ti <i style="--c: var(--azul)"></i> Repite <i style="--c: var(--magenta)"></i>&nbsp;</p>
-        <p>Estudia <i style="--c: var(--morado)"></i> Descansa <i style="--c: var(--rojo)"></i> Sin horarios <i style="--c: var(--verde)"></i> Agua caliente <i style="--c: var(--naranja)"></i> Pensamos en ti <i style="--c: var(--azul)"></i> Repite <i style="--c: var(--magenta)"></i>&nbsp;</p>
-      </div>
-    </div>
-    <button type="button" class="marquesina__pausa" aria-label="Pausar la tira de palabras">
-      <svg class="icono" aria-hidden="true"><use href="#i-pausa"/></svg>
-    </button>
-  </div>
-</section>
-
-<!-- ============ 06 · PARA TI (naranja) ============ -->
+<!-- ============ 04 · PENSADO PARA ESTUDIANTES (naranja) ============
+     Sin "primíparos" (al cliente no le gusta el concepto). Fotos de referencia, con el mismo
+     marco y la misma disposición de las de las habitaciones. -->
 <section class="seccion para-ti" id="para-ti" data-cuadro="4" style="--acento: var(--naranja); --sobre: var(--tinta)" aria-labelledby="para-ti-titulo">
-  <div class="contenedor">
-    <div class="encabezado">
-      <p class="seccion__chip" data-revelar><span class="seccion__num">06</span>Para ti</p>
-      <h2 class="titulo" id="para-ti-titulo" data-revelar>Pensado para <em>universitarios</em>.</h2>
-      <p class="parrafo" data-revelar>Aquí todos son estudiantes. Si eres primíparo y llegas a Bogotá a empezar la U, te recibimos con tu espacio listo y los servicios resueltos, para que el cambio sea fácil.</p>
-    </div>
-    <!-- Fotos de referencia (no son residentes): diversidad y vida de estudiante. -->
-    <div class="para-ti__fotos">
-      <figure class="para-ti__foto para-ti__foto--1" data-mascara>
-        <img src="img/estudiantes-circulo-800.webp" srcset="img/estudiantes-circulo-480.webp 480w, img/estudiantes-circulo-800.webp 800w, img/estudiantes-circulo-1200.webp 1200w" sizes="(min-width: 760px) 46vw, 92vw" width="800" height="741" loading="lazy" alt="Grupo diverso de jóvenes sonriendo en círculo, vistos desde abajo contra el cielo">
-      </figure>
-      <figure class="para-ti__foto para-ti__foto--2" data-mascara>
-        <img src="img/estudiantes-estudiando-800.webp" srcset="img/estudiantes-estudiando-480.webp 480w, img/estudiantes-estudiando-800.webp 800w, img/estudiantes-estudiando-1200.webp 1200w" sizes="(min-width: 760px) 46vw, 92vw" width="800" height="742" loading="lazy" alt="Estudiantes sentados en el piso con cuadernos, portátil y celulares">
-        <span class="sticker" aria-hidden="true">¡Todos<br>son<br>bienvenidos!</span>
-      </figure>
-    </div>
-    <p class="para-ti__nota">Imágenes de referencia.</p>
-    <ul class="frases" data-revelar-grupo>
-      <li style="--c: var(--amarillo); --t: var(--tinta)"><h3>¿Primíparo?</h3><p>Llegas a una casa hecha para estudiantes, lista desde el primer día.</p></li>
-      <li style="--c: var(--azul); --t: var(--tinta)"><h3>Resolvemos tus días</h3><p>Servicios, aseo y lavandería incluidos: la casa no es tu preocupación.</p></li>
-      <li style="--c: var(--verde); --t: var(--tinta)"><h3>Solo dedícate a estudiar</h3><p>Entra y sal a la hora que quieras, y concéntrate en la U.</p></li>
-    </ul>
-    <a class="tarjeta-instagram" data-instagram href="https://www.instagram.com/hospedajeuniversitariobogota" target="_blank" rel="noopener" data-revelar>
-      <svg class="icono" aria-hidden="true"><use href="#i-instagram"/></svg>
-      <span>Conoce más en nuestro Instagram</span>
-      <b>@hospedajeuniversitariobogota</b>
-    </a>
-  </div>
-</section>
+  <div class="contenedor para-ti__rejilla">
+    <div class="para-ti__texto">
+      <p class="seccion__chip" data-revelar><svg class="seccion__logo" aria-hidden="true"><use href="#logo-mini"/></svg><span class="seccion__num">04</span>Estudiantes</p>
+      <h2 class="titulo" id="para-ti-titulo" data-revelar>Pensado para <em>estudiantes</em>.</h2>
+      <p class="parrafo" data-revelar><strong>¡Tu lugar ideal para estudiar!</strong> 🎓 Cerca, tranquilo y súper seguro, un espacio donde te sentirás justo como en casa. Nos encargamos de todo: hospedaje, alimentación deliciosa*, aseo y lavandería. ¡Tú solo enfócate en tus metas!</p>
+      <p class="para-ti__nota" data-revelar>*Aplican restricciones.</p>
 
-<!-- ============ 07 · VIVIR AQUÍ (magenta) ============ -->
-<section class="seccion seccion--papel vivir" id="vivir-aqui" data-cuadro="6" style="--acento: var(--magenta); --sobre: #fff" aria-labelledby="vivir-titulo">
-  <div class="contenedor">
-    <div class="encabezado">
-      <p class="seccion__chip" data-revelar><span class="seccion__num">07</span>Vivir aquí</p>
-      <h2 class="titulo" id="vivir-titulo" data-revelar>Así de fácil <em>es llegar</em>.</h2>
-    </div>
-
-    <ol class="pasos" data-revelar-grupo>
-      <li style="--c: var(--amarillo); --t: var(--tinta)"><span class="pasos__num">1</span><h3>Agenda tu visita</h3><p>Escoge día, hora y sede; te confirmamos por WhatsApp.</p></li>
-      <li style="--c: var(--verde); --t: var(--tinta)"><span class="pasos__num">2</span><h3>Conoce la casa</h3><p>Recorre las habitaciones y resuelve tus dudas en persona.</p></li>
-      <li style="--c: var(--azul); --t: var(--tinta)"><span class="pasos__num">3</span><h3>Separa tu habitación</h3><p>Te contamos los requisitos y firmas el contrato.</p></li>
-      <li style="--c: var(--magenta); --t: #fff"><span class="pasos__num">4</span><h3>Llega con tu maleta</h3><p>Registramos tu rostro y tu huella, y desde ese día entras con ellos.</p></li>
-    </ol>
-
-    <div class="preguntas" id="preguntas">
-      <h3 class="preguntas__titulo" data-revelar>Preguntas frecuentes</h3>
-      <div class="preguntas__lista" data-revelar-grupo>
-        <details>
-          <summary>¿Es solo para estudiantes?<span class="preguntas__signo" aria-hidden="true"></span></summary>
-          <p>Sí. Casa Universitaria está pensada para universitarios, y los primíparos son bienvenidos.</p>
-        </details>
-        <details>
-          <summary>¿Qué incluye el valor mensual?<span class="preguntas__signo" aria-hidden="true"></span></summary>
-          <p>La habitación amoblada con baño exclusivo, agua caliente, dos redes de wifi, servicios públicos, lavandería y aseo diario de lunes a sábado (aplican restricciones). En la sede Quinta Mutis, también la alimentación completa.</p>
-        </details>
-        <details>
-          <summary>¿Incluye alimentación?<span class="preguntas__signo" aria-hidden="true"></span></summary>
-          <p>En la sede Quinta Mutis, sí: alimentación completa. En la sede Galerías no está incluida. <span class="pendiente">Horarios y menú por confirmar</span></p>
-        </details>
-        <details>
-          <summary>¿Hay horario de llegada?<span class="preguntas__signo" aria-hidden="true"></span></summary>
-          <p>No. Puedes entrar y salir a la hora que quieras, sin restricciones.</p>
-        </details>
-        <details>
-          <summary>¿Cómo se entra a la casa?<span class="preguntas__signo" aria-hidden="true"></span></summary>
-          <p>Con reconocimiento facial o con tu huella. Cuando llegas los registramos y la puerta te reconoce: no necesitas llaves ni tarjetas.</p>
-        </details>
-        <details>
-          <summary>¿Las habitaciones vienen amobladas?<span class="preguntas__signo" aria-hidden="true"></span></summary>
-          <p>Sí. Llegas con tu ropa y tus cosas de estudio; la cama, el escritorio y el espacio para guardar ya están.</p>
-        </details>
-        <details>
-          <summary>¿Cuánto cuesta?<span class="preguntas__signo" aria-hidden="true"></span></summary>
-          <p>Depende de la habitación y de la sede. Escríbenos por WhatsApp o agenda la visita y te contamos los valores y la disponibilidad del semestre.</p>
-        </details>
-        <details>
-          <summary>¿Qué necesito para separar mi habitación?<span class="preguntas__signo" aria-hidden="true"></span></summary>
-          <p>Te lo explicamos en la visita, sin letra pequeña. <span class="pendiente">Requisitos por confirmar</span></p>
-        </details>
+      <div class="siguenos" id="siguenos" data-cuadro="3" data-revelar>
+        <h3>Síguenos</h3>
+        <ul class="redes">
+          <li><a class="redes__enlace" data-instagram href="https://www.instagram.com/hospedajeuniversitariobogota" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-instagram"/></svg>Instagram</a></li>
+          <li><span class="redes__enlace redes__enlace--pendiente"><svg class="icono" aria-hidden="true"><use href="#i-facebook"/></svg>Facebook <span class="pendiente">Por confirmar</span></span></li>
+          <li><span class="redes__enlace redes__enlace--pendiente"><svg class="icono" aria-hidden="true"><use href="#i-tiktok"/></svg>TikTok <span class="pendiente">Por confirmar</span></span></li>
+        </ul>
       </div>
     </div>
+
+    <div>
+      <div class="polaroids" data-revelar-grupo>
+        <figure class="polaroid polaroid--1">
+          <img src="img/estudiantes-circulo-800.webp" srcset="img/estudiantes-circulo-480.webp 480w, img/estudiantes-circulo-800.webp 800w, img/estudiantes-circulo-1200.webp 1200w" sizes="(min-width: 960px) 34vw, 86vw" width="800" height="741" loading="lazy" alt="Grupo diverso de jóvenes sonriendo en círculo, vistos desde abajo contra el cielo">
+        </figure>
+        <figure class="polaroid polaroid--2">
+          <img src="img/estudiantes-estudiando-800.webp" srcset="img/estudiantes-estudiando-480.webp 480w, img/estudiantes-estudiando-800.webp 800w, img/estudiantes-estudiando-1200.webp 1200w" sizes="(min-width: 960px) 34vw, 86vw" width="800" height="742" loading="lazy" alt="Estudiantes sentados en el piso con cuadernos, portátil y celulares">
+        </figure>
+      </div>
+      <p class="para-ti__ref">Imágenes de referencia.</p>
+    </div>
   </div>
 </section>
 
-<!-- ============ 08 · AGENDA TU VISITA (azul) ============ -->
+<!-- ============ 05 · AGENDA TU VISITA (azul) ============ -->
 <section class="seccion visita" id="visita" data-cuadro="7" style="--acento: var(--azul); --sobre: var(--tinta)" aria-labelledby="visita-titulo">
   <div class="contenedor visita__rejilla">
     <div class="visita__texto">
-      <p class="seccion__chip" data-revelar><span class="seccion__num">08</span>Agenda tu visita</p>
-      <h2 class="titulo" id="visita-titulo" data-revelar>Ven a conocer <em>tu próxima casa</em>.</h2>
-      <p class="parrafo" data-revelar>Escoge la sede, el día y la hora, y envía la solicitud: te confirmamos por WhatsApp. Puedes venir con tu familia.</p>
+      <p class="seccion__chip" data-revelar><svg class="seccion__logo" aria-hidden="true"><use href="#logo-mini"/></svg><span class="seccion__num">05</span>Agenda tu visita</p>
+      <h2 class="titulo" id="visita-titulo" data-revelar>¡Acompañado siempre <em>es mejor</em>!</h2>
+      <p class="parrafo" data-revelar>Trae a tu familia a conocer la sede donde vivirás la mejor experiencia universitaria en Bogotá. Queremos que exploren tu nuevo espacio y sientan la tranquilidad de que estarás tan cómodo y seguro como en casa. <strong>¡Agenda tu visita y vengan a conocernos!</strong></p>
       <div class="horarios" data-revelar>
-        <p class="horarios__titulo"><svg class="icono" aria-hidden="true"><use href="#i-reloj"/></svg>Horarios de lunes a sábado <span class="pendiente">Por confirmar</span></p>
+        <p class="horarios__titulo"><svg class="icono" aria-hidden="true"><use href="#i-reloj"/></svg>Lunes a viernes y sábado medio día</p>
         <ul class="horarios__lista" id="horarios"></ul>
+        <p class="horarios__nota">Horas exactas <span class="pendiente">Por confirmar</span></p>
       </div>
     </div>
 
@@ -529,7 +473,7 @@
         <span class="campo__etiqueta" id="sede-etiqueta">Sede</span>
         <div class="opciones" role="radiogroup" aria-labelledby="sede-etiqueta">
           <label><input type="radio" name="sede" value="Quinta Mutis"><span>Quinta Mutis</span></label>
-          <label><input type="radio" name="sede" value="Galerías"><span>Galerías</span></label>
+          <label><input type="radio" name="sede" value="Del Rosario (Galerías)"><span>Del Rosario (Galerías)</span></label>
           <label><input type="radio" name="sede" value="Cualquiera de las dos" checked><span>Cualquiera</span></label>
         </div>
       </div>
@@ -571,38 +515,61 @@
   </div>
 </section>
 
+<!-- ============ 06 · PREGUNTAS FRECUENTES (magenta) ============ -->
+<section class="seccion preguntas-seccion" id="preguntas" data-cuadro="6" style="--acento: var(--magenta); --sobre: #fff" aria-labelledby="preguntas-titulo">
+  <div class="contenedor preguntas">
+    <div>
+      <p class="seccion__chip" data-revelar><svg class="seccion__logo" aria-hidden="true"><use href="#logo-mini"/></svg><span class="seccion__num">06</span>Preguntas</p>
+      <h2 class="titulo" id="preguntas-titulo" data-revelar>Preguntas <em>frecuentes</em>.</h2>
+    </div>
+    <div class="preguntas__lista" data-revelar-grupo>
+      <details>
+        <summary>¿Es solo para estudiantes?<span class="preguntas__signo" aria-hidden="true"></span></summary>
+        <p>Este espacio está diseñado exclusivamente para estudiantes que vienen a darlo todo en la U. Disfruta de un ambiente cómodo, seguro y con la mejor vibra para concentrarte y pasarla genial. ¡Únete a la comunidad perfecta para tu vida académica!</p>
+      </details>
+      <details>
+        <summary>¿Qué incluye el valor mensual?<span class="preguntas__signo" aria-hidden="true"></span></summary>
+        <p><strong>¡Todo en un solo pago!</strong> Tu mensualidad cubre todo lo que necesitas: hospedaje en habitación individual, alimentación*, servicios públicos, agua caliente, aseo diario y lavandería. Cero enredos y sin cobros sorpresa, para que vivas 100 % enfocado en tus estudios.<br><small>*Aplican restricciones.</small></p>
+      </details>
+      <details>
+        <summary>¿Qué requisitos se solicitan para hospedarse en la Casa Universitaria?<span class="preguntas__signo" aria-hidden="true"></span></summary>
+        <p>Se requiere ser estudiante y firmar un contrato con una duración mínima de seis meses, prorrogable si así lo necesitas.</p>
+      </details>
+      <details>
+        <summary>¿Hay horario de llegada?<span class="preguntas__signo" aria-hidden="true"></span></summary>
+        <p>No. El ingreso es libre, las 24 horas, todos los días.</p>
+      </details>
+      <details>
+        <summary>¿Cómo se entra a la casa?<span class="preguntas__signo" aria-hidden="true"></span></summary>
+        <p>Con acceso biométrico y reconocimiento facial: cuando llegas registramos tu huella y tu rostro, y no necesitas llaves ni tarjetas.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto cuesta?<span class="preguntas__signo" aria-hidden="true"></span></summary>
+        <p>Depende de la habitación y de la sede. Escríbenos por WhatsApp o agenda la visita y te contamos los valores y la disponibilidad del semestre.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<!-- ============ PIE ============ -->
-<footer class="pie">
+<!-- ============ CONTÁCTANOS (pie) ============ -->
+<footer class="pie" id="contactanos" data-cuadro="2" aria-labelledby="contacto-titulo">
   <div class="contenedor pie__rejilla">
     <div>
-      <p class="pie__marca">
-        <svg class="marca__logo marca__logo--color" viewBox="0 0 30 30" aria-hidden="true">
-          <rect width="9.4" height="9.4" rx="1.8"/><rect x="10.3" width="9.4" height="9.4" rx="1.8"/>
-          <rect y="10.3" width="9.4" height="9.4" rx="1.8"/><rect x="10.3" y="10.3" width="9.4" height="9.4" rx="1.8"/><rect x="20.6" y="10.3" width="9.4" height="9.4" rx="1.8"/>
-          <rect y="20.6" width="9.4" height="9.4" rx="1.8"/><rect x="10.3" y="20.6" width="9.4" height="9.4" rx="1.8"/><rect x="20.6" y="20.6" width="9.4" height="9.4" rx="1.8"/>
-        </svg>
-        Casa Universitaria
-      </p>
-      <p class="pie__texto">Hospedaje para universitarios en Bogotá. Todos los servicios incluidos, agua caliente, dos redes de wifi y entrada con tu rostro o tu huella.</p>
+      <h2 class="pie__grande" id="contacto-titulo"><svg class="pie__logo" aria-hidden="true"><use href="#logo-mini"/></svg>Contáctanos</h2>
+      <a class="pie__telefono" data-telefono href="tel:+573005296434"><svg class="icono" aria-hidden="true"><use href="#i-telefono"/></svg>300 529 6434</a>
     </div>
     <div>
-      <h2 class="pie__titulo">Sedes</h2>
-      <p class="pie__sede"><b>Quinta Mutis</b>Calle 63C Bis # 27-04</p>
-      <p class="pie__sede"><b>Galerías</b>Transversal 25 # 60-54</p>
-    </div>
-    <div>
-      <h2 class="pie__titulo">Contáctanos</h2>
-      <!-- En el celular, al tocarlo, llama. El número vive en datos.js (telefono). -->
-      <a class="pie__enlace pie__enlace--telefono" data-telefono href="tel:+573203193258"><svg class="icono" aria-hidden="true"><use href="#i-telefono"/></svg>320 319 3258</a>
+      <h3 class="pie__titulo">Escríbenos</h3>
       <a class="pie__enlace" data-whatsapp href="#"><svg class="icono" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
       <a class="pie__enlace" data-instagram href="https://www.instagram.com/hospedajeuniversitariobogota" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-instagram"/></svg>Instagram</a>
       <a class="pie__enlace" href="#visita"><svg class="icono" aria-hidden="true"><use href="#i-calendario"/></svg>Agendar una visita</a>
     </div>
     <div>
-      <h2 class="pie__titulo">De la misma familia</h2>
-      <p class="pie__hermana">Suite El Ancla<span>Tu lugar frente al mar · Santa Marta</span></p>
+      <h3 class="pie__titulo">Sedes</h3>
+      <p class="pie__sede"><b>Quinta Mutis</b>Calle 63C Bis # 27-04</p>
+      <p class="pie__sede"><b>Casa Universitaria del Rosario</b>Transversal 25 # 60-54 (Galerías)</p>
     </div>
   </div>
   <div class="contenedor pie__legal">

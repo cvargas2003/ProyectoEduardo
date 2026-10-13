@@ -688,6 +688,190 @@ button, input, select, textarea { font: inherit; }
   .preguntas summary { padding: 1rem 1.1rem; }
 }
 
+/* =========================================================
+   Plantilla única (observaciones del cliente, 13 de octubre)
+   El mismo fondo en todas las secciones: un amarillo miel más oscuro que el de antes, para
+   que el cuadro amarillo del logo no se pierda. Y el logo pequeño en cada título.
+   ========================================================= */
+:root { --fondo: #F8CD6E; --tarjeta: #FFF8E8; }
+.hero, .seccion, .seccion--papel, .seccion--miel, .visita, .pie { background-color: var(--fondo); }
+.hero__fondo {
+  background:
+    radial-gradient(40rem 32rem at 76% 42%, rgba(255, 232, 160, .6), transparent 70%),
+    radial-gradient(30rem 26rem at 2% 100%, rgba(237, 110, 20, .18), transparent 70%);
+}
+.seccion--miel::before {
+  background:
+    linear-gradient(rgba(28, 18, 51, .05) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(90deg, rgba(28, 18, 51, .05) 1px, transparent 1px) 0 0 / 48px 48px;
+}
+.seccion { border-top: 2px solid rgba(28, 18, 51, .14); }
+.nav--solida, .nav--abierta { background: rgba(248, 205, 110, .97); }
+@supports (backdrop-filter: blur(1px)) { .nav--solida { background: rgba(248, 205, 110, .9); } }
+.seccion__logo { width: 1.9rem; height: 1.9rem; flex: none; }
+
+/* Menú: el teléfono a la izquierda, en lugar del logo pequeño y el nombre */
+.nav__llamar {
+  display: inline-flex; align-items: center; gap: .5rem; padding: .55rem 1rem; border-radius: 999px;
+  background: #fff; color: var(--tinta); border: 2px solid var(--tinta); box-shadow: 0 3px 0 var(--tinta);
+  font-weight: 700; text-decoration: none; white-space: nowrap;
+}
+.nav__llamar .icono { color: var(--morado); }
+.logo3d__pausa {
+  display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border-radius: 50%; cursor: pointer;
+  background: #fff; color: var(--tinta); border: 2px solid var(--tinta);
+}
+
+/* 01 · Lo que trae la habitación */
+.beneficios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0 0 clamp(2.5rem, 5vw, 3.5rem); padding: 0; list-style: none; }
+.beneficios li {
+  display: flex; align-items: flex-start; gap: 1rem; padding: 1.3rem 1.25rem; border-radius: var(--radio);
+  background: var(--tarjeta); border: 2px solid var(--tinta); box-shadow: 5px 5px 0 var(--tinta);
+}
+.beneficios__icono {
+  display: grid; place-items: center; width: 3rem; height: 3rem; flex: none; border-radius: 12px;
+  background: var(--c); color: var(--t); border: 2px solid var(--tinta);
+}
+.beneficios h3 { margin: 0 0 .25rem; font: 800 1.1rem/1.2 var(--titulo); }
+.beneficios p { margin: 0; font-size: .94rem; line-height: 1.45; color: var(--tinta-suave); }
+.beneficios small { font: 500 .72rem/1.3 var(--mono); letter-spacing: .03em; text-transform: uppercase; }
+.sede, .baldosas li { background: var(--tarjeta); }
+
+/* 02 · Fotos de las habitaciones sin pie de foto */
+.polaroid { padding-bottom: .8rem; }
+
+/* 04 · Pensado para estudiantes */
+.para-ti__rejilla { display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: clamp(2.5rem, 6vw, 5rem); }
+.para-ti__nota { margin: -.8rem 0 1.75rem; font-size: .8rem; color: var(--tinta-suave); }
+.para-ti__ref { margin: 1rem 0 0; font-size: .75rem; color: var(--tinta-suave); text-align: right; }
+.siguenos { scroll-margin-top: calc(var(--nav-alto) + 1rem); }
+.siguenos h3 { margin: 0 0 .8rem; font: 800 1.35rem/1 var(--titulo); }
+.redes { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; padding: 0; list-style: none; }
+.redes__enlace {
+  display: inline-flex; align-items: center; gap: .5rem; padding: .6rem 1rem; border-radius: 999px;
+  background: #fff; color: var(--tinta); border: 2px solid var(--tinta); font-weight: 700; text-decoration: none;
+}
+a.redes__enlace:hover { background: var(--amarillo); }
+.redes__enlace--pendiente { font-weight: 600; }
+
+/* 05 · Visita */
+.horarios__nota { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .8rem 0 0; font-size: .9rem; color: var(--tinta-suave); }
+
+/* Contáctanos (el pie) */
+.pie { border-top: 3px solid var(--tinta); scroll-margin-top: var(--nav-alto); }
+.pie__rejilla { grid-template-columns: 1.3fr 1fr 1fr; }
+.pie__grande { display: flex; align-items: center; gap: .8rem; margin: 0 0 1.2rem; font: 800 clamp(2rem, 4vw, 3rem)/1 var(--titulo); letter-spacing: -.02em; color: var(--tinta); }
+.pie__logo { width: 2.6rem; height: 2.6rem; flex: none; }
+.pie__telefono {
+  display: inline-flex; align-items: center; gap: .6rem; padding: .8rem 1.3rem; border-radius: 999px;
+  background: #fff; color: var(--tinta); border: 2px solid var(--tinta); box-shadow: 0 4px 0 var(--tinta);
+  font: 800 1.3rem/1 var(--titulo); text-decoration: none;
+}
+.pie__telefono .icono { color: var(--morado); }
+
+@media (max-width: 1099.98px) { .beneficios { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 959.98px) {
+  .nav__enlaces { background: var(--fondo); }
+  .para-ti__rejilla, .pie__rejilla { grid-template-columns: 1fr; }
+}
+@media (max-width: 559.98px) {
+  .beneficios { grid-template-columns: 1fr; }
+  .nav__llamar { padding: .5rem .8rem; font-size: .92rem; }
+}
+
+/* =========================================================
+   Portada: dos propuestas (14 de octubre)
+   A "Sol" (por defecto) y B "Campus" (html[data-portada="campus"], con ?portada=campus).
+   En las dos el logo va con sus colores originales; el cuadro amarillo se separa del fondo
+   claro con un borde fino y un fondo más cálido detrás del logo.
+   ========================================================= */
+.hero__deco { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.hero__fondo::before { display: none; }
+.hero .cara--frente { box-shadow: inset 0 0 0 1.5px rgba(28, 18, 51, .22); }
+.logo3d-caja { position: relative; isolation: isolate; }
+
+/* ---------- A · Sol ---------- */
+html:not([data-portada="campus"]) .hero { background: #FFF7E8; }
+html:not([data-portada="campus"]) .hero__fondo {
+  background:
+    radial-gradient(46rem 34rem at 72% 46%, rgba(255, 214, 120, .35), transparent 70%),
+    radial-gradient(22rem 16rem at 100% 0%, rgba(255, 200, 80, .45), transparent 70%);
+}
+/* El botón de agendar del menú, como en la imagen de referencia: píldora naranja sin borde */
+html:not([data-portada="campus"]) .nav .boton--amarillo {
+  background: linear-gradient(90deg, #FFC233, #FB9A1A); color: #1F2433; border-color: transparent;
+  box-shadow: 0 10px 22px -12px rgba(251, 140, 0, .85);
+}
+html[data-portada="campus"] .hero__deco--sol, html:not([data-portada="campus"]) .hero__deco--campus { display: none; }
+.deco { position: absolute; }
+.deco--esquina { left: 0; top: 0; width: clamp(180px, 26vw, 420px); }
+.deco--hojas { left: -18px; bottom: -10px; width: clamp(90px, 11vw, 190px); }
+.deco--onda { right: 0; bottom: 0; width: clamp(120px, 17vw, 300px); }
+/* Un sol cálido detrás del logo: el cuadro amarillo no se pierde en el crema */
+html:not([data-portada="campus"]) .logo3d-caja::before {
+  content: ""; position: absolute; z-index: -1; left: 50%; top: 40%; width: 118%; aspect-ratio: 1; translate: -50% -50%;
+  border-radius: 50%; background: radial-gradient(circle, #FFC94D 0%, #FFD978 45%, rgba(255, 217, 120, 0) 70%);
+}
+html:not([data-portada="campus"]) .hero__titulo { color: #1F2433; }
+html:not([data-portada="campus"]) .hero__titulo em {
+  background: linear-gradient(90deg, #E46F00, #C2410C); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+html:not([data-portada="campus"]) .hero__titulo em::after {
+  height: .13em; bottom: -.02em; border-radius: 99em; background: linear-gradient(90deg, #FFC233, #FB8C00);
+}
+html:not([data-portada="campus"]) .hero .boton {
+  border: 0; box-shadow: none; border-radius: 999px;
+}
+html:not([data-portada="campus"]) .hero .boton--amarillo {
+  background: linear-gradient(90deg, #FFC233, #FB9A1A); color: #1F2433; box-shadow: 0 12px 24px -12px rgba(251, 140, 0, .8);
+}
+html:not([data-portada="campus"]) .hero .boton--linea { border: 1.5px solid #1F2433; background: rgba(255, 255, 255, .6); }
+html:not([data-portada="campus"]) .hero .boton--linea:hover { background: #1F2433; color: #fff; }
+html:not([data-portada="campus"]) .hero .boton:hover { transform: translateY(-2px); }
+html:not([data-portada="campus"]) .chip-claro { background: #FFE9B8; border-color: transparent; }
+html:not([data-portada="campus"]) .leyenda a { background: #fff; border-color: transparent; box-shadow: 0 6px 16px -10px rgba(31, 36, 51, .35); }
+html:not([data-portada="campus"]) .nav:not(.nav--solida) .nav__llamar { border-color: #FB9A1A; box-shadow: none; }
+html:not([data-portada="campus"]) .nav__llamar .icono { color: #FB8C00; }
+
+/* ---------- B · Campus ---------- */
+html[data-portada="campus"] .hero { background: #FFF6D6; }
+/* Renglones de cuaderno y la línea roja del margen */
+html[data-portada="campus"] .hero__fondo {
+  background:
+    linear-gradient(90deg, transparent calc(4% + 22px), rgba(232, 0, 0, .28) calc(4% + 22px), rgba(232, 0, 0, .28) calc(4% + 24px), transparent calc(4% + 24px)),
+    repeating-linear-gradient(transparent 0 33px, rgba(51, 120, 200, .16) 33px 34px);
+}
+.garabato {
+  position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); rotate: var(--r);
+  fill: none; stroke: #C77700; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: .55;
+}
+/* El logo pegado en una nota adhesiva, con su cinta */
+html[data-portada="campus"] .logo3d-caja::before {
+  content: ""; position: absolute; z-index: -1; inset: -5% -7% -3%;
+  /* Naranja claro y no amarillo: sobre una nota amarilla se perdía el cuadro amarillo del logo */
+  background: #FFC46B; rotate: -2.5deg; border-radius: 4px;
+  box-shadow: 0 18px 30px -18px rgba(120, 80, 0, .55), inset 0 -10px 18px -12px rgba(150, 100, 0, .25);
+}
+html[data-portada="campus"] .logo3d-caja::after {
+  content: ""; position: absolute; z-index: 2; top: -6%; left: 50%; width: 34%; height: 7%; translate: -50% 0; rotate: 3deg;
+  background: rgba(255, 255, 255, .55); border: 1px solid rgba(160, 120, 40, .25); pointer-events: none;
+}
+/* "estudias" resaltado con marcador */
+html[data-portada="campus"] .hero__titulo em {
+  color: var(--tinta);
+  background: linear-gradient(100deg, transparent 2%, rgba(255, 205, 40, .85) 3% 97%, transparent 98%) 0 72% / 100% 46% no-repeat;
+}
+html[data-portada="campus"] .hero__titulo em::after { display: none; }
+html[data-portada="campus"] .chip-claro { background: #FFF; border: 1.5px dashed #C77700; }
+
+@media (max-width: 959.98px) {
+  .garabato--escritorio { display: none; }
+  .deco--hojas { width: 80px; opacity: .8; }
+  html[data-portada="campus"] .hero__fondo {
+    background: repeating-linear-gradient(transparent 0 29px, rgba(51, 120, 200, .16) 29px 30px);
+  }
+}
+
 /* Sin movimiento: todo quieto y en su estado final. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

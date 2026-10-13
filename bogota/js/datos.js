@@ -8,13 +8,13 @@ window.CASA_U = {
   // WhatsApp del chatbot (lo dio el cliente el 9 de octubre). Formato internacional sin "+".
   whatsapp: '573005296434',
 
-  // Teléfono de "Contáctanos" en el pie: en el celular, al tocarlo, llama. Por ahora el de
-  // César (320 319 3258), hasta que el cliente dé el definitivo.
-  telefono: '573203193258',
+  // Teléfono para llamar (menú, inicio y Contáctanos): en el celular, al tocarlo, llama.
+  // El cliente dio el 300 529 6434 (13 de octubre), el mismo del chatbot.
+  telefono: '573005296434',
 
   instagram: 'https://www.instagram.com/hospedajeuniversitariobogota',
 
-  // Horarios de visita que ofrece el formulario. PENDIENTE: los reales.
-  // Las visitas se agendan de lunes a sábado (también por confirmar).
+  // Horarios de visita que ofrece el formulario: lunes a viernes y sábado medio día (los
+  // sábados solo valen las horas de la mañana). PENDIENTE: las horas exactas.
   horarios: ['9:00 a. m.', '11:00 a. m.', '4:00 p. m.', '5:30 p. m.']
 };

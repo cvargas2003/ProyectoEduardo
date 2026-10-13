@@ -8,6 +8,9 @@ window.NAUTILUS = {
   // Número del propietario, en formato internacional sin "+" ni espacios.
   whatsapp: '573203193258',
 
+  // Teléfono para llamada directa (botón de Reservar). Por ahora el mismo del WhatsApp.
+  telefono: '573203193258',
+
   anuncioAirbnb: 'https://www.airbnb.mx/rooms/32046242',
 
   // PENDIENTE: los perfiles reales. Por ahora llevan a la página de inicio de cada red.
@@ -38,7 +41,7 @@ window.NAUTILUS = {
   fotos: [
     { cat: 'atardecer', alt: 'El sol se pone sobre el mar frente a Playa Salguero', f: 'atardecer-sol-se-pone-mar-playa' },
     { cat: 'piscina',   alt: 'Piscina del edificio al anochecer, entre palmeras', f: 'piscina-edificio-anochecer-palmeras' },
-    { cat: 'piscina',   alt: 'Piscina, palmeras y las carpas del edificio sobre la playa', f: 'piscina-palmeras-carpas-edificio-playa' },
+    { cat: 'piscina',   alt: 'Piscina y palmeras del edificio frente a la playa', f: 'piscina-palmeras-carpas-edificio-playa' },
     { cat: 'interior',  alt: 'Sala y cocina del nivel social', f: 'interior-sala-cocina-nivel-social' },
     { cat: 'atardecer', alt: 'Atardecer con rocas sobre el agua', f: 'atardecer-rocas-agua' },
     { cat: 'interior',  alt: 'Habitación principal con cama Queen', f: 'interior-habitacion-principal-cama-queen' },

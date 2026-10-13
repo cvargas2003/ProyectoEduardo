@@ -54,38 +54,6 @@
     if (e.key === 'Escape' && nav.classList.contains('nav--abierta')) { menu(false); botonMenu.focus(); }
   });
 
-  /* ---------- Logo pequeño del menú ----------
-   * Cada sección tiene data-cuadro con el número de su cuadro del logo (0 a 7, en orden de
-   * lectura). Al pasar por la mitad de la pantalla, ese cuadro se queda encendido. */
-  var marca = $('.marca');
-  var enlacesNav = $$('#menu a:not(.boton)');
-  function marcar(cuadro) {
-    if (cuadro === null) marca.removeAttribute('data-actual');
-    else marca.setAttribute('data-actual', cuadro);
-    enlacesNav.forEach(function (a) {
-      var seccion = document.getElementById(a.getAttribute('href').slice(1));
-      if (cuadro !== null && seccion && seccion.getAttribute('data-cuadro') === cuadro) a.setAttribute('aria-current', 'true');
-      else a.removeAttribute('aria-current');
-    });
-  }
-  var mitad = new IntersectionObserver(function (entradas) {
-    entradas.forEach(function (e) {
-      if (e.isIntersecting) marcar(e.target.getAttribute('data-cuadro'));
-    });
-  }, { rootMargin: '-50% 0px -50% 0px' });
-  $$('[data-cuadro], .hero').forEach(function (s) { mitad.observe(s); });
-
-  /* ---------- Tira de palabras ----------
-   * Corre sola con una animación CSS en bucle. Se detiene al pasar el cursor y con su botón:
-   * WCAG 2.2.2 pide poder parar todo lo que se mueve solo más de cinco segundos. */
-  var tira = $('.marquesina');
-  var botonTira = $('.marquesina__pausa');
-  botonTira.addEventListener('click', function () {
-    var pausada = tira.classList.toggle('marquesina--pausada');
-    botonTira.setAttribute('aria-label', pausada ? 'Mover la tira de palabras' : 'Pausar la tira de palabras');
-    botonTira.querySelector('use').setAttribute('href', pausada ? '#i-play' : '#i-pausa');
-  });
-
   /* ---------- Simulación del ingreso por reconocimiento facial ----------
    * listo → escaneando (la barra baja y los puntos se encienden de arriba abajo) → verificado.
    * Corre una vez al aparecer en pantalla y el botón la repite. */
@@ -176,6 +144,8 @@
     if (!dia.value) { error(dia, 'Elige el día de la visita.'); invalidos.push(dia); }
     else if (dia.value < hoy) { error(dia, 'El día no puede ser una fecha pasada.'); invalidos.push(dia); }
     else if (deIso(dia.value).getDay() === 0) { error(dia, 'Las visitas son de lunes a sábado.'); invalidos.push(dia); }
+    // Los sábados se atiende solo medio día.
+    else if (deIso(dia.value).getDay() === 6 && /p\. m\./.test(selectHora.value)) { error(dia, 'Los sábados las visitas son solo en la mañana.'); invalidos.push(dia); }
     else error(dia);
 
     if (!nombre.value.trim()) { error(nombre, 'Escribe tu nombre para saber a quién responder.'); invalidos.push(nombre); }
@@ -244,24 +214,31 @@
         gsap.set(escena, { clearProps: 'transform,transformOrigin' });
         gsap.set('.logo3d__casa, .logo3d__letras', { clearProps: 'clipPath' });
         logo.classList.remove('logo3d--armando');
+        mecerLogo();
       });
   }
 
-  // Con mouse, el logo se inclina un poco hacia el cursor y se ven los lados de los cubos.
-  function inclinarLogo() {
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  // Después de armarse, el logo se mece despacio de lado a lado, también en el celular. Se mece
+  // el "mundo" entero (cubos + casa + letras): si solo giraran los cubos, las líneas de la casa
+  // quedarían corridas. Se detiene fuera de pantalla y con su botón (WCAG 2.2.2).
+  function mecerLogo() {
     var mundo = $('.logo3d__mundo', logo);
-    var girarX = gsap.quickTo(mundo, 'rotationX', { duration: .9, ease: 'power3.out' });
-    var girarY = gsap.quickTo(mundo, 'rotationY', { duration: .9, ease: 'power3.out' });
-    var hero = $('.hero');
-    hero.addEventListener('pointermove', function (e) {
-      var r = logo.getBoundingClientRect();
-      var dx = (e.clientX - (r.left + r.width / 2)) / (window.innerWidth / 2);
-      var dy = (e.clientY - (r.top + r.height / 2)) / (window.innerHeight / 2);
-      girarY(gsap.utils.clamp(-1, 1, dx) * 16);
-      girarX(gsap.utils.clamp(-1, 1, dy) * -12);
+    var boton = $('.logo3d__pausa');
+    var pausadoAMano = false;
+    var vaiven = gsap.timeline()
+      .to(mundo, { rotationY: -14, rotationX: 4, duration: 1.6, ease: 'sine.inOut' })
+      .add(gsap.to(mundo, { rotationY: 14, rotationX: -4, duration: 3.4, ease: 'sine.inOut', repeat: -1, yoyo: true }));
+    boton.hidden = false;
+    boton.addEventListener('click', function () {
+      pausadoAMano = !vaiven.paused();
+      if (pausadoAMano) vaiven.pause(); else vaiven.play();
+      boton.setAttribute('aria-label', pausadoAMano ? 'Mover el logo' : 'Pausar el movimiento del logo');
+      boton.querySelector('use').setAttribute('href', pausadoAMano ? '#i-play' : '#i-pausa');
     });
-    hero.addEventListener('pointerleave', function () { girarX(0); girarY(0); });
+    new IntersectionObserver(function (e) {
+      if (pausadoAMano) return;
+      if (e[0].isIntersecting) vaiven.play(); else vaiven.pause();
+    }).observe(logo);
   }
 
   /* ---------- Animaciones ----------
@@ -280,7 +257,6 @@
         .fromTo('.hero__titulo .linea > span', { yPercent: 105, y: 0 }, { yPercent: 0, y: 0, duration: 1.3, stagger: .12, ease: 'power4.out' }, .2)
         .fromTo('.hero-anim', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1, stagger: .1, clearProps: 'transform' }, .65);
       raiz.classList.add('listo');
-      inclinarLogo();
 
       gsap.utils.toArray('[data-revelar]').forEach(function (el) {
         gsap.from(el, {

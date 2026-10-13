@@ -3,9 +3,9 @@
 Sitios web de reserva directa para dos propiedades de alquiler. Propuesta comercial:
 "Plan de Trabajo Web y Redes" (Nicole Cantin, 19 sept 2026).
 
-- `santa-marta/` — **Suite El Ancla** ("Tu lugar frente al mar"), un dúplex en el Edificio
-  Nautilus, Playa Salguero (Rodadero Sur). Primera versión construida. **Nautilus es el
-  edificio, no el apartamento**: así lo pidió el cliente el 1 de octubre.
+- `santa-marta/` — **Olas del Mar** ("Tu lugar frente al mar"), un dúplex en el Edificio
+  Nautilus, Playa Salguero (Rodadero Sur). **Nautilus es el edificio, no el apartamento**. El nombre
+  pasó de "Suite El Ancla" a "Olas del Mar" el 13 de octubre (Wilson tiene el dominio).
 - `bogota/` — **Casa Universitaria**, hospedaje universitario con dos sedes (Quinta Mutis y
   Galerías). Primera versión con el logo y las fotos del Instagram (ver abajo). **No se llama
   "La Casona"**: ese era el nombre viejo y todavía aparece en marcas de agua y letreros.
@@ -119,7 +119,17 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
   mar, caracol, concha, ancla: `.colgante` + símbolos `#d-*`): **dibujo de línea en latón,
   sobrio** (el cliente vio infantil la versión a color con carita), con un vaivén corto al aparecer. Olas entre secciones (`.ola ola--<color de la sección anterior>`) y hojas de palma
   de fondo en las secciones de arena.
-- **Nombre: Suite El Ancla**, slogan "Tu lugar frente al mar". "Nautilus" solo para el edificio.
+- **Ajustes del 13 de octubre** (acta en `actas/Acta-Olas-del-Mar-2026-10-13.pdf`): logo nuevo
+  `#logo-olas` (el sol y la línea azul del logo viejo de Nautilus Suite, ahora en olas; blanco
+  sobre las fotos con `--logo-sol`/`--logo-ola`). Inicio limpio: **solo el título** y debajo, en
+  pequeño, "Con acceso a piscina"; sin botones (los accesos van en el menú, con "Consultar
+  fechas" resaltado en amarillo). Sección
+  01 Descripción con el texto del cliente. **Plantilla de Reservar** (turquesa) en Descripción,
+  Reservar, Galería, Recorrido, Experiencias y Preguntas. Reservar pide teléfono, correo y la
+  autorización de datos (Ley 1581), **mínimo 3 noches** y de 2 a 5 personas, con botón para
+  llamar. Galería: todas del mismo tamaño, polaroids. Experiencias: lugares por tema, **sin días
+  ni horarios**. Nada de anclas.
+- **Nombre: Olas del Mar**, slogan "Tu lugar frente al mar". "Nautilus" solo para el edificio.
   (La carpeta `design-system/suite-nautilus` conserva el nombre viejo; `window.NAUTILUS` en
   `js/datos.js`, también.)
 - **La suite**: los dos niveles van como dos experiencias (foto en arco, número grande,
@@ -136,12 +146,12 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
   forman el logo; cada cuadro lleva a la sección de su color, en orden de lectura del logo.
   Viene del PDF vectorial del cliente (`los hector v. (1).pdf`, página 3); `img/logo.svg` es
   el logo completo.
-- **Lo que pidió el cliente y debe verse**: cena incluida y **obligatoria** (hace parte del
-  plan), **baño privado en todas** las habitaciones, ingreso por **reconocimiento facial**
-  (seguro, tecnológico, confiable). Sedes: Quinta Mutis, Calle 63C Bis # 27-04, y Galerías,
-  Transversal 25 # 60-54 (del Instagram @hospedajeuniversitariobogota).
-- **Orden (lo pidió el cliente)**: 01 Sedes, 02 Habitaciones, y luego Seguridad, Cena, Todo
-  incluido, La casa, Vivir aquí y Agenda tu visita. Cada sección conserva el color de su cuadro.
+- **Sedes**: Quinta Mutis, Calle 63C Bis # 27-04, y Galerías, Transversal 25 # 60-54 (del
+  Instagram @hospedajeuniversitariobogota). Pendiente: el cliente habló de "El Rosal"; confirmar
+  si es la misma sede Galerías.
+- **Orden (lo pidió el cliente)**: 01 Sedes, 02 Habitaciones, 03 Acceso, 04 Alimentación,
+  05 Todo incluido, 06 Para ti, 07 Vivir aquí y 08 Agenda tu visita. Cada sección conserva el
+  color de su cuadro.
 - **Ajustes del 9 de octubre (no deshacer)**: sin fondos morados ni oscuros (todo en claro,
   tono miel: amarillo tirando a naranja como la fachada). **No hay cena**: hay *alimentación
   completa* y **solo en la sede Quinta Mutis** (en la otra no). Baño **exclusivo y privado**
@@ -153,6 +163,16 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
   que es para universitarios y primíparos; la Universidad del Rosario (sede de Ciencias de la
   Salud) se menciona solo de pasada, en la sede Quinta Mutis. La sección naranja ahora es
   "Para ti". WhatsApp = chatbot 300 529 6434; teléfono del pie = 320 319 3258 (de César, por ahora).
+- **Observaciones del 13 de octubre (no deshacer; acta en `actas/acta-casa-universitaria-2026-10-13.pdf`)**:
+  la segunda sede se llama **Casa Universitaria del Rosario**, con "(Galerías)" después de la
+  dirección. **Sin secciones de Alimentación ni Todo incluido** (la alimentación no es común a
+  las sedes: solo se nombra con "*Aplican restricciones"). Sin "primíparos". Secciones: 01 Sedes
+  (con la lista de lo que trae la habitación), 02 Habitaciones (fotos sin pie, sin valor
+  mensual), 03 Acceso, 04 Pensado para estudiantes (+ Síguenos), 05 Agenda tu visita (lunes a
+  viernes y sábado medio día), 06 Preguntas; el pie es "Contáctanos". El mismo fondo miel
+  (`--fondo` #F8CD6E) en todas las secciones y el logo a color en cada título; el menú no lleva
+  logo ni nombre, sino el teléfono para llamar. Teléfono y WhatsApp: 300 529 6434. El logo se
+  mece solo tras armarse (con botón de pausa). Cubos: rojo → Contáctanos, verde → Síguenos.
 - **Las casas no tienen zona ni centro de estudio**: no mencionarla en ninguna parte. La foto
   del escritorio con computador del Instagram (`ig-06`) no se usa.
 - **Fotos**: 4 reales del Instagram (la de sala y comedor se quitó), en `img/` a 480 y 800 px (el original mide 900; no
@@ -160,8 +180,8 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
   marca de agua "La Casona" arriba a la derecha: se recortó la franja de arriba. El letrero
   de la fachada (dice "La Casona Quinta Mutis") va difuminado. Las demás del Instagram son de
   banco o gráficos: no usarlas. Al llegar originales, regenerar con el mismo nombre.
-- **Contenido**: tipos de habitación, valores, horario y menú de la cena, aseo, lavandería,
-  requisitos, horarios de visita y universidades cercanas no se saben: llevan la píldora
+- **Contenido**: tipos de habitación, valores, horarios y menú de la alimentación,
+  requisitos y horarios de visita no se saben: llevan la píldora
   `.pendiente` ("Por confirmar"). No inventar precios ni distancias. La sede Galerías no
   tiene foto todavía.
 - El dominio casauniversitaria.com.co (del Instagram) no existe todavía.
@@ -173,11 +193,11 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
 ## Pendientes con el propietario
 
 - Capacidad: resuelta, **máximo 5 huéspedes** (lo confirmó el cliente; coincide con el video).
-- **Estadía mínima**: el video dice 3 noches. El formulario todavía no lo exige.
+- **Estadía mínima**: resuelta, 3 noches (sin máximo); el formulario la exige.
 - **Número de WhatsApp**: la página usa 320 319 3258, pero el video del propietario da
   316 251 1432 y 300 529 5434. Confirmar cuál recibe las reservas.
 - Cama principal: Queen (carta de tips y Airbnb) o King (descripción de Airbnb). Dice Queen.
-- Nombre: resuelto, **Suite El Ancla** (el edificio es Nautilus, sin tilde).
+- Nombre: resuelto, **Olas del Mar** (el edificio es Nautilus, sin tilde).
 - Fotos originales en alta resolución y, si hay, más videos. La del inicio (pasarela al
   atardecer) mide 1080 px y en pantallas grandes se ve algo suave: si hay una más grande, cambiarla.
 - **Redes sociales**: los enlaces del pie van a la página de inicio de cada red; poner los

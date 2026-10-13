@@ -21,11 +21,13 @@
     return 'https://wa.me/' + D.whatsapp + '?text=' + encodeURIComponent(texto);
   }
   $$('[data-whatsapp]').forEach(function (a) {
-    a.href = enlaceWhatsapp('Hola, quisiera información sobre la Suite El Ancla en Playa Salguero.');
+    a.href = enlaceWhatsapp('Hola, quisiera información sobre Olas del Mar, la suite en Playa Salguero.');
     a.target = '_blank';
     a.rel = 'noopener';
   });
   $$('[data-airbnb]').forEach(function (a) { if (D.anuncioAirbnb) a.href = D.anuncioAirbnb; });
+  // Llamada directa: en el celular marca al tocarlo.
+  $$('[data-telefono]').forEach(function (a) { if (D.telefono) a.href = 'tel:+' + D.telefono; });
   $$('[data-red]').forEach(function (a) {
     var perfil = D.redes && D.redes[a.dataset.red];
     if (perfil) a.href = perfil;
@@ -62,10 +64,8 @@
   /* ---------- Galería ---------- */
   var mosaico = $('#mosaico');
   var verMas = $('#ver-mas');
-  // Cada bloque de 10 fotos llena justo 3 filas en 4 columnas y 6 filas en 2: la 1.ª es alta,
-  // la 5.ª ancha. Si el patrón no cuadra, la rejilla deja huecos en medio del mosaico.
-  var FORMAS = ['alto', '', '', '', 'ancho', '', '', '', '', ''];
-  var INICIALES = 10;
+  // Todas del mismo tamaño, como polaroids sobre la mesa (el giro de cada una va en el CSS).
+  var INICIALES = 12;
   var filtro = 'todas';
   var expandida = false;
   var lista = [];
@@ -74,23 +74,17 @@
     lista = D.fotos.filter(function (f) { return filtro === 'todas' || f.cat === filtro; });
     var visibles = expandida ? lista : lista.slice(0, INICIALES);
 
-    // El último bloque incompleto va sin tamaños especiales: así el único hueco posible
-    // queda al final de la última fila, no en medio.
-    var conForma = visibles.length - (visibles.length % FORMAS.length);
-
     mosaico.replaceChildren();
     visibles.forEach(function (f, i) {
       var boton = document.createElement('button');
       boton.type = 'button';
       boton.className = 'mosaico__item';
-      var forma = i < conForma ? FORMAS[i % FORMAS.length] : '';
-      if (forma) boton.classList.add('mosaico__item--' + forma);
       boton.setAttribute('aria-label', 'Ampliar foto: ' + f.alt);
 
       var img = document.createElement('img');
       img.src = foto(f.f, 800);
       img.srcset = foto(f.f, 480) + ' 480w, ' + foto(f.f, 800) + ' 800w, ' + foto(f.f, 1200) + ' 1200w';
-      img.sizes = '(min-width: 760px) 25vw, 50vw';
+      img.sizes = '(min-width: 1100px) 22vw, (min-width: 760px) 30vw, 50vw';
       img.alt = '';
       img.loading = 'lazy';
       img.decoding = 'async';
@@ -327,7 +321,11 @@
   var llegada = $('#llegada');
   var salida = $('#salida');
   var nombre = $('#nombre');
+  var telefono = $('#telefono');
+  var correo = $('#correo');
+  var autorizo = $('#autorizo');
   var textoNoches = $('#noches');
+  var MINIMO_NOCHES = 3;
   var formatoFecha = new Intl.DateTimeFormat('es-CO', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
 
   // Fechas en hora local: toISOString() usa UTC y en Colombia correría el día después de las 7 p. m.
@@ -350,7 +348,8 @@
   function actualizarNoches() {
     if (llegada.value && salida.value && salida.value > llegada.value) {
       var n = noches();
-      textoNoches.textContent = n + (n === 1 ? ' noche' : ' noches') + ' frente al mar';
+      textoNoches.textContent = n + (n === 1 ? ' noche' : ' noches') + ' frente al mar' +
+        (n < MINIMO_NOCHES ? ' · la estadía mínima es de ' + MINIMO_NOCHES + ' noches' : '');
     } else {
       textoNoches.textContent = '';
     }
@@ -358,7 +357,7 @@
   llegada.addEventListener('change', function () {
     if (llegada.value) {
       var siguiente = deIso(llegada.value);
-      siguiente.setDate(siguiente.getDate() + 1);
+      siguiente.setDate(siguiente.getDate() + MINIMO_NOCHES);
       salida.min = aIso(siguiente);
       if (salida.value && salida.value <= llegada.value) salida.value = '';
     }
@@ -367,6 +366,9 @@
   });
   salida.addEventListener('change', function () { error(salida); actualizarNoches(); });
   nombre.addEventListener('input', function () { if (nombre.value.trim()) error(nombre); });
+  telefono.addEventListener('input', function () { if (telefono.value.replace(/\D/g, '').length >= 7) error(telefono); });
+  correo.addEventListener('input', function () { error(correo); });
+  autorizo.addEventListener('change', function () { if (autorizo.checked) error(autorizo); });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -378,10 +380,20 @@
 
     if (!salida.value) { error(salida, 'Elija la fecha de salida.'); invalidos.push(salida); }
     else if (llegada.value && salida.value <= llegada.value) { error(salida, 'La salida debe ser después de la llegada.'); invalidos.push(salida); }
+    else if (llegada.value && noches() < MINIMO_NOCHES) { error(salida, 'La estadía mínima es de ' + MINIMO_NOCHES + ' noches.'); invalidos.push(salida); }
     else error(salida);
 
     if (!nombre.value.trim()) { error(nombre, 'Escriba su nombre para saber a quién responder.'); invalidos.push(nombre); }
     else error(nombre);
+
+    if (telefono.value.replace(/\D/g, '').length < 7) { error(telefono, 'Escriba un teléfono o WhatsApp para contactarlo.'); invalidos.push(telefono); }
+    else error(telefono);
+
+    if (correo.value.trim() && !correo.checkValidity()) { error(correo, 'Revise el correo: parece incompleto.'); invalidos.push(correo); }
+    else error(correo);
+
+    if (!autorizo.checked) { error(autorizo, 'Necesitamos su autorización para usar estos datos y responderle.'); invalidos.push(autorizo); }
+    else error(autorizo);
 
     if (invalidos.length) { invalidos[0].focus(); return; }
 
@@ -389,13 +401,15 @@
     var huespedes = $('#huespedes').value;
     var mensaje = $('#mensaje').value.trim();
     var texto =
-      'Hola, quisiera reservar la Suite El Ancla.\n\n' +
+      'Hola, quisiera reservar en Olas del Mar.\n\n' +
       '• Llegada: ' + formatoFecha.format(deIso(llegada.value)) + '\n' +
       '• Salida: ' + formatoFecha.format(deIso(salida.value)) + ' (' + n + (n === 1 ? ' noche' : ' noches') + ')\n' +
-      '• Huéspedes: ' + huespedes + '\n' +
-      '• Nombre: ' + nombre.value.trim() +
+      '• Personas: ' + huespedes + '\n' +
+      '• Nombre: ' + nombre.value.trim() + '\n' +
+      '• Teléfono / WhatsApp: ' + telefono.value.trim() +
+      (correo.value.trim() ? '\n• Correo: ' + correo.value.trim() : '') +
       (mensaje ? '\n• Mensaje: ' + mensaje : '') +
-      '\n\n¿Me confirma disponibilidad y tarifa?';
+      '\n\nAutorizo el tratamiento de mis datos para esta solicitud.\n¿Me confirma disponibilidad y costo?';
 
     window.open(enlaceWhatsapp(texto), '_blank', 'noopener');
   });
