@@ -173,6 +173,225 @@
     window.open(enlaceWhatsapp(texto), '_blank', 'noopener');
   });
 
+  /* ---------- Videos del recorrido ----------
+   * Cargan al darles play (preload="none"). Suena uno solo; se pausan al salir de pantalla y
+   * al abrir el panel de una sede, para que no sigan sonando detrás. */
+  var videosPagina = $$('.pantalla video');
+  function pausarVideosPagina() { videosPagina.forEach(function (v) { v.pause(); }); }
+  videosPagina.forEach(function (v) {
+    v.addEventListener('play', function () { videosPagina.forEach(function (otro) { if (otro !== v) otro.pause(); }); });
+  });
+  if (window.IntersectionObserver) {
+    var fueraDePantalla = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) { if (!e.isIntersecting) e.target.pause(); });
+    });
+    videosPagina.forEach(function (v) { fueraDePantalla.observe(v); });
+  }
+
+  /* ---------- Detalle de la sede: cómo llegar y galería ----------
+   * Un solo <dialog> que se llena con los datos de la sede (datos.js, "sedes"). Dos pestañas:
+   * "Cómo llegar" (mapa con el trayecto) y "Galería" (carrusel que rota solo y cambia la
+   * descripción de cada foto). El carrusel se detiene al pasar el cursor o con el foco, cuando
+   * no se ve y con su botón (WCAG 2.2.2); con "reducir movimiento" arranca detenido.
+   * Solo se cargan la foto actual y sus vecinas: son 12 y pesan ~100 KB cada una. */
+  var detalle = $('#detalle');
+  if (detalle && D.sedes) {
+    var tituloDetalle = $('#detalle-titulo');
+    var NOMBRES = ['llegar', 'galeria'];
+    var pestanas = { llegar: $('#pest-llegar'), galeria: $('#pest-galeria') };
+    var paneles = { llegar: $('#panel-llegar'), galeria: $('#panel-galeria') };
+    var marcoMapa = $('.detalle__mapa iframe', detalle);
+    var enlaceMapa = $('[data-mapa-abrir]', detalle);
+    var enlaceVisita = $('[data-detalle-visita]', detalle);
+    var carrusel = $('.slider', detalle);
+    var pista = $('.slider__pista', detalle);
+    var cuenta = $('.slider__cuenta', detalle);
+    var textoFoto = $('.slider__texto', detalle);
+    var puntos = $('.slider__puntos', detalle);
+    var botonPausa = $('.slider__pausa', detalle);
+    var sede = null, laminas = [], indice = 0, reloj = null;
+    var encima = false, enPausa = !movimiento.matches, pestanaActiva = 'llegar', abridor = null, urlMapa = '';
+
+    function prepararMapa() {
+      var q = encodeURIComponent;
+      if (sede.trayecto) {
+        urlMapa = 'https://maps.google.com/maps?saddr=' + q(sede.consulta) + '&daddr=' + q(sede.trayecto.hasta) + '&dirflg=w&hl=es&output=embed';
+        enlaceMapa.href = 'https://www.google.com/maps/dir/?api=1&origin=' + q(sede.consulta) + '&destination=' + q(sede.trayecto.hasta) + '&travelmode=walking';
+      } else {
+        urlMapa = 'https://maps.google.com/maps?q=' + q(sede.consulta) + '&hl=es&z=16&output=embed';
+        enlaceMapa.href = 'https://www.google.com/maps/search/?api=1&query=' + q(sede.consulta);
+      }
+    }
+
+    function construirCarrusel() {
+      pista.innerHTML = '';
+      puntos.innerHTML = '';
+      laminas = [];
+      sede.fotos.forEach(function (f, i) {
+        var fig = document.createElement('figure');
+        fig.className = 'slider__lamina';
+        fig.setAttribute('aria-hidden', 'true');
+        // El fondo es la misma foto desenfocada: las verticales no quedan con barras vacías.
+        var fondo = document.createElement('div');
+        fondo.className = 'slider__fondo';
+        var img = document.createElement('img');
+        img.alt = f.desc;
+        img.decoding = 'async';
+        img.setAttribute('data-src', 'img/' + f.f + '.webp');
+        fig.appendChild(fondo);
+        fig.appendChild(img);
+        pista.appendChild(fig);
+        laminas.push(fig);
+        var punto = document.createElement('button');
+        punto.type = 'button';
+        punto.className = 'slider__punto';
+        punto.setAttribute('aria-label', 'Ir a la foto ' + (i + 1));
+        punto.addEventListener('click', function () { mostrar(i); sincronizar(); });
+        puntos.appendChild(punto);
+      });
+      indice = 0;
+    }
+
+    function cargar(i) {
+      var n = laminas.length;
+      if (!n) return;
+      var fig = laminas[((i % n) + n) % n];
+      var img = fig.querySelector('img');
+      if (!img.getAttribute('src')) {
+        var ruta = img.getAttribute('data-src');
+        img.src = ruta;
+        fig.firstChild.style.backgroundImage = 'url("' + ruta + '")';
+      }
+    }
+
+    function mostrar(i) {
+      var n = laminas.length;
+      if (!n) return;
+      indice = ((i % n) + n) % n;
+      laminas.forEach(function (fig, k) {
+        fig.classList.toggle('es-activa', k === indice);
+        fig.setAttribute('aria-hidden', String(k !== indice));
+      });
+      $$('.slider__punto', puntos).forEach(function (p, k) {
+        if (k === indice) p.setAttribute('aria-current', 'true'); else p.removeAttribute('aria-current');
+      });
+      cargar(indice); cargar(indice + 1); cargar(indice - 1);
+      cuenta.textContent = (indice + 1) + ' / ' + n;
+      textoFoto.textContent = sede.fotos[indice].desc;
+      textoFoto.classList.remove('cambia');
+      void textoFoto.offsetWidth; // reinicia el fundido de la descripción
+      textoFoto.classList.add('cambia');
+    }
+
+    // Una sola función decide si el carrusel debe estar rotando.
+    function sincronizar() {
+      clearInterval(reloj);
+      reloj = null;
+      var quiere = detalle.open && pestanaActiva === 'galeria' && laminas.length > 1 && !enPausa && !encima && !document.hidden;
+      if (quiere) reloj = setInterval(function () { mostrar(indice + 1); }, 5500);
+      botonPausa.setAttribute('aria-label', enPausa ? 'Reproducir la rotación de fotos' : 'Pausar la rotación de fotos');
+      botonPausa.querySelector('use').setAttribute('href', enPausa ? '#i-play' : '#i-pausa');
+    }
+
+    function pestana(nombre) {
+      pestanaActiva = nombre;
+      NOMBRES.forEach(function (n) {
+        var activa = n === nombre;
+        pestanas[n].setAttribute('aria-selected', String(activa));
+        pestanas[n].tabIndex = activa ? 0 : -1;
+        paneles[n].hidden = !activa;
+      });
+      if (nombre === 'llegar' && marcoMapa.getAttribute('src') !== urlMapa) marcoMapa.src = urlMapa;
+      if (nombre === 'galeria') mostrar(indice);
+      sincronizar();
+    }
+
+    function abrir(clave, nombrePestana, boton) {
+      var s = D.sedes[clave];
+      if (!s) return;
+      sede = s;
+      abridor = boton;
+      var hayFotos = !!(s.fotos && s.fotos.length);
+      tituloDetalle.textContent = s.nombre;
+      $('.detalle__direccion', detalle).textContent = s.direccion;
+      $('.detalle__trayecto', detalle).textContent = s.trayecto ? s.trayecto.texto : (s.llegar || '');
+      enlaceVisita.setAttribute('data-sede', s.valorFormulario || '');
+      pestanas.galeria.hidden = !hayFotos;
+      pestanas.galeria.textContent = 'Galería' + (hayFotos ? ' (' + s.fotos.length + ')' : '');
+      prepararMapa();
+      construirCarrusel();
+      encima = false;
+      enPausa = !movimiento.matches;
+      pausarVideosPagina();
+      detalle.showModal();
+      raiz.style.overflow = 'hidden';
+      pestana(hayFotos && nombrePestana === 'galeria' ? 'galeria' : 'llegar');
+    }
+
+    // La limpieza es sincrónica: en Chromium el evento "close" llega un cuadro después.
+    function limpiar() {
+      clearInterval(reloj);
+      reloj = null;
+      raiz.style.overflow = '';
+      marcoMapa.removeAttribute('src');
+    }
+    function cerrar(devolverFoco) {
+      if (detalle.open) detalle.close();
+      limpiar();
+      if (devolverFoco !== false && abridor) abridor.focus();
+      abridor = null;
+    }
+
+    $$('[data-detalle]').forEach(function (b) {
+      b.addEventListener('click', function () { abrir(b.getAttribute('data-detalle'), b.getAttribute('data-pestana'), b); });
+    });
+    $$('[data-conteo]').forEach(function (e) {
+      var s = D.sedes[e.getAttribute('data-conteo')];
+      if (s && s.fotos && s.fotos.length) e.textContent = 'Ver galería · ' + s.fotos.length + ' fotos';
+    });
+    $('.detalle__cerrar', detalle).addEventListener('click', function () { cerrar(); });
+    detalle.addEventListener('click', function (e) { if (e.target === detalle) cerrar(); });   // clic en el fondo
+    detalle.addEventListener('cancel', limpiar);                                              // Esc
+    // El "close" llega un cuadro tarde: si ya se abrió otra sede, no hay que borrarle el mapa.
+    detalle.addEventListener('close', function () { if (!detalle.open) limpiar(); });
+    enlaceVisita.addEventListener('click', function () { cerrar(false); });                    // sigue al formulario
+
+    pestanas.llegar.addEventListener('click', function () { pestana('llegar'); });
+    pestanas.galeria.addEventListener('click', function () { pestana('galeria'); });
+    $('.detalle__pestanas', detalle).addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      var visibles = NOMBRES.filter(function (n) { return !pestanas[n].hidden; });
+      if (visibles.length < 2) return;
+      var paso = e.key === 'ArrowRight' ? 1 : -1;
+      var otra = visibles[(visibles.indexOf(pestanaActiva) + paso + visibles.length) % visibles.length];
+      pestana(otra);
+      pestanas[otra].focus();
+    });
+
+    $('.slider__flecha--ant', detalle).addEventListener('click', function () { mostrar(indice - 1); sincronizar(); });
+    $('.slider__flecha--sig', detalle).addEventListener('click', function () { mostrar(indice + 1); sincronizar(); });
+    botonPausa.addEventListener('click', function () { enPausa = !enPausa; sincronizar(); });
+    carrusel.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { mostrar(indice - 1); sincronizar(); }
+      if (e.key === 'ArrowRight') { mostrar(indice + 1); sincronizar(); }
+    });
+    // Se detiene mientras el cursor está encima o el foco está dentro.
+    carrusel.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { encima = true; sincronizar(); } });
+    carrusel.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') { encima = false; sincronizar(); } });
+    carrusel.addEventListener('focusin', function () { encima = true; sincronizar(); });
+    carrusel.addEventListener('focusout', function () { encima = false; sincronizar(); });
+    document.addEventListener('visibilitychange', sincronizar);
+    // Deslizar con el dedo
+    var inicioX = null;
+    $('.slider__marco', detalle).addEventListener('pointerdown', function (e) { inicioX = e.clientX; });
+    $('.slider__marco', detalle).addEventListener('pointerup', function (e) {
+      if (inicioX === null) return;
+      var dx = e.clientX - inicioX;
+      inicioX = null;
+      if (Math.abs(dx) > 45) { mostrar(indice + (dx < 0 ? 1 : -1)); sincronizar(); }
+    });
+  }
+
   /* ---------- El logo en cubos ----------
    * Los 8 cubos arrancan juntos formando un solo cubo de 2 × 2 × 2 que gira; luego cada uno
    * vuela a su lugar y queda el logo. Después se dibuja la casa (de abajo hacia arriba) y

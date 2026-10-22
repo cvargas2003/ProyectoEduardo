@@ -173,6 +173,26 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
   (`--fondo` #F8CD6E) en todas las secciones y el logo a color en cada título; el menú no lleva
   logo ni nombre, sino el teléfono para llamar. Teléfono y WhatsApp: 300 529 6434. El logo se
   mece solo tras armarse (con botón de pausa). Cubos: rojo → Contáctanos, verde → Síguenos.
+- **Portada "Campus" (14 de octubre, definitiva)**: hoja de cuaderno con renglones y margen rojo,
+  garabatos de estudiante (`.garabato`) y el logo con sus colores originales sobre una nota
+  adhesiva naranja clara (en amarilla se perdía el cuadro amarillo). La propuesta "Sol" (crema
+  con formas naranjas) quedó **descartada** y se borró.
+- **Panel de la sede (21 de octubre)**: al tocar una sede (foto, "Cómo llegar" o "Galería") se abre un
+  `<dialog id="detalle">` con dos pestañas. *Cómo llegar*: mapa de Google (iframe `output=embed`) con
+  la ruta **a pie** desde Quinta Mutis hasta la Universidad del Rosario, sede Quinta de Mutis (sale
+  6 min / 400 m; no escribir esas cifras en la página, las da el mapa). *Galería*: carrusel de 12
+  fotos que rota solo cada 5,5 s y cambia la descripción; pausa con botón, cursor, foco o
+  pestaña oculta; con "reducir movimiento" arranca detenido; carga solo la foto actual y sus vecinas.
+  Todo sale de `window.CASA_U.sedes` en `js/datos.js` (fotos, descripciones, direcciones). Una sede sin
+  `fotos` no muestra la pestaña Galería. La sede **del Rosario (Galerías)** ya tiene 11 fotos
+  (`img/rosario-NN-*.webp`) y su trayecto a pie a la misma sede de la universidad (sale 13 min / 900 m);
+  su portada (`fachada-sede-rosario-*`) es un recorte 16:9 de IMG_3473 **sin la persona** que aparece en la
+  foto original. De esa tanda se dejaron fuera IMG_3406 y 3408 (repiten la habitación verde), 3399, 3397 y
+  3396 (repiten la rosada, con peluches), 3448 y 3458 (solo ventana). Las fotos
+  (`img/quinta-mutis-NN-*.webp`, lado largo 1280 px, sin metadatos) vienen de 3 imágenes pegadas y 8
+  HEIC del cliente (Descargas); **se dejó fuera IMG_3314** (clóset con una bolsa a la vista) y no se
+  usaron IMG_3318, 3333 ni 3337. Pendiente de confirmar: la foto del **comedor** (el cliente había dicho
+  que no hay sala y comedor) y si el edificio de la vista por la ventana es la Universidad del Rosario.
 - **Las casas no tienen zona ni centro de estudio**: no mencionarla en ninguna parte. La foto
   del escritorio con computador del Instagram (`ig-06`) no se usa.
 - **Fotos**: 4 reales del Instagram (la de sala y comedor se quitó), en `img/` a 480 y 800 px (el original mide 900; no
@@ -182,9 +202,32 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
   banco o gráficos: no usarlas. Al llegar originales, regenerar con el mismo nombre.
 - **Contenido**: tipos de habitación, valores, horarios y menú de la alimentación,
   requisitos y horarios de visita no se saben: llevan la píldora
-  `.pendiente` ("Por confirmar"). No inventar precios ni distancias. La sede Galerías no
-  tiene foto todavía.
-- El dominio casauniversitaria.com.co (del Instagram) no existe todavía.
+  `.pendiente` ("Por confirmar"). No inventar precios ni distancias. La fachada del Rosario ya tiene foto.
+- **Videos = sección propia (22 de octubre, decidido)**: el cliente no los quiso dentro del panel de la sede.
+  Van en la sección **03 "Conoce una de nuestras sedes"** (`#recorrido`, verde), entre Habitaciones y Acceso;
+  por eso el orden ahora es 01 Sedes, 02 Habitaciones, 03 Recorrido, 04 Acceso, 05 Estudiantes, 06 Agenda
+  tu visita, 07 Preguntas. Los dos videos son de **Quinta Mutis**, en `video/` (MP4 720×1280 con audio,
+  ~6 MB cada uno, más `-poster.webp`; los originales de 1080×1920 y 40 MB están en Descargas del cliente):
+  `recorrido-universidad` (de la casa al punto donde se ve la Universidad del Rosario; trae textos y
+  música puestos por el cliente) y `habitaciones`. Marco blanco con cinta y giro, como las fotos de
+  Habitaciones, sobre un bloque verde; en el celular, una tira que se desliza. Cargan al darles play
+  (`preload="none"`), suena uno a la vez y se pausan al salir de pantalla o al abrir el panel de una
+  sede. El cuadro verde del logo, la leyenda y el menú llevan a esta sección (**Síguenos** ya no tiene cuadro:
+  sigue dentro de Estudiantes y en Contáctanos). El panel de la sede **no** lleva videos.
+  El video confirmó que el edificio de las fotos 11 y 12 de la galería es la **Universidad del Rosario**.
+  **Ojo:** en `recorrido-universidad` el letrero de la fachada se ve ~4 s (segundos 4 a 8) con los
+  **dos teléfonos** (300… y 316-2511432); no se tocó el video del cliente.
+- **Dominio y teléfono (22 de octubre, decidido)**: el dominio es **casauniversitaria.com** (el de SiteGround;
+  canonical, og:url y og:image apuntan ahí). **Un solo teléfono: 300 529 6434.** El letrero de la fachada
+  del Rosario trae también el 316-2511432 y el dominio .com.co: en `fachada-sede-rosario-*` y
+  `rosario-01-fachada` esos datos van **difuminados** (la fachada de Quinta Mutis ya lo estaba). No
+  volver a poner esos datos en ninguna parte. `img/og-casa-universitaria.jpg` (1200×630) es la imagen
+  que sale al compartir el enlace.
+- **Alimentación por sede (22 de octubre)**: la sede se llama **Casa Universitaria del Rosario** (no "El Rosal").
+  **Quinta Mutis**: hay comedor y la alimentación va incluida **si el estudiante decide tomarla**.
+  **Del Rosario**: hay comedor y **cocina**, y los estudiantes cocinan ellos mismos; **no incluye
+  alimentación**. Está en cada tarjeta de Sedes (`.sede__comida`) y en la nota del asterisco de
+  "alimentación" (Estudiantes y la pregunta del valor mensual). Sigue sin haber sección de Alimentación.
 - **Se tutea** (público estudiante); Santa Marta trata de usted.
 - **`js/principal.js` es una copia adaptada del de Santa Marta**, a propósito: cada sitio se
   publica solo. Si se corrige un error en uno, revisar el otro.
