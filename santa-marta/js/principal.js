@@ -21,7 +21,7 @@
     return 'https://wa.me/' + D.whatsapp + '?text=' + encodeURIComponent(texto);
   }
   $$('[data-whatsapp]').forEach(function (a) {
-    a.href = enlaceWhatsapp('Hola, quisiera información sobre Olas del Mar, la suite en Playa Salguero.');
+    a.href = enlaceWhatsapp('🌊☀️ *Olas de Mar* · Tu lugar frente al mar\n\nHola, quisiera información sobre la suite en Playa Salguero.');
     a.target = '_blank';
     a.rel = 'noopener';
   });
@@ -273,8 +273,44 @@
     bucles.forEach(function (bucle) { bucle.sincronizar(); });
   }
 
-  crearBucle($('.arco__video'), $('.arco__pausa'), 'el video del edificio');
   crearBucle($('.video__bucle'), $('.video__pausa'), 'el video del recorrido');
+  crearBucle($('.nivel__video'), $('.nivel__pausa'), 'el recorrido del nivel social');
+
+  /* ---------- Fotos del edificio en el cuadro de la bienvenida ----------
+   * Pasan solas cada 4,5 s con un fundido. Se detienen con el botón, al pasar el cursor o con el
+   * foco dentro, cuando el cuadro no se ve y con "reducir movimiento" (WCAG 2.2.2). */
+  $$('[data-carrusel]').forEach(function (cuadro) {
+    var fotos = $$('.cuadro__foto', cuadro);
+    var pie = $('.cuadro__pie', cuadro);
+    var boton = $('.cuadro__pausa', cuadro);
+    var actual = 0, reloj = null, visible = false, encima = false;
+    var quiere = movimiento.matches;
+
+    function mostrar(i) {
+      fotos[actual].classList.remove('cuadro__foto--activa');
+      actual = (i + fotos.length) % fotos.length;
+      fotos[actual].classList.add('cuadro__foto--activa');
+      pie.textContent = fotos[actual].querySelector('img').alt;
+      // La siguiente se pide antes de que le toque, para que el fundido no muestre un hueco.
+      var siguiente = fotos[(actual + 1) % fotos.length].querySelector('img');
+      siguiente.loading = 'eager';
+    }
+    function sincronizar() {
+      var correr = quiere && visible && !encima && !document.hidden;
+      if (correr && !reloj) reloj = setInterval(function () { mostrar(actual + 1); }, 4500);
+      if (!correr && reloj) { clearInterval(reloj); reloj = null; }
+      boton.setAttribute('aria-label', (quiere ? 'Pausar' : 'Pasar') + ' las fotos del edificio');
+      boton.querySelector('use').setAttribute('href', quiere ? '#i-pausa' : '#i-play');
+    }
+    boton.addEventListener('click', function () { quiere = !quiere; if (quiere) mostrar(actual + 1); sincronizar(); });
+    cuadro.addEventListener('mouseenter', function () { encima = true; sincronizar(); });
+    cuadro.addEventListener('mouseleave', function () { encima = false; sincronizar(); });
+    cuadro.addEventListener('focusin', function () { encima = true; sincronizar(); });
+    cuadro.addEventListener('focusout', function () { encima = false; sincronizar(); });
+    document.addEventListener('visibilitychange', sincronizar);
+    new IntersectionObserver(function (e) { visible = e[0].isIntersecting; sincronizar(); }).observe(cuadro);
+    sincronizar();
+  });
 
   /* ---------- Tira de destinos ----------
    * Corre sola con una animación CSS en bucle. Se detiene al pasar el cursor y con su botón:
@@ -401,7 +437,8 @@
     var huespedes = $('#huespedes').value;
     var mensaje = $('#mensaje').value.trim();
     var texto =
-      'Hola, quisiera reservar en Olas del Mar.\n\n' +
+      '🌊☀️ *Olas de Mar* · Tu lugar frente al mar\n' +
+      'Solicitud de reserva\n\n' +
       '• Llegada: ' + formatoFecha.format(deIso(llegada.value)) + '\n' +
       '• Salida: ' + formatoFecha.format(deIso(salida.value)) + ' (' + n + (n === 1 ? ' noche' : ' noches') + ')\n' +
       '• Personas: ' + huespedes + '\n' +

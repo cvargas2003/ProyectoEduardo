@@ -3,9 +3,10 @@
 Sitios web de reserva directa para dos propiedades de alquiler. Propuesta comercial:
 "Plan de Trabajo Web y Redes" (Nicole Cantin, 19 sept 2026).
 
-- `santa-marta/` — **Olas del Mar** ("Tu lugar frente al mar"), un dúplex en el Edificio
+- `santa-marta/` — **Olas de Mar** ("Tu lugar frente al mar"), un dúplex en el Edificio
   Nautilus, Playa Salguero (Rodadero Sur). **Nautilus es el edificio, no el apartamento**. El nombre
-  pasó de "Suite El Ancla" a "Olas del Mar" el 13 de octubre (Wilson tiene el dominio).
+  pasó de "Suite El Ancla" a "Olas del Mar" el 13 de octubre (Wilson tiene el dominio) y el 22 se
+  corrigió a **"Olas de Mar"** (no "del").
 - `bogota/` — **Casa Universitaria**, hospedaje universitario con dos sedes (Quinta Mutis y
   Galerías). Primera versión con el logo y las fotos del Instagram (ver abajo). **No se llama
   "La Casona"**: ese era el nombre viejo y todavía aparece en marcas de agua y letreros.
@@ -49,9 +50,20 @@ van tal cual a su `wwwroot`: no se pierde nada.
   34,1–38,3 s sala y cocina) unidos con fundidos. `video/recorrido-poster.jpg` es su
   primer cuadro. Al rehacerlo con un video nuevo, revisar cuadro a cuadro que no entre texto.
 
-- **Fondo del inicio**: la pasarela al atardecer entre palmeras, en alta (la mandó el cliente el
-  9 de octubre; original en `fotos-propietario/atardecer-pasarela-palmeras-alta.jpg`, 1745 px):
-  `img/atardecer-pasarela-palmeras-{800,1200,1745}.webp`. La foto vieja de la pasarela
+- **Fondo del inicio (22 de octubre, el último que mandó)**: escalera de madera que baja a la piscina con
+  el ojo de buey y el mar al atardecer (1844×853, llegó pegada en el chat; original en
+  `fotos-propietario/atardecer-piscina-muelle-nuevo.png`): `img/atardecer-piscina-muelle-{800,1200,1844}.webp`.
+  Parece retocada o generada con IA: se le advirtió al cliente que no muestra el edificio tal cual.
+- **Video del nivel social (22 de octubre)**: en lugar de la foto de la cocina, el recorrido
+  VID_20250413_180230 (original en `videos-originales/recorrido-nivel-social-2025-04-13.mp4`) en
+  `video/nivel-social-recorrido.mp4` (1080p, CRF 25, sin audio) y `-movil.mp4` (720p), con `crearBucle`.
+  El cliente pidió ponerle "We Don't Talk Anymore": no se hizo (derechos de autor); falta música con licencia.
+- **Fondo anterior (22 de octubre, reemplazado)**: foto del cliente de la piscina entre palmeras
+  (IMG_20261010_163758) sin el piso de madera y con el **cielo del atardecer de otra foto suya de la
+  misma playa** (IMG_20240212_175732), con el reflejo del sol en el agua: lo pidió así. Se arma con
+  `hero_atardecer.py` (en el scratchpad de la sesión); el resultado está en
+  `fotos-propietario/atardecer-piscina-palmeras-compuesta.jpg` e `img/atardecer-piscina-palmeras-*.webp`.
+  La anterior (pasarela entre palmeras) quedó en `img/atardecer-pasarela-palmeras-*`. La foto vieja de la pasarela
   (`atardecer-pasarela-playa-*`) sigue en el marco cuadrado de la bienvenida. Antes
   fue un video en bucle del atardecer, sacado de `videos-originales/promo-atardecer-2026-09-27.mp4`
   (32,9–42,1 s, solo las filas 0–480 porque abajo tiene letreros; `delogo` deja rayas). El
@@ -83,7 +95,8 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
    a Airbnb, porque necesitan URL absoluta: cambiarlas al tener dominio.
 3. **La distribución se describe con honestidad**: los dos "cuartos" del nivel de descanso
    están separados por una puerta plegable. Una reseña de 1★ nació de venderlos como dos
-   habitaciones. No volver a presentarlos así.
+   habitaciones. **El 22 de octubre el cliente pidió de todos modos "Dos habitaciones"** y quitar
+   lo de la puerta plegable; se hizo así, avisándole del riesgo.
 4. **Nunca publicar** el número del apartamento, la clave del wifi ni el contacto de quien
    entrega las llaves (están en la carta de tips): se envían al confirmar la reserva.
 5. **El RNT 139433 debe verse en el pie**: en Colombia es obligatorio para alquiler turístico.
@@ -128,8 +141,20 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
   Reservar, Galería, Recorrido, Experiencias y Preguntas. Reservar pide teléfono, correo y la
   autorización de datos (Ley 1581), **mínimo 3 noches** y de 2 a 5 personas, con botón para
   llamar. Galería: todas del mismo tamaño, polaroids. Experiencias: lugares por tema, **sin días
-  ni horarios**. Nada de anclas.
-- **Nombre: Olas del Mar**, slogan "Tu lugar frente al mar". "Nautilus" solo para el edificio.
+  ni horarios**.
+- **Cambios del 22 de octubre** ("cambios pagina santa marta.pdf", 29 puntos): **todos los fondos en
+  azul mar** (`--oceano` #0D7490 y `--oceano-profundo` #0B6A85, alternados con `.fondo-a/.fondo-b` y
+  olas `.ola--a/.ola--b`; dentro de `.bloque` las variables de texto pasan a claras, y `.carta__marco`
+  las vuelve oscuras). La bienvenida tiene **un solo cuadro colgado de un clavo** con 8 fotos del
+  edificio que pasan solas (`[data-carrusel]`); el video del pasillo ya no se usa. Llamar: ícono en el
+  menú y botón fijo encima del de WhatsApp, **+57 316 251 1432** (`telefono` en `datos.js`); salió el
+  bloque "Llámenos directo". Galería, niveles, Descripción y Experiencias con las **fotos del cliente**
+  (`Pictures/Photos-1-001`, 37 fotos; las de Airbnb quedan en `img/` sin usar). Experiencias: todas las
+  playas de la carta de tips y actividades generales (Playas, Mar y aventura, Naturaleza, Ciudad e
+  historia). Ubicación con la dirección escrita (Calle 27 # 1-83, **sin el número del apartamento**)
+  y la foto del paradero del bus. En la suite cuelgan un **ancla** y una concha. El mensaje de WhatsApp
+  empieza con "🌊☀️ *Olas de Mar*".
+- **Nombre: Olas de Mar**, slogan "Tu lugar frente al mar". "Nautilus" solo para el edificio.
   (La carpeta `design-system/suite-nautilus` conserva el nombre viejo; `window.NAUTILUS` en
   `js/datos.js`, también.)
 - **La suite**: los dos niveles van como dos experiencias (foto en arco, número grande,
@@ -237,8 +262,7 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
 
 - Capacidad: resuelta, **máximo 5 huéspedes** (lo confirmó el cliente; coincide con el video).
 - **Estadía mínima**: resuelta, 3 noches (sin máximo); el formulario la exige.
-- **Número de WhatsApp**: la página usa 320 319 3258, pero el video del propietario da
-  316 251 1432 y 300 529 5434. Confirmar cuál recibe las reservas.
+- **Número de WhatsApp**: resuelto el 22 de octubre, **316 251 1432** para WhatsApp y llamadas.
 - Cama principal: Queen (carta de tips y Airbnb) o King (descripción de Airbnb). Dice Queen.
 - Nombre: resuelto, **Olas del Mar** (el edificio es Nautilus, sin tilde).
 - Fotos originales en alta resolución y, si hay, más videos. La del inicio (pasarela al

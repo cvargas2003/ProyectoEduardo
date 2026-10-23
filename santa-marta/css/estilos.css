@@ -1,5 +1,5 @@
 /* =========================================================
-   Olas del Mar · Santa Marta (en el Edificio Nautilus)
+   Olas de Mar · Santa Marta (en el Edificio Nautilus)
    Sistema: design-system/suite-nautilus/MASTER.md (estilo playero desde el 9 de octubre:
    arena, espuma, turquesa, coral y sol; Fraunces + Kaushan Script + Outfit)
    ========================================================= */
@@ -9,8 +9,8 @@
      Los nombres viejos (marfil, oro, oceano) se conservan para no tocar cada regla. */
   --tinta: #0E3238;
   --tinta-suave: #4F686C;
-  --oceano: #00646D;
-  --oceano-profundo: #004A51;
+  --oceano: #0D7490;
+  --oceano-profundo: #0B6A85;
   --marfil: #FFF6E6;
   --marfil-2: #F7DDAE;
   --oro: #FFCC5C;
@@ -22,7 +22,7 @@
   --linea: rgba(18, 52, 59, .14);
   --linea-clara: rgba(255, 248, 236, .2);
   --sobre-oscuro: #F3EBDD;
-  --sobre-oscuro-suave: #D3E7E5;
+  --sobre-oscuro-suave: #EAF5F4;
 
   /* Fraunces con "SOFT" al máximo: la alternativa libre más cercana a PP Pangaia, la letra
      de eaglesnest.sergesyutkin.com que pidió el cliente (PP Pangaia es de pago). */
@@ -998,6 +998,120 @@ button { font: inherit; color: inherit; }
 .oscuro .acordeon summary { color: var(--marfil); }
 .oscuro .acordeon summary:hover { color: var(--oro); }
 .oscuro .acordeon details p { color: var(--sobre-oscuro-suave); }
+
+/* =========================================================
+   Cambios del 22 de octubre ("cambios pagina santa marta.pdf")
+   ========================================================= */
+
+/* Todos los fondos en azul mar, en dos tonos que se alternan; cada ola trae el color de la
+   sección anterior. Dentro de cada sección los colores de texto pasan a claros redefiniendo
+   las variables, así las reglas de antes siguen sirviendo. */
+.bloque {
+  --tinta: #F6F1E7; --tinta-suave: #EAF5F4; --linea: rgba(255, 255, 255, .22);
+  --oro-texto: var(--oro); --turquesa: #A6F0EA; --coral: #FFB59E;
+  color: var(--tinta);
+}
+.bloque.fondo-a { background: radial-gradient(56rem 28rem at 88% 0%, rgba(120, 225, 235, .18), transparent 60%), var(--oceano); }
+.bloque.fondo-b { background: radial-gradient(50rem 26rem at 8% 0%, rgba(120, 225, 235, .14), transparent 60%), var(--oceano-profundo); }
+.ola--a { --ola-color: var(--oceano); }
+.ola--b { --ola-color: var(--oceano-profundo); }
+.pie { background: #075468; }
+.bloque .boton--oro, .bloque .boton--oro:hover { color: #0E3238; }
+.bloque .titulo, .bloque .titulo--claro { color: #F6F1E7; }
+/* Lo que sigue siendo una tarjeta clara conserva los colores oscuros. */
+.carta__marco {
+  --tinta: #0E3238; --tinta-suave: #4F686C; --linea: rgba(18, 52, 59, .14);
+  --oro-texto: #B8431C; --turquesa: #007C85; --coral: #FF6B45;
+  color: var(--tinta);
+}
+.carta__marco .titulo { color: var(--tinta); }
+.premio__sello { color: #B8431C; }
+.barra i { background: var(--oro); }
+.niveles__escalera { background: rgba(255, 255, 255, .1); color: var(--oro); }
+
+/* 3 y 20. Llamar: ícono en el menú y botón fijo encima del de WhatsApp */
+.nav__llamar {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid currentColor; color: inherit; opacity: .92; transition: background-color .3s var(--suave);
+}
+.nav__llamar:hover { background: rgba(255, 255, 255, .15); }
+.nav__llamar .icono { width: 19px; height: 19px; }
+.tel-flotante {
+  position: fixed; z-index: 40; right: 26px; bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+  display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%;
+  background: var(--oro); color: #0E3238; box-shadow: 0 12px 26px -10px rgba(7, 55, 61, .6);
+  transition: transform .4s var(--suave);
+}
+.tel-flotante:hover { transform: translateY(-3px); }
+.tel-flotante .icono { width: 22px; height: 22px; }
+
+/* 8 y 9. Un solo cuadro, ladeado y colgado de un clavo, con las fotos del edificio */
+.intro__imagenes { padding-bottom: 0; }
+.cuadro { position: relative; width: min(100%, 520px); margin: 70px auto 0; rotate: -3deg; transform-origin: 50% -60px; }
+.cuadro__clavo {
+  position: absolute; left: 50%; top: -64px; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #F3E3B6, #8A6A3A); box-shadow: 0 2px 3px rgba(0, 0, 0, .35); z-index: 2;
+}
+.cuadro__cuerda { position: absolute; left: 8%; width: 84%; top: -60px; height: 62px; overflow: visible; }
+.cuadro__cuerda path { fill: none; stroke: #C9A57A; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+.cuadro__fotos {
+  position: relative; aspect-ratio: 4 / 5; overflow: hidden; margin: 0; padding: 0; list-style: none;
+  border: 10px solid #fff; border-radius: 18px; background: #fff; box-shadow: 0 34px 60px -28px rgba(0, 0, 0, .55);
+}
+.cuadro__foto { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s var(--suave); }
+.cuadro__foto--activa { opacity: 1; }
+.cuadro__foto img { width: 100%; height: 100%; object-fit: cover; border-radius: 9px; }
+.cuadro__pausa {
+  position: absolute; z-index: 2; right: 20px; bottom: 56px; display: grid; place-items: center; width: 40px; height: 40px;
+  border-radius: 50%; border: 1px solid rgba(255, 255, 255, .8); background: rgba(7, 55, 61, .45); color: #fff; cursor: pointer;
+}
+.cuadro__pausa .icono { width: 16px; height: 16px; }
+.cuadro__pie { margin-top: 12px; text-align: center; font-size: 13px; color: var(--tinta-suave); }
+@media (prefers-reduced-motion: no-preference) {
+  .cuadro { animation: cuadro-mecer 4.5s ease-in-out 1 both; }
+}
+@keyframes cuadro-mecer { 0%, 100% { rotate: -3deg; } 30% { rotate: -1.2deg; } 65% { rotate: -4deg; } }
+
+/* 11. Playa Salguero · Rodadero Sur */
+.lugar {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 8px 16px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .3); font-size: 14px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+}
+.lugar .icono { width: 16px; height: 16px; color: var(--oro); }
+
+/* 26. La dirección escrita antes del mapa */
+.direccion--grande { align-items: center; gap: 14px; margin: 0 0 28px; font-size: 17px; color: var(--tinta); }
+.direccion--grande .icono { width: 26px; height: 26px; padding: 5px; border-radius: 50%; background: rgba(255, 255, 255, .12); }
+.direccion--grande b { display: block; font-size: 19px; }
+
+/* 29. El paradero del bus */
+.paradero { margin: 22px 0 0; width: min(100%, 220px); rotate: 2deg; }
+.paradero img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border: 8px solid #fff; border-radius: 14px; box-shadow: 0 20px 40px -22px rgba(0, 0, 0, .6); }
+.paradero figcaption { margin-top: 8px; font-size: 13px; color: var(--tinta-suave); }
+
+/* Recorrido en video del nivel social, en el marco de la foto (horizontal) */
+.nivel__foto--video { aspect-ratio: 16 / 9; width: min(100%, 640px); }
+.nivel__video {
+  display: block; width: 100%; height: 100%; object-fit: cover; background: #0E3238;
+  border: 10px solid #fff; border-radius: 22px; box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .5);
+}
+.nivel__pausa {
+  position: absolute; z-index: 2; right: 22px; bottom: 22px; display: grid; place-items: center; width: 42px; height: 42px;
+  border-radius: 50%; border: 1px solid rgba(255, 255, 255, .8); background: rgba(7, 55, 61, .45); color: #fff; cursor: pointer;
+}
+.nivel__pausa .icono { width: 16px; height: 16px; }
+@media (min-width: 900px) {
+  .nivel--video { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+  .nivel--video .nivel__foto { aspect-ratio: 16 / 9; }
+}
+/* En celulares angostos el eslogan cabe en una línea junto a los dos botones del menú */
+@media (max-width: 430px) {
+  .marca__sub { font-size: 9px; letter-spacing: .1em; white-space: nowrap; }
+  .marca__logo { width: 44px; height: 33px; }
+  .nav__llamar, .nav__menu { width: 42px; height: 42px; }
+}
+/* El nuevo fondo del inicio: que se vea la piscina también en el celular */
+.hero__img { object-position: 50% 30%; }
 
 /* ---------- Movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {

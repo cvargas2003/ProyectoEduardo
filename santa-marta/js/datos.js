@@ -6,10 +6,11 @@
 window.NAUTILUS = {
 
   // Número del propietario, en formato internacional sin "+" ni espacios.
-  whatsapp: '573203193258',
+  whatsapp: '573162511432',
 
-  // Teléfono para llamada directa (botón de Reservar). Por ahora el mismo del WhatsApp.
-  telefono: '573203193258',
+  // Teléfono para llamar (ícono del menú y botón fijo encima del de WhatsApp): +57 316 251 1432,
+  // el que dio el cliente el 22 de octubre.
+  telefono: '573162511432',
 
   anuncioAirbnb: 'https://www.airbnb.mx/rooms/32046242',
 
@@ -38,48 +39,45 @@ window.NAUTILUS = {
   // C:\ProyectoEduardo\fotos-airbnb. Cuando lleguen los originales del propietario se
   // regeneran los cuatro tamaños con el mismo nombre y no hay que tocar nada más.
   // cat: atardecer | piscina | interior | edificio
+  // Fotos del cliente (Pictures/Photos-1-001, 22 de octubre), en WebP de 480, 800, 1200 y 1600 px
+  // (las más chicas no llegan a 1600). Reemplazan a las del anuncio de Airbnb.
   fotos: [
-    { cat: 'atardecer', alt: 'El sol se pone sobre el mar frente a Playa Salguero', f: 'atardecer-sol-se-pone-mar-playa' },
-    { cat: 'piscina',   alt: 'Piscina del edificio al anochecer, entre palmeras', f: 'piscina-edificio-anochecer-palmeras' },
-    { cat: 'piscina',   alt: 'Piscina y palmeras del edificio frente a la playa', f: 'piscina-palmeras-carpas-edificio-playa' },
-    { cat: 'interior',  alt: 'Sala y cocina del nivel social', f: 'interior-sala-cocina-nivel-social' },
-    { cat: 'atardecer', alt: 'Atardecer con rocas sobre el agua', f: 'atardecer-rocas-agua' },
-    { cat: 'interior',  alt: 'Habitación principal con cama Queen', f: 'interior-habitacion-principal-cama-queen' },
-    { cat: 'piscina',   alt: 'Piscina con vista a la bahía', f: 'piscina-vista-bahia' },
-    { cat: 'interior',  alt: 'Balcón con vista lateral al mar', f: 'interior-balcon-vista-lateral-mar' },
-    { cat: 'atardecer', alt: 'Sol bajo junto a los acantilados', f: 'atardecer-sol-bajo-acantilados' },
-    { cat: 'edificio',  alt: 'Fachada del Edificio Nautilus entre palmeras', f: 'edificio-fachada-edificio-nautilus-palmeras' },
-    { cat: 'interior',  alt: 'Escalera del dúplex y sala', f: 'interior-escalera-duplex-sala' },
-    { cat: 'piscina',   alt: 'Playa Salguero al caer la tarde', f: 'piscina-playa-salguero-caer-tarde' },
-    { cat: 'atardecer', alt: 'Cielo naranja con una lancha en el horizonte', f: 'atardecer-cielo-naranja-una-lancha-horizonte' },
-    { cat: 'interior',  alt: 'Cocina tipo americana con barra', f: 'interior-cocina-tipo-americana-barra' },
-    { cat: 'piscina',   alt: 'Piscina para adultos y niños frente al mar', f: 'piscina-para-adultos-ninos-mar' },
-    { cat: 'interior',  alt: 'Camarote con cama doble y sencilla', f: 'interior-camarote-cama-doble-sencilla' },
-    { cat: 'piscina',   alt: 'Palmeras de la playa frente al edificio', f: 'piscina-palmeras-playa-edificio' },
-    { cat: 'atardecer', alt: 'Atardecer entre nubes sobre el Caribe', f: 'atardecer-nubes-caribe' },
-    { cat: 'interior',  alt: 'Sala con televisor y escritorio', f: 'interior-sala-televisor-escritorio' },
-    { cat: 'piscina',   alt: 'Piscina y palmeras', f: 'piscina-palmeras' },
-    { cat: 'interior',  alt: 'Comedor y cocina', f: 'interior-comedor-cocina' },
-    { cat: 'atardecer', alt: 'Reflejo del sol sobre la arena mojada', f: 'atardecer-reflejo-sol-arena-mojada' },
-    { cat: 'edificio',  alt: 'Balcones del Edificio Nautilus', f: 'edificio-balcones-edificio-nautilus' },
-    { cat: 'piscina',   alt: 'Playa con El Rodadero al fondo', f: 'piscina-playa-rodadero-fondo' },
-    { cat: 'interior',  alt: 'Escalera y camarote', f: 'interior-escalera-camarote' },
-    { cat: 'piscina',   alt: 'Piscina al sol del mediodía', f: 'piscina-sol-mediodia' },
-    { cat: 'atardecer', alt: 'La bahía al anochecer', f: 'atardecer-bahia-anochecer' },
-    { cat: 'edificio',  alt: 'Terrazas y jardines del edificio', f: 'edificio-terrazas-jardines-edificio' },
-    { cat: 'interior',  alt: 'Baño', f: 'interior-bano' },
-    { cat: 'piscina',   alt: 'Piscina junto al mar', f: 'piscina-mar' },
-    { cat: 'atardecer', alt: 'Horizonte dorado sobre el mar', f: 'atardecer-horizonte-dorado-mar' },
-    { cat: 'interior',  alt: 'Cocina equipada', f: 'interior-cocina-equipada' },
-    { cat: 'edificio',  alt: 'Zona BBQ del edificio', f: 'edificio-zona-bbq-edificio' },
-    { cat: 'piscina',   alt: 'Piscina rodeada de palmeras', f: 'piscina-rodeada-palmeras' },
-    { cat: 'atardecer', alt: 'Nubes encendidas al final de la tarde', f: 'atardecer-nubes-encendidas-final-tarde' },
-    { cat: 'edificio',  alt: 'Entrada del edificio', f: 'edificio-entrada-edificio' },
-    { cat: 'piscina',   alt: 'Piscina y vista abierta al mar', f: 'piscina-vista-abierta-mar' },
-    { cat: 'interior',  alt: 'Detalle de la sala', f: 'interior-detalle-sala' },
-    { cat: 'atardecer', alt: 'Último sol sobre Playa Salguero', f: 'atardecer-ultimo-sol-playa-salguero' },
-    { cat: 'edificio',  alt: 'Jardines y palmeras del edificio', f: 'edificio-jardines-palmeras-edificio' },
-    { cat: 'piscina',   alt: 'Piscina con palmeras frente a la playa', f: 'piscina-palmeras-playa' },
-    { cat: 'interior',  alt: 'Pasillo hacia la cocina', f: 'interior-pasillo-hacia-cocina' }
+    { cat: 'atardecer', alt: 'El sol se pone sobre el mar, visto desde un muelle de madera', f: 'mar-sol-poniendose-muelle' },
+    { cat: 'piscina',   alt: 'Playa Salguero, con El Rodadero al fondo', f: 'playa-salguero-rodadero-fondo' },
+    { cat: 'interior',  alt: 'Sala, comedor y cocina del nivel social', f: 'suite-sala-comedor-cocina' },
+    { cat: 'edificio',  alt: 'Fachada del Edificio Nautilus con la piscina', f: 'edificio-fachada-piscina' },
+    { cat: 'atardecer', alt: 'Sol de la tarde sobre la orilla de Playa Salguero', f: 'mar-sol-tarde-orilla-salguero' },
+    { cat: 'piscina',   alt: 'Piscinas del edificio frente a la playa', f: 'piscinas-edificio-frente-playa' },
+    { cat: 'interior',  alt: 'Sala con sofá cama y comedor', f: 'suite-sala-sofa-comedor' },
+    { cat: 'edificio',  alt: 'Pasillo del edificio con vista al mar', f: 'edificio-pasillo-vista-mar' },
+    { cat: 'atardecer', alt: 'Atardecer con una lancha en el horizonte', f: 'mar-atardecer-lancha-horizonte' },
+    { cat: 'piscina',   alt: 'Piscina entre palmeras, con salida a la playa', f: 'piscina-palmeras-salida-playa' },
+    { cat: 'interior',  alt: 'Comedor y mueble del televisor', f: 'suite-comedor-televisor' },
+    { cat: 'edificio',  alt: 'Corredor del edificio con pérgola y jardineras', f: 'edificio-corredor-pergola' },
+    { cat: 'atardecer', alt: 'Veleros en la marina de Santa Marta al caer la tarde', f: 'mar-veleros-marina-tarde' },
+    { cat: 'piscina',   alt: 'Piscina con vista al mar', f: 'piscina-vista-mar' },
+    { cat: 'interior',  alt: 'Cocina con nevera, microondas y estufa', f: 'suite-cocina-nevera' },
+    { cat: 'edificio',  alt: 'Pasillo del edificio hacia el mar', f: 'edificio-pasillo-hacia-mar' },
+    { cat: 'atardecer', alt: 'Atardecer frente al morro, con gente en la orilla', f: 'mar-atardecer-morro-orilla' },
+    { cat: 'piscina',   alt: 'Piscina para adultos y niños', f: 'piscina-curva-adultos-ninos' },
+    { cat: 'interior',  alt: 'Cocina tipo americana junto a la escalera', f: 'suite-cocina-escalera' },
+    { cat: 'edificio',  alt: 'Terrazas del edificio con jardín', f: 'edificio-terrazas-jardin' },
+    { cat: 'atardecer', alt: 'Atardecer desde el edificio, entre palmeras', f: 'mar-atardecer-desde-edificio' },
+    { cat: 'piscina',   alt: 'Las piscinas y el mar vistos desde el edificio', f: 'piscinas-mar-desde-edificio' },
+    { cat: 'interior',  alt: 'Balcón con mesa y sillas', f: 'suite-balcon-mesa-sillas' },
+    { cat: 'edificio',  alt: 'Terraza con vista a la playa', f: 'edificio-terraza-playa' },
+    { cat: 'atardecer', alt: 'El sol cae sobre el mar entre los árboles', f: 'mar-atardecer-entre-arboles' },
+    { cat: 'piscina',   alt: 'Piscina, palmeras y la playa', f: 'piscina-palmeras-playa' },
+    { cat: 'interior',  alt: 'Habitación principal con cama Queen', f: 'suite-habitacion-principal-queen' },
+    { cat: 'edificio',  alt: 'Zona BBQ del edificio', f: 'edificio-zona-bbq' },
+    { cat: 'atardecer', alt: 'Atardecer sobre la piscina y la playa, entre palmeras', f: 'mar-atardecer-piscina-palmeras' },
+    { cat: 'piscina',   alt: 'Vista al mar desde una terraza del edificio', f: 'terraza-vista-mar' },
+    { cat: 'interior',  alt: 'Habitación principal con aire acondicionado', f: 'suite-habitacion-principal-aire' },
+    { cat: 'edificio',  alt: 'Escalera del edificio con vista al mar', f: 'edificio-escalera-vista-mar' },
+    { cat: 'interior',  alt: 'Habitación principal y la escalera del dúplex', f: 'suite-habitacion-escalera' },
+    { cat: 'interior',  alt: 'Camarote con cama doble y sencilla', f: 'suite-camarote' },
+    { cat: 'interior',  alt: 'Escalera del dúplex', f: 'suite-escalera-duplex' },
+    { cat: 'interior',  alt: 'Baño con ducha de vidrio', f: 'suite-bano-ducha' },
+    { cat: 'interior',  alt: 'Segundo baño', f: 'suite-segundo-bano' }
   ]
 };
