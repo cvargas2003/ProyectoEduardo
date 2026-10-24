@@ -6,7 +6,7 @@ Sitios web de reserva directa para dos propiedades de alquiler. Propuesta comerc
 - `santa-marta/` — **Olas de Mar** ("Tu lugar frente al mar"), un dúplex en el Edificio
   Nautilus, Playa Salguero (Rodadero Sur). **Nautilus es el edificio, no el apartamento**. El nombre
   pasó de "Suite El Ancla" a "Olas del Mar" el 13 de octubre (Wilson tiene el dominio) y el 22 se
-  corrigió a **"Olas de Mar"** (no "del").
+  corrigió a **"Olas de Mar"**. El 24 se probó "Ola del Mar" y el cliente volvió a **"Olas de Mar"**: es el definitivo.
 - `bogota/` — **Casa Universitaria**, hospedaje universitario con dos sedes (Quinta Mutis y
   Galerías). Primera versión con el logo y las fotos del Instagram (ver abajo). **No se llama
   "La Casona"**: ese era el nombre viejo y todavía aparece en marcas de agua y letreros.
@@ -57,7 +57,14 @@ van tal cual a su `wwwroot`: no se pierde nada.
 - **Video del nivel social (22 de octubre)**: en lugar de la foto de la cocina, el recorrido
   VID_20250413_180230 (original en `videos-originales/recorrido-nivel-social-2025-04-13.mp4`) en
   `video/nivel-social-recorrido.mp4` (1080p, CRF 25, sin audio) y `-movil.mp4` (720p), con `crearBucle`.
-  El cliente pidió ponerle "We Don't Talk Anymore": no se hizo (derechos de autor); falta música con licencia.
+  El cliente pidió ponerle "We Don't Talk Anymore": no se hizo (derechos de autor).
+- **Música de fondo (24 de octubre)**: `<audio id="musica">` con `audio/musica-fondo.mp3`, suena desde el
+  primer clic o tecla, botón `.musica-boton` abajo a la izquierda para silenciarla (se recuerda en
+  localStorage), se calla con el reproductor de video. Es "We Don't Talk Anymore"
+  (Charlie Puth), del mp3 que el cliente bajó a Descargas: recortada a 218 s (sin el silencio final), con
+  fundidos, normalizada y a 128 kbps (3,4 MB). Se le advirtió que necesita licencia. Sin archivo, el botón no aparece.
+- **Sin fotos de la puerta corrediza** del nivel de descanso (24 de octubre): se quitó `suite-escalera-duplex`
+  de la galería.
 - **Fondo anterior (22 de octubre, reemplazado)**: foto del cliente de la piscina entre palmeras
   (IMG_20261010_163758) sin el piso de madera y con el **cielo del atardecer de otra foto suya de la
   misma playa** (IMG_20240212_175732), con el reflejo del sol en el agua: lo pidió así. Se arma con
@@ -154,7 +161,7 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
   historia). Ubicación con la dirección escrita (Calle 27 # 1-83, **sin el número del apartamento**)
   y la foto del paradero del bus. En la suite cuelgan un **ancla** y una concha. El mensaje de WhatsApp
   empieza con "🌊☀️ *Olas de Mar*".
-- **Nombre: Olas de Mar**, slogan "Tu lugar frente al mar". "Nautilus" solo para el edificio.
+- **Nombre: Olas de Mar** (confirmado el 24 de octubre), slogan "Tu lugar frente al mar". "Nautilus" solo para el edificio.
   (La carpeta `design-system/suite-nautilus` conserva el nombre viejo; `window.NAUTILUS` en
   `js/datos.js`, también.)
 - **La suite**: los dos niveles van como dos experiencias (foto en arco, número grande,

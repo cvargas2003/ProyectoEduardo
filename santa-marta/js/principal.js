@@ -202,6 +202,7 @@
     marco.replaceChildren(el);
     reproductor.showModal();
     sincronizarBucles();
+    musica.pause();
   }
   $$('[data-abrir-video]').forEach(function (b) {
     b.addEventListener('click', function () { abrirVideo(Number(b.dataset.abrirVideo)); });
@@ -275,6 +276,48 @@
 
   crearBucle($('.video__bucle'), $('.video__pausa'), 'el video del recorrido');
   crearBucle($('.nivel__video'), $('.nivel__pausa'), 'el recorrido del nivel social');
+
+  /* ---------- Música de fondo ----------
+   * Arranca con el primer clic, toque o tecla, porque el navegador no deja sonar nada antes.
+   * El botón la silencia y la decisión se recuerda en este navegador. Se calla mientras suena
+   * el reproductor de video con sonido. Si falta el archivo, el botón no aparece. */
+  var musica = $('#musica');
+  var botonMusica = $('.musica-boton');
+  var silenciada = false;
+  try { silenciada = localStorage.getItem('musica') === 'silencio'; } catch (e) {}
+
+  function sincronizarMusica() {
+    if (!silenciada && !reproductor.open && !document.hidden) {
+      var intento = musica.play();
+      if (intento) intento.catch(function () {});
+    } else {
+      musica.pause();
+    }
+    botonMusica.setAttribute('aria-pressed', String(silenciada));
+    botonMusica.setAttribute('aria-label', silenciada ? 'Activar la música' : 'Silenciar la música');
+    botonMusica.querySelector('use').setAttribute('href', silenciada ? '#i-silencio' : '#i-sonido');
+  }
+  function primerGesto(e) {
+    if (e.target.closest && e.target.closest('.musica-boton')) return;
+    ['pointerdown', 'keydown'].forEach(function (t) { document.removeEventListener(t, primerGesto); });
+    sincronizarMusica();
+  }
+  musica.volume = .35;
+  musica.addEventListener('error', function () { botonMusica.hidden = true; });
+  // Se pregunta por el archivo sin descargarlo para saber si hay que mostrar el botón.
+  fetch(musica.getAttribute('src'), { method: 'HEAD' }).then(function (r) {
+    if (!r.ok) return;
+    botonMusica.hidden = false;
+    sincronizarMusica();
+    ['pointerdown', 'keydown'].forEach(function (t) { document.addEventListener(t, primerGesto); });
+  }).catch(function () {});
+  botonMusica.addEventListener('click', function () {
+    silenciada = !silenciada;
+    try { localStorage.setItem('musica', silenciada ? 'silencio' : 'sonido'); } catch (e) {}
+    sincronizarMusica();
+  });
+  document.addEventListener('visibilitychange', function () { if (!botonMusica.hidden) sincronizarMusica(); });
+  reproductor.addEventListener('close', function () { if (!botonMusica.hidden) sincronizarMusica(); });
 
   /* ---------- Fotos del edificio en el cuadro de la bienvenida ----------
    * Pasan solas cada 4,5 s con un fundido. Se detienen con el botón, al pasar el cursor o con el

@@ -76,7 +76,6 @@ window.NAUTILUS = {
     { cat: 'edificio',  alt: 'Escalera del edificio con vista al mar', f: 'edificio-escalera-vista-mar' },
     { cat: 'interior',  alt: 'Habitación principal y la escalera del dúplex', f: 'suite-habitacion-escalera' },
     { cat: 'interior',  alt: 'Camarote con cama doble y sencilla', f: 'suite-camarote' },
-    { cat: 'interior',  alt: 'Escalera del dúplex', f: 'suite-escalera-duplex' },
     { cat: 'interior',  alt: 'Baño con ducha de vidrio', f: 'suite-bano-ducha' },
     { cat: 'interior',  alt: 'Segundo baño', f: 'suite-segundo-bano' }
   ]
