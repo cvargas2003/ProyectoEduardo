@@ -333,7 +333,7 @@
       fotos[actual].classList.remove('cuadro__foto--activa');
       actual = (i + fotos.length) % fotos.length;
       fotos[actual].classList.add('cuadro__foto--activa');
-      pie.textContent = fotos[actual].querySelector('img').alt;
+      if (pie) pie.textContent = fotos[actual].querySelector('img').alt;
       // La siguiente se pide antes de que le toque, para que el fundido no muestre un hueco.
       var siguiente = fotos[(actual + 1) % fotos.length].querySelector('img');
       siguiente.loading = 'eager';
@@ -342,7 +342,7 @@
       var correr = quiere && visible && !encima && !document.hidden;
       if (correr && !reloj) reloj = setInterval(function () { mostrar(actual + 1); }, 4500);
       if (!correr && reloj) { clearInterval(reloj); reloj = null; }
-      boton.setAttribute('aria-label', (quiere ? 'Pausar' : 'Pasar') + ' las fotos del edificio');
+      boton.setAttribute('aria-label', (quiere ? 'Pausar' : 'Pasar') + ' ' + (cuadro.dataset.carrusel || 'las fotos del edificio'));
       boton.querySelector('use').setAttribute('href', quiere ? '#i-pausa' : '#i-play');
     }
     boton.addEventListener('click', function () { quiere = !quiere; if (quiere) mostrar(actual + 1); sincronizar(); });

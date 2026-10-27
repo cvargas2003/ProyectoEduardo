@@ -53,7 +53,6 @@ window.NAUTILUS = {
     { cat: 'atardecer', alt: 'Atardecer con una lancha en el horizonte', f: 'mar-atardecer-lancha-horizonte' },
     { cat: 'piscina',   alt: 'Piscina entre palmeras, con salida a la playa', f: 'piscina-palmeras-salida-playa' },
     { cat: 'interior',  alt: 'Comedor y mueble del televisor', f: 'suite-comedor-televisor' },
-    { cat: 'edificio',  alt: 'Corredor del edificio con pérgola y jardineras', f: 'edificio-corredor-pergola' },
     { cat: 'atardecer', alt: 'Veleros en la marina de Santa Marta al caer la tarde', f: 'mar-veleros-marina-tarde' },
     { cat: 'piscina',   alt: 'Piscina con vista al mar', f: 'piscina-vista-mar' },
     { cat: 'interior',  alt: 'Cocina con nevera, microondas y estufa', f: 'suite-cocina-nevera' },
@@ -61,7 +60,7 @@ window.NAUTILUS = {
     { cat: 'atardecer', alt: 'Atardecer frente al morro, con gente en la orilla', f: 'mar-atardecer-morro-orilla' },
     { cat: 'piscina',   alt: 'Piscina para adultos y niños', f: 'piscina-curva-adultos-ninos' },
     { cat: 'interior',  alt: 'Cocina tipo americana junto a la escalera', f: 'suite-cocina-escalera' },
-    { cat: 'edificio',  alt: 'Terrazas del edificio con jardín', f: 'edificio-terrazas-jardin' },
+    { cat: 'edificio',  alt: 'Parqueadero del edificio', f: 'edificio-parqueadero' },
     { cat: 'atardecer', alt: 'Atardecer desde el edificio, entre palmeras', f: 'mar-atardecer-desde-edificio' },
     { cat: 'piscina',   alt: 'Las piscinas y el mar vistos desde el edificio', f: 'piscinas-mar-desde-edificio' },
     { cat: 'interior',  alt: 'Balcón con mesa y sillas', f: 'suite-balcon-mesa-sillas' },
@@ -75,7 +74,7 @@ window.NAUTILUS = {
     { cat: 'interior',  alt: 'Habitación principal con aire acondicionado', f: 'suite-habitacion-principal-aire' },
     { cat: 'edificio',  alt: 'Escalera del edificio con vista al mar', f: 'edificio-escalera-vista-mar' },
     { cat: 'interior',  alt: 'Habitación principal y la escalera del dúplex', f: 'suite-habitacion-escalera' },
-    { cat: 'interior',  alt: 'Camarote con cama doble y sencilla', f: 'suite-camarote' },
+    { cat: 'interior',  alt: 'Escalera del dúplex y entrada al camarote', f: 'suite-escalera-duplex' },
     { cat: 'interior',  alt: 'Baño con ducha de vidrio', f: 'suite-bano-ducha' },
     { cat: 'interior',  alt: 'Segundo baño', f: 'suite-segundo-bano' }
   ]
