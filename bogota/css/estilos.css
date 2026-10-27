@@ -148,7 +148,7 @@ button, input, select, textarea { font: inherit; }
 }
 .nav__enlaces a:not(.boton):hover::after, .nav__enlaces a[aria-current]::after { transform: scaleX(1); }
 .nav__solo-menu, .nav__visita-movil { display: none; }
-.nav__acciones { display: flex; align-items: center; gap: .75rem; }
+.nav__acciones { display: flex; align-items: center; gap: .75rem; margin-left: auto; }
 .nav__menu {
   display: none; place-items: center; width: 46px; height: 46px; padding: 0;
   border-radius: 12px; border: 2px solid rgba(28, 18, 51, .3); background: transparent;
@@ -181,14 +181,6 @@ button, input, select, textarea { font: inherit; }
   mask-image: radial-gradient(ellipse at 70% 45%, #000 15%, transparent 72%);
 }
 .hero__rejilla { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 3rem; }
-
-.chip-claro {
-  display: inline-flex; align-items: center; gap: .6rem; margin: 0 0 1.5rem;
-  padding: .5rem .95rem; border-radius: 999px;
-  border: 1px solid rgba(28, 18, 51, .14); background: rgba(255, 255, 255, .7);
-  font: 600 .8rem/1 var(--texto); letter-spacing: .07em; text-transform: uppercase;
-}
-.chip-claro__punto { width: .55rem; height: .55rem; border-radius: 2px; background: var(--verde); box-shadow: 0 0 0 4px rgba(33, 201, 58, .22); }
 
 .hero__titulo {
   margin: 0 0 1.5rem;
@@ -520,7 +512,7 @@ button, input, select, textarea { font: inherit; }
   color: var(--tinta-suave); font-weight: 600;
 }
 .sede__foto--vacia .icono { width: 2.3rem; height: 2.3rem; color: var(--cafe); }
-.sede__cuerpo { padding: 1.4rem 1.5rem 1.6rem; }
+.sede__cuerpo { display: flex; flex: 1; flex-direction: column; padding: 1.4rem 1.5rem 1.6rem; }
 .sede h3 { margin: 0 0 .5rem; font: 800 1.6rem/1.1 var(--titulo); }
 .sede__direccion { display: flex; align-items: center; gap: .5rem; margin: 0 0 1.25rem; font-weight: 500; color: var(--tinta-suave); }
 .sede__direccion .icono { color: var(--cafe); }
@@ -535,7 +527,7 @@ button, input, select, textarea { font: inherit; }
 }
 .sede__datos .icono { width: 1rem; height: 1rem; }
 .sede__datos .sede__dato--destacado { background: var(--amarillo); }
-.sede__acciones { display: flex; flex-wrap: wrap; gap: .7rem; }
+.sede__acciones { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: auto; padding-top: 1.1rem; }
 .sedes__nota { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin: 1.75rem 0 0; color: var(--tinta-suave); }
 
 /* ---------- 07 · Vivir aquí ---------- */
@@ -631,6 +623,15 @@ button, input, select, textarea { font: inherit; }
   box-shadow: 0 4px 0 var(--tinta), 0 10px 24px rgba(0, 0, 0, .25); transition: transform .2s;
 }
 .wa-flotante:hover { transform: translateY(-3px); }
+/* Llamar: solo el ícono, a la izquierda del de WhatsApp */
+.tel-flotante {
+  position: fixed; right: calc(1.1rem + 58px + .8rem); bottom: 1.1rem; z-index: 40;
+  display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%;
+  background: var(--morado); color: #fff; border: 2px solid var(--tinta);
+  box-shadow: 0 4px 0 var(--tinta), 0 10px 24px rgba(0, 0, 0, .25); transition: transform .2s;
+}
+.tel-flotante:hover { transform: translateY(-3px); }
+.tel-flotante .icono { width: 26px; height: 26px; }
 .wa-flotante .icono { width: 28px; height: 28px; }
 
 /* ---------- Pantallas medianas y celulares ---------- */
@@ -713,22 +714,13 @@ button, input, select, textarea { font: inherit; }
 @supports (backdrop-filter: blur(1px)) { .nav--solida { background: rgba(248, 205, 110, .9); } }
 .seccion__logo { width: 1.9rem; height: 1.9rem; flex: none; }
 
-/* Menú: el teléfono a la izquierda, en lugar del logo pequeño y el nombre */
-.nav__llamar {
-  display: inline-flex; align-items: center; gap: .5rem; padding: .55rem 1rem; border-radius: 999px;
-  background: #fff; color: var(--tinta); border: 2px solid var(--tinta); box-shadow: 0 3px 0 var(--tinta);
-  font-weight: 700; text-decoration: none; white-space: nowrap;
-}
-.nav__llamar .icono { color: var(--morado); }
-.logo3d__pausa {
-  display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border-radius: 50%; cursor: pointer;
-  background: #fff; color: var(--tinta); border: 2px solid var(--tinta);
-}
+/* Sedes: "bienestar del estudiante universitario" con marcador amarillo (no del color café de la sección) */
+.sedes .titulo em { background: linear-gradient(transparent 58%, var(--amarillo) 58% 90%, transparent 90%); }
 
 /* 01 · Lo que trae la habitación */
-.beneficios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0 0 clamp(2.5rem, 5vw, 3.5rem); padding: 0; list-style: none; }
+.beneficios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; margin: 0 0 clamp(2.5rem, 5vw, 3.5rem); padding: 0; list-style: none; }
 .beneficios li {
-  display: flex; align-items: flex-start; gap: 1rem; padding: 1.3rem 1.25rem; border-radius: var(--radio);
+  display: flex; align-items: flex-start; gap: 1.1rem; padding: 1.6rem 1.5rem; border-radius: var(--radio);
   background: var(--tarjeta); border: 2px solid var(--tinta); box-shadow: 5px 5px 0 var(--tinta);
 }
 .beneficios__icono {
@@ -736,8 +728,8 @@ button, input, select, textarea { font: inherit; }
   background: var(--c); color: var(--t); border: 2px solid var(--tinta);
 }
 .beneficios h3 { margin: 0 0 .25rem; font: 800 1.1rem/1.2 var(--titulo); }
-.beneficios p { margin: 0; font-size: .94rem; line-height: 1.45; color: var(--tinta-suave); }
-.beneficios small { font: 500 .72rem/1.3 var(--mono); letter-spacing: .03em; text-transform: uppercase; }
+.beneficios p { margin: 0; font-size: .94rem; line-height: 1.55; color: var(--tinta-suave); }
+.beneficios small { font: inherit; font-size: .74rem; letter-spacing: 0; text-transform: none; }
 .sede, .baldosas li { background: var(--tarjeta); }
 
 /* 02 · Fotos de las habitaciones sin pie de foto */
@@ -779,7 +771,6 @@ a.redes__enlace:hover { background: var(--amarillo); }
 }
 @media (max-width: 559.98px) {
   .beneficios { grid-template-columns: 1fr; }
-  .nav__llamar { padding: .5rem .8rem; font-size: .92rem; }
 }
 
 /* =========================================================
@@ -790,7 +781,7 @@ a.redes__enlace:hover { background: var(--amarillo); }
    ========================================================= */
 .hero__deco { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 .hero__fondo::before { display: none; }
-.hero .cara--frente { box-shadow: inset 0 0 0 1.5px rgba(28, 18, 51, .22); }
+.hero .cara--frente { box-shadow: inset 0 0 0 2px rgba(28, 18, 51, .38); }
 .logo3d-caja { position: relative; isolation: isolate; }
 
 .hero { background: #FFF6D6; }
@@ -804,24 +795,12 @@ a.redes__enlace:hover { background: var(--amarillo); }
   position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); rotate: var(--r);
   fill: none; stroke: #C77700; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: .55;
 }
-/* El logo pegado en una nota adhesiva, con su cinta */
-.logo3d-caja::before {
-  content: ""; position: absolute; z-index: -1; inset: -5% -7% -3%;
-  /* Naranja claro y no amarillo: sobre una nota amarilla se perdía el cuadro amarillo del logo */
-  background: #FFC46B; rotate: -2.5deg; border-radius: 4px;
-  box-shadow: 0 18px 30px -18px rgba(120, 80, 0, .55), inset 0 -10px 18px -12px rgba(150, 100, 0, .25);
-}
-.logo3d-caja::after {
-  content: ""; position: absolute; z-index: 2; top: -6%; left: 50%; width: 34%; height: 7%; translate: -50% 0; rotate: 3deg;
-  background: rgba(255, 255, 255, .55); border: 1px solid rgba(160, 120, 40, .25); pointer-events: none;
-}
 /* "estudias" resaltado con marcador */
 .hero__titulo em {
   color: var(--tinta);
   background: linear-gradient(100deg, transparent 2%, rgba(255, 205, 40, .85) 3% 97%, transparent 98%) 0 72% / 100% 46% no-repeat;
 }
 .hero__titulo em::after { display: none; }
-.chip-claro { background: #FFF; border: 1.5px dashed #C77700; }
 
 @media (max-width: 959.98px) {
   .garabato--escritorio { display: none; }
@@ -857,21 +836,11 @@ a.redes__enlace:hover { background: var(--amarillo); }
   display: grid; place-items: center; width: 44px; height: 44px; flex: none; padding: 0; cursor: pointer;
   border-radius: 50%; background: #fff; color: var(--tinta); border: 2px solid var(--tinta);
 }
-.detalle__pestanas { display: flex; gap: .5rem; padding: 0 1.4rem; border-bottom: 2px solid var(--tinta); }
-.detalle__pestanas [role="tab"] {
-  min-height: 46px; padding: .6rem 1.2rem; cursor: pointer; margin-bottom: -2px;
-  border: 2px solid transparent; border-bottom: 0; border-radius: 14px 14px 0 0; background: transparent;
-  font: 700 .98rem/1 var(--texto); color: var(--tinta-suave);
-}
-.detalle__pestanas [aria-selected="true"] { background: var(--amarillo); color: var(--tinta); border-color: var(--tinta); }
-.detalle__panel { flex: 1; min-height: 0; overflow-y: auto; padding: 1.1rem 1.4rem 1.5rem; }
+.detalle__panel { flex: 1; min-height: 0; overflow-y: auto; padding: .4rem 1.4rem 1.5rem; }
 .detalle__panel:focus-visible { outline-offset: -4px; }
 
-.detalle__direccion { margin: 0 0 .3rem; font-weight: 700; }
-.detalle__trayecto { margin: 0 0 .9rem; color: var(--tinta-suave); max-width: 60ch; }
-.detalle__trayecto:empty, .detalle__direccion:empty { display: none; }
-.detalle__mapa { position: relative; height: clamp(260px, 50vh, 460px); border-radius: 18px; overflow: hidden; border: 2px solid var(--tinta); background: #E9E4D6; }
-.detalle__mapa iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.detalle__direccion { margin: 0 0 .9rem; font-weight: 700; }
+.detalle__direccion:empty { display: none; }
 .detalle__acciones { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1rem; }
 
 /* Carrusel */
@@ -911,7 +880,6 @@ a.redes__enlace:hover { background: var(--amarillo); }
 @media (max-width: 559.98px) {
   .detalle { width: calc(100% - 1rem); max-height: calc(100dvh - 1rem); border-radius: 18px; box-shadow: 6px 6px 0 var(--tinta); }
   .detalle__cab { padding: .9rem 1rem .5rem; }
-  .detalle__pestanas { padding: 0 1rem; }
   .detalle__panel { padding: 1rem 1rem 1.2rem; }
   .slider__flecha { width: 42px; height: 42px; }
 }

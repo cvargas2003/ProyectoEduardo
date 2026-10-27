@@ -188,20 +188,14 @@
     videosPagina.forEach(function (v) { fueraDePantalla.observe(v); });
   }
 
-  /* ---------- Detalle de la sede: cómo llegar y galería ----------
-   * Un solo <dialog> que se llena con los datos de la sede (datos.js, "sedes"). Dos pestañas:
-   * "Cómo llegar" (mapa con el trayecto) y "Galería" (carrusel que rota solo y cambia la
-   * descripción de cada foto). El carrusel se detiene al pasar el cursor o con el foco, cuando
-   * no se ve y con su botón (WCAG 2.2.2); con "reducir movimiento" arranca detenido.
-   * Solo se cargan la foto actual y sus vecinas: son 12 y pesan ~100 KB cada una. */
+  /* ---------- Detalle de la sede: galería ----------
+   * Un solo <dialog> que se llena con los datos de la sede (datos.js, "sedes"): un carrusel que
+   * rota solo y cambia la descripción de cada foto. Se detiene al pasar el cursor o con el foco,
+   * cuando no se ve y con su botón (WCAG 2.2.2); con "reducir movimiento" arranca detenido.
+   * Solo se cargan la foto actual y sus vecinas. */
   var detalle = $('#detalle');
   if (detalle && D.sedes) {
     var tituloDetalle = $('#detalle-titulo');
-    var NOMBRES = ['llegar', 'galeria'];
-    var pestanas = { llegar: $('#pest-llegar'), galeria: $('#pest-galeria') };
-    var paneles = { llegar: $('#panel-llegar'), galeria: $('#panel-galeria') };
-    var marcoMapa = $('.detalle__mapa iframe', detalle);
-    var enlaceMapa = $('[data-mapa-abrir]', detalle);
     var enlaceVisita = $('[data-detalle-visita]', detalle);
     var carrusel = $('.slider', detalle);
     var pista = $('.slider__pista', detalle);
@@ -210,18 +204,7 @@
     var puntos = $('.slider__puntos', detalle);
     var botonPausa = $('.slider__pausa', detalle);
     var sede = null, laminas = [], indice = 0, reloj = null;
-    var encima = false, enPausa = !movimiento.matches, pestanaActiva = 'llegar', abridor = null, urlMapa = '';
-
-    function prepararMapa() {
-      var q = encodeURIComponent;
-      if (sede.trayecto) {
-        urlMapa = 'https://maps.google.com/maps?saddr=' + q(sede.consulta) + '&daddr=' + q(sede.trayecto.hasta) + '&dirflg=w&hl=es&output=embed';
-        enlaceMapa.href = 'https://www.google.com/maps/dir/?api=1&origin=' + q(sede.consulta) + '&destination=' + q(sede.trayecto.hasta) + '&travelmode=walking';
-      } else {
-        urlMapa = 'https://maps.google.com/maps?q=' + q(sede.consulta) + '&hl=es&z=16&output=embed';
-        enlaceMapa.href = 'https://www.google.com/maps/search/?api=1&query=' + q(sede.consulta);
-      }
-    }
+    var encima = false, enPausa = !movimiento.matches, abridor = null;
 
     function construirCarrusel() {
       pista.innerHTML = '';
@@ -287,45 +270,28 @@
     function sincronizar() {
       clearInterval(reloj);
       reloj = null;
-      var quiere = detalle.open && pestanaActiva === 'galeria' && laminas.length > 1 && !enPausa && !encima && !document.hidden;
+      var quiere = detalle.open && laminas.length > 1 && !enPausa && !encima && !document.hidden;
       if (quiere) reloj = setInterval(function () { mostrar(indice + 1); }, 5500);
       botonPausa.setAttribute('aria-label', enPausa ? 'Reproducir la rotación de fotos' : 'Pausar la rotación de fotos');
       botonPausa.querySelector('use').setAttribute('href', enPausa ? '#i-play' : '#i-pausa');
     }
 
-    function pestana(nombre) {
-      pestanaActiva = nombre;
-      NOMBRES.forEach(function (n) {
-        var activa = n === nombre;
-        pestanas[n].setAttribute('aria-selected', String(activa));
-        pestanas[n].tabIndex = activa ? 0 : -1;
-        paneles[n].hidden = !activa;
-      });
-      if (nombre === 'llegar' && marcoMapa.getAttribute('src') !== urlMapa) marcoMapa.src = urlMapa;
-      if (nombre === 'galeria') mostrar(indice);
-      sincronizar();
-    }
-
-    function abrir(clave, nombrePestana, boton) {
+    function abrir(clave, boton) {
       var s = D.sedes[clave];
-      if (!s) return;
+      if (!s || !s.fotos || !s.fotos.length) return;
       sede = s;
       abridor = boton;
-      var hayFotos = !!(s.fotos && s.fotos.length);
       tituloDetalle.textContent = s.nombre;
       $('.detalle__direccion', detalle).textContent = s.direccion;
-      $('.detalle__trayecto', detalle).textContent = s.trayecto ? s.trayecto.texto : (s.llegar || '');
       enlaceVisita.setAttribute('data-sede', s.valorFormulario || '');
-      pestanas.galeria.hidden = !hayFotos;
-      pestanas.galeria.textContent = 'Galería' + (hayFotos ? ' (' + s.fotos.length + ')' : '');
-      prepararMapa();
       construirCarrusel();
       encima = false;
       enPausa = !movimiento.matches;
       pausarVideosPagina();
       detalle.showModal();
       raiz.style.overflow = 'hidden';
-      pestana(hayFotos && nombrePestana === 'galeria' ? 'galeria' : 'llegar');
+      mostrar(0);
+      sincronizar();
     }
 
     // La limpieza es sincrónica: en Chromium el evento "close" llega un cuadro después.
@@ -333,7 +299,6 @@
       clearInterval(reloj);
       reloj = null;
       raiz.style.overflow = '';
-      marcoMapa.removeAttribute('src');
     }
     function cerrar(devolverFoco) {
       if (detalle.open) detalle.close();
@@ -343,7 +308,7 @@
     }
 
     $$('[data-detalle]').forEach(function (b) {
-      b.addEventListener('click', function () { abrir(b.getAttribute('data-detalle'), b.getAttribute('data-pestana'), b); });
+      b.addEventListener('click', function () { abrir(b.getAttribute('data-detalle'), b); });
     });
     $$('[data-conteo]').forEach(function (e) {
       var s = D.sedes[e.getAttribute('data-conteo')];
@@ -352,21 +317,9 @@
     $('.detalle__cerrar', detalle).addEventListener('click', function () { cerrar(); });
     detalle.addEventListener('click', function (e) { if (e.target === detalle) cerrar(); });   // clic en el fondo
     detalle.addEventListener('cancel', limpiar);                                              // Esc
-    // El "close" llega un cuadro tarde: si ya se abrió otra sede, no hay que borrarle el mapa.
+    // El "close" llega un cuadro tarde: si ya se abrió otra sede, no hay que limpiarle nada.
     detalle.addEventListener('close', function () { if (!detalle.open) limpiar(); });
     enlaceVisita.addEventListener('click', function () { cerrar(false); });                    // sigue al formulario
-
-    pestanas.llegar.addEventListener('click', function () { pestana('llegar'); });
-    pestanas.galeria.addEventListener('click', function () { pestana('galeria'); });
-    $('.detalle__pestanas', detalle).addEventListener('keydown', function (e) {
-      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-      var visibles = NOMBRES.filter(function (n) { return !pestanas[n].hidden; });
-      if (visibles.length < 2) return;
-      var paso = e.key === 'ArrowRight' ? 1 : -1;
-      var otra = visibles[(visibles.indexOf(pestanaActiva) + paso + visibles.length) % visibles.length];
-      pestana(otra);
-      pestanas[otra].focus();
-    });
 
     $('.slider__flecha--ant', detalle).addEventListener('click', function () { mostrar(indice - 1); sincronizar(); });
     $('.slider__flecha--sig', detalle).addEventListener('click', function () { mostrar(indice + 1); sincronizar(); });
@@ -433,31 +386,7 @@
         gsap.set(escena, { clearProps: 'transform,transformOrigin' });
         gsap.set('.logo3d__casa, .logo3d__letras', { clearProps: 'clipPath' });
         logo.classList.remove('logo3d--armando');
-        mecerLogo();
       });
-  }
-
-  // Después de armarse, el logo se mece despacio de lado a lado, también en el celular. Se mece
-  // el "mundo" entero (cubos + casa + letras): si solo giraran los cubos, las líneas de la casa
-  // quedarían corridas. Se detiene fuera de pantalla y con su botón (WCAG 2.2.2).
-  function mecerLogo() {
-    var mundo = $('.logo3d__mundo', logo);
-    var boton = $('.logo3d__pausa');
-    var pausadoAMano = false;
-    var vaiven = gsap.timeline()
-      .to(mundo, { rotationY: -14, rotationX: 4, duration: 1.6, ease: 'sine.inOut' })
-      .add(gsap.to(mundo, { rotationY: 14, rotationX: -4, duration: 3.4, ease: 'sine.inOut', repeat: -1, yoyo: true }));
-    boton.hidden = false;
-    boton.addEventListener('click', function () {
-      pausadoAMano = !vaiven.paused();
-      if (pausadoAMano) vaiven.pause(); else vaiven.play();
-      boton.setAttribute('aria-label', pausadoAMano ? 'Mover el logo' : 'Pausar el movimiento del logo');
-      boton.querySelector('use').setAttribute('href', pausadoAMano ? '#i-play' : '#i-pausa');
-    });
-    new IntersectionObserver(function (e) {
-      if (pausadoAMano) return;
-      if (e[0].isIntersecting) vaiven.play(); else vaiven.pause();
-    }).observe(logo);
   }
 
   /* ---------- Animaciones ----------

@@ -63,6 +63,14 @@ van tal cual a su `wwwroot`: no se pierde nada.
   localStorage), se calla con el reproductor de video. Es "We Don't Talk Anymore"
   (Charlie Puth), del mp3 que el cliente bajó a Descargas: recortada a 218 s (sin el silencio final), con
   fundidos, normalizada y a 128 kbps (3,4 MB). Se le advirtió que necesita licencia. Sin archivo, el botón no aparece.
+- **Últimos cambios (26 de octubre, "ULTIMOS CAMBIOS.docx")**: del cuadro de la bienvenida salió el corredor con
+  pérgola; la terraza de jardín se cambió por IMG_20240214_100224 (`edificio-terraza-playa`) y se agregó el
+  parqueadero (IMG_20240215_145442, `edificio-parqueadero-*`). El ":" de "frente al mar: de la suite" pasó a ";".
+  El nivel de descanso ya no es una foto: son 4 de las habitaciones que pasan solas (`figure.nivel__foto--pasan`
+  con `data-carrusel="las fotos de las habitaciones"`, misma lógica del cuadro). En la galería la terraza de
+  jardín es ahora la versión de Gemini (`edificio-terrazas-jardin-*`) y la foto de Experiencias → Playas es la
+  de Gemini `playa-salguero-atardecer-montanas-*`. El documento traía las imágenes sueltas y los pedidos 5 a 7
+  se interpretaron por el contenido de cada imagen.
 - **Sin fotos de la puerta corrediza** del nivel de descanso (24 de octubre): se quitó `suite-escalera-duplex`
   de la galería.
 - **Fondo anterior (22 de octubre, reemplazado)**: foto del cliente de la piscina entre palmeras
@@ -203,11 +211,13 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
   mensual), 03 Acceso, 04 Pensado para estudiantes (+ Síguenos), 05 Agenda tu visita (lunes a
   viernes y sábado medio día), 06 Preguntas; el pie es "Contáctanos". El mismo fondo miel
   (`--fondo` #F8CD6E) en todas las secciones y el logo a color en cada título; el menú no lleva
-  logo ni nombre, sino el teléfono para llamar. Teléfono y WhatsApp: 300 529 6434. El logo se
-  mece solo tras armarse (con botón de pausa). Cubos: rojo → Contáctanos, verde → Síguenos.
+  logo ni nombre (ni teléfono: desde el 27 de octubre el teléfono es un botón flotante junto al de
+  WhatsApp). Teléfono y WhatsApp: 300 529 6434. **El logo ya no se mece**: queda quieto tras armarse.
+  Cubos: rojo → Contáctanos, verde → Recorrido.
 - **Portada "Campus" (14 de octubre, definitiva)**: hoja de cuaderno con renglones y margen rojo,
   garabatos de estudiante (`.garabato`) y el logo con sus colores originales sobre una nota
-  adhesiva naranja clara (en amarilla se perdía el cuadro amarillo). La propuesta "Sol" (crema
+  adhesiva naranja clara (**quitada el 27 de octubre**: se perdía el cuadro amarillo; ahora solo el logo, quieto, con
+  los cubos contorneados). La propuesta "Sol" (crema
   con formas naranjas) quedó **descartada** y se borró.
 - **Panel de la sede (21 de octubre)**: al tocar una sede (foto, "Cómo llegar" o "Galería") se abre un
   `<dialog id="detalle">` con dos pestañas. *Cómo llegar*: mapa de Google (iframe `output=embed`) con
@@ -255,7 +265,26 @@ El filtro `drawtext` falla aquí (no hay configuración de fuentes): no usarlo.
   `rosario-01-fachada` esos datos van **difuminados** (la fachada de Quinta Mutis ya lo estaba). No
   volver a poner esos datos en ninguna parte. `img/og-casa-universitaria.jpg` (1200×630) es la imagen
   que sale al compartir el enlace.
-- **Alimentación por sede (22 de octubre)**: la sede se llama **Casa Universitaria del Rosario** (no "El Rosal").
+- **Cambios del 27 de octubre ("cambios casona.docx"; no deshacer)**: la segunda sede se llama **Sede del Rosario** (el título;
+  la dirección lleva "(Galerías)"). **Alimentación: "Servicio de restaurante" incluido en Quinta Mutis y opcional en la
+  Sede del Rosario; sin mencionar comedor ni cocina** (esto reemplaza lo del 22 de octubre; las fotos de la cocina y el
+  comedor del Rosario siguen en la galería: confirmar). Nota del asterisco en Estudiantes y en el valor mensual. Sin
+  "deliciosa". **Se quitaron todos los "Cómo llegar"**: botones, la pestaña del panel y el mapa del trayecto (el panel
+  es solo la galería; para recuperar el mapa, ver el commit `dba8bc9`). Botones "Agendar en esta sede". Títulos con
+  ¡ ! en vez de punto final. Sin la etiqueta "Hospedaje para universitarios · Bogotá" del inicio. "Conexión" (sin "top")
+  con **dos operadores de wifi**; "Aseo diario" con ícono de escoba; "*Aplican restricciones" chico y con la letra del
+  texto; tarjetas con más aire. "bienestar del estudiante universitario" con marcador **amarillo**. Quinta Mutis: "A unos
+  pasos de la facultad de Ciencias de la Salud…". **Fotos reemplazadas por las de Gemini** (`Gemini_Generated_Image_*`,
+  versiones retocadas de las mismas tomas, en Descargas): Quinta Mutis 02, 03, 04, 06, 07 y 12; Rosario 06, 07, 08 y 10, y
+  la **portada del Rosario** (fachada con la persona recortada y el 316 y la web del letrero difuminados). Sin marca de agua
+  visible. Al ser retocadas por IA, no deben mostrar nada que la casa no tenga.
+- **Galerías (27 de octubre, 2)**: Quinta Mutis queda con **11 fotos** (se quitó IMG_3330, la habitación del colchón azul;
+  `quinta-mutis-05` ya no existe) y la primera foto del Rosario es la fachada de Gemini **de cuerpo entero** (con la persona,
+  a pedido del cliente) con el 316 y la web del letrero difuminados.
+- **Habitaciones (27 de octubre)**: las dos polaroids son las fotos que mandó el cliente (`img/habitaciones-foto-1-*` y
+  `-2-*`: habitación del clóset y habitación del escritorio con TV); salieron las del Instagram. Los botones de las tarjetas
+  de las sedes van siempre abajo (`.sede__acciones { margin-top: auto }`) para quedar a la misma altura.
+- **Alimentación por sede (22 de octubre, reemplazada el 27)**: la sede se llama **Casa Universitaria del Rosario** (no "El Rosal").
   **Quinta Mutis**: hay comedor y la alimentación va incluida **si el estudiante decide tomarla**.
   **Del Rosario**: hay comedor y **cocina**, y los estudiantes cocinan ellos mismos; **no incluye
   alimentación**. Está en cada tarjeta de Sedes (`.sede__comida`) y en la nota del asterisco de
