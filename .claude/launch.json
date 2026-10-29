@@ -12,6 +12,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["servidor.py", "5501", "bogota"],
       "port": 5501
+    },
+    {
+      "name": "almaro",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["servidor.py", "5502", "almaro"],
+      "port": 5502
     }
   ]
 }

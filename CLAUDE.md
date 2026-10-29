@@ -71,7 +71,7 @@ van tal cual a su `wwwroot`: no se pierde nada.
   jardín es ahora la versión de Gemini (`edificio-terrazas-jardin-*`) y la foto de Experiencias → Playas es la
   de Gemini `playa-salguero-atardecer-montanas-*`. El documento traía las imágenes sueltas y los pedidos 5 a 7
   se interpretaron por el contenido de cada imagen.
-- **Sin fotos de la puerta corrediza** del nivel de descanso (24 de octubre): se quitó `suite-escalera-duplex`
+- **Puerta corrediza (24 de octubre, revertido el 28 y 29)**: primero se quitó `suite-escalera-duplex`; el cliente la volvió a pedir en la galería y en el carrusel del nivel de descanso. Antes se había quitado
   de la galería.
 - **Fondo anterior (22 de octubre, reemplazado)**: foto del cliente de la piscina entre palmeras
   (IMG_20261010_163758) sin el piso de madera y con el **cielo del atardecer de otra foto suya de la
